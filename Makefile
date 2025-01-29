@@ -1,7 +1,14 @@
 input_dir := input
 intermediate_dir := intermediate
 
-all: $(intermediate_dir)/dtakt.db
+all: $(intermediate_dir)/dtakt-station-location.db
+
+$(intermediate_dir)/dtakt-station-location.db: $(intermediate_dir)/dtakt.db $(input_dir)/station_location.csv station_location.py .python
+	cp $< $@
+	poetry run python station_location.py $@ $(input_dir)/station_location.csv
+
+$(input_dir)/station_location.csv:
+	wget "https://mirror.traines.eu/hafas-ibnr-zhv-gtfs-osm-matching/D_Bahnhof_2020_alle.CSV" -O $@
 
 $(intermediate_dir)/dtakt.db: $(intermediate_dir)/dtakt-schedule-patched.railml db_ingest.py .python
 	poetry run python db_ingest.py $< $@
