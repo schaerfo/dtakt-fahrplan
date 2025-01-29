@@ -1,6 +1,13 @@
 intermediate_dir := intermediate
 
-all: $(intermediate_dir)/dtakt-schedule-patched.railml
+all: $(intermediate_dir)/dtakt.db
+
+$(intermediate_dir)/dtakt.db: $(intermediate_dir)/dtakt-schedule-patched.railml db_ingest.py .python
+	poetry run python db_ingest.py $< $@
+
+.python: pyproject.toml poetry.lock
+	poetry install --sync
+	touch .python
 
 $(intermediate_dir)/dtakt-schedule-patched.railml: $(intermediate_dir)/dtakt-schedule-lf.railml $(intermediate_dir)/Export_fixed.railml.diff
 	cp $< $@
