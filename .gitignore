@@ -1,5 +1,6 @@
 .vscode/
 .python
+input/*
+!input/.gitkeep
 intermediate/*
 !intermediate/.gitkeep
-
