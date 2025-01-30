@@ -1,7 +1,11 @@
 input_dir := input
 intermediate_dir := intermediate
 
-all: $(intermediate_dir)/dtakt-station-location.db
+all: $(intermediate_dir)/dtakt-gtfs.db
+
+$(intermediate_dir)/dtakt-gtfs.db: $(intermediate_dir)/dtakt-station-location.db gtfs_views.sql
+	cp $< $@
+	sqlite3 $@ < gtfs_views.sql
 
 $(intermediate_dir)/dtakt-station-location.db: $(intermediate_dir)/dtakt.db $(input_dir)/station_location.csv station_location.py .python
 	cp $< $@
