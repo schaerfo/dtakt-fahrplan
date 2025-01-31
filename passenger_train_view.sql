@@ -20,3 +20,15 @@ CREATE VIEW "passenger_train_with_part" AS
   where
     substr(category.code, 1, 1) != 'G'
 ;
+
+CREATE VIEW "station_with_location" AS
+  select
+    station.*,
+    ds100.id as location_id,
+    name_db,
+    Laenge,
+    Breite
+  from station
+  left join ds100 on substr(replace(dtakt_id, '_x0020_', ' '), 2) = ds100.DS100
+  left join station_location on location_id = station_location.id
+;

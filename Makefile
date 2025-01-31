@@ -13,8 +13,8 @@ $(intermediate_dir)/dtakt-gtfs.db: $(intermediate_dir)/dtakt-station-location.db
 
 $(intermediate_dir)/dtakt-station-location.db: $(intermediate_dir)/dtakt.db $(input_dir)/station_location.csv passenger_train_view.sql station_location.py .python
 	cp $< $@
-	sqlite3 $@ < passenger_train_view.sql
 	poetry run python station_location.py $@ $(input_dir)/station_location.csv
+	sqlite3 $@ < passenger_train_view.sql
 
 $(input_dir)/station_location.csv:
 	wget "https://mirror.traines.eu/hafas-ibnr-zhv-gtfs-osm-matching/D_Bahnhof_2020_alle.CSV" -O $@
