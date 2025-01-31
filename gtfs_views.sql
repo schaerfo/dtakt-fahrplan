@@ -47,7 +47,7 @@ CREATE VIEW "gtfs_stops" AS
     Laenge as stop_lon,
     1 as location_type,
     NULL as parent_station
-  from station_location
+  from station_with_location
 ;
 
 CREATE VIEW "gtfs_stop_times" AS
@@ -59,7 +59,7 @@ CREATE VIEW "gtfs_stop_times" AS
     sequence as stop_sequence
   from stop
   join passenger_train_with_part on stop.train_part_id = passenger_train_with_part.train_part_id
-  join station_location on stop.station_id = station_location.id
+  join station_with_location on stop.station_id = station_with_location.id
   where
       arrival_time is not null
     and
