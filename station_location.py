@@ -14,7 +14,7 @@ def main():
     location_df.rename(columns={"NAME": "name_db"}, inplace=True)
     with sqlite3.connect(sys.argv[1]) as conn:
         df = pd.read_sql(PASSENGER_STATION, conn)
-        df['DS100'] = df.apply(lambda row: row.dtakt_id.split('_')[0][1:], axis=1)
+        df['DS100'] = df.apply(lambda row: row.dtakt_id.replace('_x0020_', ' ')[1:], axis=1)
         merged = df.join(location_df, rsuffix="_db", on='DS100')
         merged = merged[['id', 'name_db', 'Laenge', 'Breite']]
         merged.to_sql("station_location", conn, index=False) # Why is the index of merged a RangeIndex and not the id column from df?
