@@ -32,3 +32,11 @@ CREATE VIEW "station_with_location" AS
   left join ds100 on substr(replace(dtakt_id, '_x0020_', ' '), 2) = ds100.DS100
   left join station_location on location_id = station_location.id
 ;
+
+CREATE VIEW "passenger_station" AS
+  select distinct
+    station_with_location.*
+  from station_with_location
+  join stop on stop.station_id = station_with_location.id
+  join passenger_train_with_part on stop.train_part_id = passenger_train_with_part.train_part_id
+;
