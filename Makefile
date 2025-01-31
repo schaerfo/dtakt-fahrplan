@@ -44,5 +44,13 @@ $(intermediate_dir)/dtakt-schedule.railml: $(input_dir)/dtakt-schedule.zip
 $(input_dir)/dtakt-schedule.zip:
 	wget "https://fragdenstaat.de/files/foi/519018/3.%20Gutachterentwurf%20Zielfahrplan%20Dtakt%20-%20maschienenlesbar.zip?download" -O $@
 
-clean:
+clean: clean-input clean-intermediate clean-output
+
+clean-input:
+	rm -f $(input_dir)/*
+
+clean-intermediate:
 	rm -f $(intermediate_dir)/*
+
+clean-output:
+	rm -f $(output_dir)/*
