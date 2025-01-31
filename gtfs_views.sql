@@ -47,7 +47,7 @@ CREATE VIEW "gtfs_stops" AS
     Laenge as stop_lon,
     1 as location_type,
     NULL as parent_station
-  from station_with_location
+  from passenger_station
 ;
 
 CREATE VIEW "gtfs_stop_times" AS
