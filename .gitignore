@@ -4,3 +4,5 @@ input/*
 !input/.gitkeep
 intermediate/*
 !intermediate/.gitkeep
+out/*
+!out/.gitkeep

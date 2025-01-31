@@ -1,7 +1,11 @@
 input_dir := input
 intermediate_dir := intermediate
+output_dir := out
 
-all: $(intermediate_dir)/dtakt-gtfs.db
+all: $(output_dir)/dtakt-gtfs.zip
+
+$(output_dir)/dtakt-gtfs.zip: $(intermediate_dir)/dtakt-gtfs.db export_gtfs.py .python
+	poetry run python export_gtfs.py $< $@
 
 $(intermediate_dir)/dtakt-gtfs.db: $(intermediate_dir)/dtakt-station-location.db gtfs_views.sql
 	cp $< $@
