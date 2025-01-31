@@ -1,0 +1,30 @@
+FROM ubuntu:noble AS builder
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+dos2unix \
+make \
+patch \
+python3 \
+python3-poetry \
+sqlite3 \
+unzip \
+wget
+
+WORKDIR /build
+
+COPY python.mk pyproject.toml poetry.lock ./
+RUN make -f python.mk
+
+COPY input.mk ./
+RUN mkdir input && make -f input.mk
+
+COPY . .
+RUN make
+
+FROM ghcr.io/motis-project/motis:2 AS import
+COPY motis/ .
+COPY --from=builder /build/out/dtakt-gtfs.zip .
+RUN ./motis import
+
+FROM ghcr.io/motis-project/motis:2
+COPY --from=import data data
