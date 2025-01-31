@@ -37,22 +37,21 @@ CREATE VIEW "train_with_part" AS
 
 CREATE VIEW "passenger_train_with_part" AS
   select
-    * from train_with_part
+    train_with_part.*
+  from train_with_part
   join category on train_with_part.category_id = category.id
   where
-    substr(category.code, 1, 1) != "G"
+    substr(category.code, 1, 1) != 'G'
 ;
 
 CREATE VIEW "gtfs_routes" AS
-  select
+  select distinct
     group_id as route_id,
     (select agency_id from gtfs_agency) as agency_id,
     description as route_long_name,
     line_name as route_short_name,
     2 as route_type
   from passenger_train_with_part
-  group by group_id
-  order by code, line_name, description
 ;
 
 CREATE VIEW "gtfs_trips" AS
