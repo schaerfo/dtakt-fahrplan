@@ -12,9 +12,9 @@ def main():
     )
     # Create id column from RangeIndex
     location_df.reset_index(inplace=True)
-    location_df.rename(columns={"NAME": "name_db", "index": "id"}, inplace=True)
+    location_df.rename(columns={"NAME": "name_db", "index": "location_id"}, inplace=True)
 
-    ds100_df = location_df[['id', 'DS100']]
+    ds100_df = location_df[['location_id', 'DS100']]
     ds100_df.loc[:, 'DS100'] = ds100_df['DS100'].str.split(',')
     ds100_df = ds100_df.explode('DS100')
 

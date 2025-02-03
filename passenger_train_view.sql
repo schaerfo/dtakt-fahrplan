@@ -1,22 +1,22 @@
 CREATE VIEW "train_with_part" AS
   select
-    train.id,
+    train.train_id,
     train.dtakt_id,
     train.description,
     train.train_number,
     train.line_name,
     train.group_id,
-    train_part.id as train_part_id,
+    train_part.train_part_id as train_part_id,
     train_part.category_id
   from train
-  full outer join train_part on train.train_part_id = train_part.id
+  full outer join train_part using (train_part_id)
 ;
 
 CREATE VIEW "passenger_train_with_part" AS
   select
     train_with_part.*
   from train_with_part
-  join category on train_with_part.category_id = category.id
+  join category using (category_id)
   where
     substr(category.code, 1, 1) != 'G'
 ;
@@ -24,21 +24,21 @@ CREATE VIEW "passenger_train_with_part" AS
 CREATE VIEW "station_with_location" AS
   select
     station.*,
-    ds100.id as location_id,
+    location_id,
     name_db,
     Laenge,
     Breite
   from station
   left join ds100 on substr(replace(dtakt_id, '_x0020_', ' '), 2) = ds100.DS100
-  left join station_location on location_id = station_location.id
+  left join station_location using (location_id)
 ;
 
 CREATE VIEW "passenger_station" AS
   select distinct
     station_with_location.*
   from station_with_location
-  join stop on stop.station_id = station_with_location.id
-  join passenger_train_with_part on stop.train_part_id = passenger_train_with_part.train_part_id
+  join stop using (station_id)
+  join passenger_train_with_part using (train_part_id)
 ;
 
 CREATE TABLE IF NOT EXISTS "route_type" (
