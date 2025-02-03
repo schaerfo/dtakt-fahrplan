@@ -18,8 +18,15 @@ RUN make -f python.mk
 COPY input.mk ./
 RUN mkdir input && make -f input.mk
 
-COPY . .
-RUN make
+COPY \
+db_ingest.py \
+export_gtfs.py \
+gtfs_views.sql \
+Makefile \
+passenger_train_view.sql \
+station_location.py \
+./
+RUN mkdir intermediate out && make
 
 FROM ghcr.io/motis-project/motis:2 AS import
 COPY motis/ .
