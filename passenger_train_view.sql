@@ -40,3 +40,24 @@ CREATE VIEW "passenger_station" AS
   join stop on stop.station_id = station_with_location.id
   join passenger_train_with_part on stop.train_part_id = passenger_train_with_part.train_part_id
 ;
+
+CREATE TABLE IF NOT EXISTS "route_type" (
+	"code"	TEXT NOT NULL,
+	"route_type"	INTEGER NOT NULL,
+  PRIMARY KEY ("code"),
+  FOREIGN KEY ("code") REFERENCES "category"("code")
+);
+INSERT INTO "route_type" VALUES
+ ('X',106),
+ ('F',102),
+ ('A',101),
+ ('N',106),
+ ('S',109),
+ ('C',101),
+ ('D',101),
+ ('H',102),
+ ('RRX',106),
+ ('RbZ',106),
+ ('B',101),
+ ('AS',104)
+;
