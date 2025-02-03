@@ -25,10 +25,12 @@ CREATE VIEW "gtfs_routes" AS
   select distinct
     group_id as route_id,
     (select agency_id from gtfs_agency) as agency_id,
-    description as route_long_name,
+    passenger_train_with_part.description as route_long_name,
     line_name as route_short_name,
-    2 as route_type
+	route_type
   from passenger_train_with_part
+  left join category on category_id = category.id
+  natural left join route_type
 ;
 
 CREATE VIEW "gtfs_trips" AS
