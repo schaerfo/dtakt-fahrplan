@@ -22,7 +22,7 @@ class Base(DeclarativeBase):
 class Station(Base):
     __tablename__ = "station"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    station_id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str]
     dtakt_id: Mapped[str]
     operational_type: Mapped[str | None]
@@ -31,7 +31,7 @@ class Station(Base):
 class Category(Base):
     __tablename__ = "category"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    category_id: Mapped[int] = mapped_column(primary_key=True)
     code: Mapped[str]
     dtakt_id: Mapped[str]
     description: Mapped[str]
@@ -40,9 +40,9 @@ class Category(Base):
 class TrainPart(Base):
     __tablename__ = "train_part"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    train_part_id: Mapped[int] = mapped_column(primary_key=True)
     dtakt_id: Mapped[str]
-    category_id: Mapped[int] = mapped_column(ForeignKey("category.id"))
+    category_id: Mapped[int] = mapped_column(ForeignKey("category.category_id"))
 
     category: Mapped[Category] = relationship()
     train: Mapped["Train"] = relationship(back_populates="train_part")
@@ -51,9 +51,9 @@ class TrainPart(Base):
 class Stop(Base):
     __tablename__ = "stop"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
-    train_part_id: Mapped[int] = mapped_column(ForeignKey("train_part.id"))
-    station_id: Mapped[int] = mapped_column(ForeignKey("station.id"))
+    stop_id: Mapped[int] = mapped_column(primary_key=True)
+    train_part_id: Mapped[int] = mapped_column(ForeignKey("train_part.train_part_id"))
+    station_id: Mapped[int] = mapped_column(ForeignKey("station.station_id"))
     arrival: Mapped[str | None]
     departure: Mapped[str | None]
     sequence: Mapped[int]
@@ -65,13 +65,13 @@ class Stop(Base):
 class Train(Base):
     __tablename__ = "train"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    train_id: Mapped[int] = mapped_column(primary_key=True)
     dtakt_id: Mapped[str]
     description: Mapped[str]
     train_number: Mapped[str | None]
     line_name: Mapped[str | None]
-    train_part_id: Mapped[int] = mapped_column(ForeignKey("train_part.id"))
-    group_id: Mapped[int] = mapped_column(ForeignKey("train_group.id"))
+    train_part_id: Mapped[int] = mapped_column(ForeignKey("train_part.train_part_id"))
+    group_id: Mapped[int] = mapped_column(ForeignKey("train_group.train_group_id"))
     sequence: Mapped[int]
 
     train_part: Mapped[TrainPart] = relationship(back_populates="train")
@@ -80,7 +80,7 @@ class Train(Base):
 class TrainGroup(Base):
     __tablename__ = "train_group"
 
-    id: Mapped[int] = mapped_column(primary_key=True)
+    train_group_id: Mapped[int] = mapped_column(primary_key=True)
     dtakt_id: Mapped[str]
     code: Mapped[str]
     train_number = Mapped[int]

@@ -29,21 +29,21 @@ CREATE VIEW "gtfs_routes" AS
     line_name as route_short_name,
 	route_type
   from passenger_train_with_part
-  left join category on category_id = category.id
-  natural left join route_type
+  left join category using (category_id)
+  left join route_type using (code)
 ;
 
 CREATE VIEW "gtfs_trips" AS
   select
     group_id as route_id,
     (select service_id from gtfs_calendar) as service_id,
-    id as trip_id
+    train_id as trip_id
   from passenger_train_with_part
 ;
 
 CREATE VIEW "gtfs_stops" AS
   select
-    id as stop_id,
+    station_id as stop_id,
     name_db as stop_name,
     Breite as stop_lat,
     Laenge as stop_lon,
@@ -54,14 +54,14 @@ CREATE VIEW "gtfs_stops" AS
 
 CREATE VIEW "gtfs_stop_times" AS
   select
-    passenger_train_with_part.id as trip_id,
+    passenger_train_with_part.train_id as trip_id,
     station_id as stop_id,
     iif(arrival is null, departure, arrival) as arrival_time,
     iif(departure is null, arrival, departure) as departure_time,
     sequence as stop_sequence
   from stop
-  join passenger_train_with_part on stop.train_part_id = passenger_train_with_part.train_part_id
-  join station_with_location on stop.station_id = station_with_location.id
+  join passenger_train_with_part using (train_part_id)
+  join station_with_location using (station_id)
   where
       arrival_time is not null
     and
