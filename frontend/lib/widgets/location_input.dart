@@ -60,10 +60,7 @@ class _LocationInputState extends State<LocationInput> {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: 400,
-      ),
+    return Expanded(
       child: SearchAnchor.bar(
         barHintText: widget.label,
         suggestionsBuilder:
