@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'widgets/search_parameter_input.dart';
+
 void main() {
   runApp(const MainApp());
 }
@@ -20,85 +22,9 @@ class MainApp extends StatelessWidget {
       ),
       home: const Scaffold(
         body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  LocationInput(label: "From"),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  LocationInput(label: "To"),
-                ],
-              ),
-              SizedBox(height: 20),
-              TimeAnchorSelection(),
-            ],
-          ),
+          child: SearchParameterInput(),
         ),
       ),
-    );
-  }
-}
-
-class LocationInput extends StatelessWidget {
-  final String label;
-
-  const LocationInput({
-    required this.label,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: 400,
-      ),
-      child: SearchAnchor.bar(
-        barHintText: label,
-        suggestionsBuilder: (context, controller) => [],
-      ),
-    );
-  }
-}
-
-enum TimeAnchor { depart, arrive }
-
-class TimeAnchorSelection extends StatefulWidget {
-  const TimeAnchorSelection({
-    super.key,
-  });
-
-  @override
-  State<TimeAnchorSelection> createState() => _TimeAnchorSelectionState();
-}
-
-class _TimeAnchorSelectionState extends State<TimeAnchorSelection> {
-  TimeAnchor _selection = TimeAnchor.depart;
-
-  @override
-  Widget build(BuildContext context) {
-    return SegmentedButton<TimeAnchor>(
-      segments: [
-        ButtonSegment<TimeAnchor>(
-          value: TimeAnchor.depart,
-          label: Text("Departure"),
-        ),
-        ButtonSegment<TimeAnchor>(
-          value: TimeAnchor.arrive,
-          label: Text("Arrival"),
-        )
-      ],
-      selected: <TimeAnchor>{_selection},
-      showSelectedIcon: false,
-      onSelectionChanged: (Set<TimeAnchor> newSelection) {
-        setState(() {
-          _selection = newSelection.first;
-        });
-      },
     );
   }
 }
