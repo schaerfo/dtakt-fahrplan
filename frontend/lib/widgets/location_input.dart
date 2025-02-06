@@ -12,9 +12,11 @@ const Duration debounceDuration = Duration(milliseconds: 500);
 
 class LocationInput extends StatefulWidget {
   final String label;
+  final void Function(Station) onSelected;
 
   const LocationInput({
     required this.label,
+    required this.onSelected,
     super.key,
   });
 
@@ -77,6 +79,7 @@ class _LocationInputState extends State<LocationInput> {
               title: Text(item.name),
               onTap: () {
                 controller.closeView(item.name);
+                widget.onSelected(item);
               },
             );
           }));
