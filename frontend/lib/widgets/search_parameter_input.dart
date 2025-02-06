@@ -21,7 +21,25 @@ class SearchParameterInput extends StatelessWidget {
           ],
         ),
         SizedBox(height: 20),
-        _TimeAnchorSelection(),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            OutlinedButton.icon(
+              onPressed: () {
+                showTimePicker(
+                  context: context,
+                  initialTime: TimeOfDay(hour: 8, minute: 00),
+                );
+              },
+              icon: Icon(Icons.access_time),
+              label: Text("8:00"),
+            ),
+            SizedBox(width: 5),
+            _TimeAnchorSelection(),
+            SizedBox(width: 5),
+            _ModeInput(),
+          ],
+        ),
       ],
     );
   }
@@ -83,6 +101,48 @@ class _TimeAnchorSelectionState extends State<_TimeAnchorSelection> {
           _selection = newSelection.first;
         });
       },
+    );
+  }
+}
+
+enum _Mode { longDistance, regional, all }
+
+class _ModeInput extends StatefulWidget {
+  const _ModeInput({
+    super.key,
+  });
+
+  @override
+  State<_ModeInput> createState() => _ModeInputState();
+}
+
+class _ModeInputState extends State<_ModeInput> {
+  _Mode _mode = _Mode.all;
+
+  @override
+  Widget build(BuildContext context) {
+    return SegmentedButton<_Mode>(
+      segments: [
+        ButtonSegment(
+          value: _Mode.longDistance,
+          label: Text("Long distance"),
+        ),
+        ButtonSegment(
+          value: _Mode.regional,
+          label: Text("Regional"),
+        ),
+        ButtonSegment(
+          value: _Mode.all,
+          label: Text("All"),
+        ),
+      ],
+      selected: <_Mode>{_mode},
+      onSelectionChanged: (Set<_Mode> newSelection) {
+        setState(() {
+          _mode = newSelection.first;
+        });
+      },
+      showSelectedIcon: false,
     );
   }
 }
