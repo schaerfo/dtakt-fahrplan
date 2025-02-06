@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'dart:convert';
-import 'dart:js_interop';
 
 import 'dart:async';
 import 'package:http/http.dart' as http;
@@ -109,9 +108,9 @@ class _MotisClient {
       print('Error: HTTP status ${response.statusCode}');
       return const Iterable<Station>.empty();
     }
-    final parsed = jsonDecode(utf8.decode(response.bodyBytes));
-    final result = (parsed as JSArray).toDart.map((station) {
-      return Station.fromJson(station as Map<String, dynamic>);
+    final parsed = jsonDecode(utf8.decode(response.bodyBytes)) as List;
+    final result = parsed.map((station) {
+      return Station.fromJson(station);
     });
     return result;
   }
