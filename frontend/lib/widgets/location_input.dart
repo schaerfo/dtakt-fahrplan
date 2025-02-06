@@ -6,6 +6,8 @@ import 'dart:js_interop';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 
+import '../models/types.dart';
+
 const Duration debounceDuration = Duration(milliseconds: 500);
 
 class LocationInput extends StatefulWidget {
@@ -37,7 +39,8 @@ class _LocationInputState extends State<LocationInput> {
     _currentQuery = query;
 
     // In a real application, there should be some error handling here.
-    final Iterable<Station> options = await _client.searchLocation(_currentQuery!);
+    final Iterable<Station> options =
+        await _client.searchLocation(_currentQuery!);
 
     // If another search happened after this one, throw away these options.
     if (_currentQuery != query) {
@@ -81,26 +84,6 @@ class _LocationInputState extends State<LocationInput> {
         },
       ),
     );
-  }
-}
-
-class Station {
-  String id;
-  String name;
-
-  Station({
-    required this.id,
-    required this.name,
-  });
-
-  factory Station.fromJson(Map<String, dynamic> json) {
-    return switch (json) {
-      {
-        'id': String id,
-      'name': String name,
-    } => Station(id: id,  name: name),
-      _ => throw const FormatException('Failed to load station'),
-    };
   }
 }
 

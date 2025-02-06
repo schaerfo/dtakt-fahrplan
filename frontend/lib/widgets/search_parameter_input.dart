@@ -1,5 +1,8 @@
+import 'package:dtakt_fahrplan_frontend/models/search_parameters.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../models/types.dart';
 import 'location_input.dart';
 
 class SearchParameterInput extends StatelessWidget {
@@ -47,82 +50,64 @@ class SearchParameterInput extends StatelessWidget {
   }
 }
 
-enum _TimeAnchor { depart, arrive }
-
-class _TimeAnchorSelection extends StatefulWidget {
+class _TimeAnchorSelection extends StatelessWidget {
   const _TimeAnchorSelection({
     super.key,
   });
 
   @override
-  State<_TimeAnchorSelection> createState() => _TimeAnchorSelectionState();
-}
-
-class _TimeAnchorSelectionState extends State<_TimeAnchorSelection> {
-  _TimeAnchor _selection = _TimeAnchor.depart;
-
-  @override
   Widget build(BuildContext context) {
-    return SegmentedButton<_TimeAnchor>(
-      segments: [
-        ButtonSegment<_TimeAnchor>(
-          value: _TimeAnchor.depart,
-          label: Text("Departure"),
-        ),
-        ButtonSegment<_TimeAnchor>(
-          value: _TimeAnchor.arrive,
-          label: Text("Arrival"),
-        )
-      ],
-      selected: <_TimeAnchor>{_selection},
-      showSelectedIcon: false,
-      onSelectionChanged: (Set<_TimeAnchor> newSelection) {
-        setState(() {
-          _selection = newSelection.first;
-        });
-      },
+    return Consumer<SearchParameters>(
+      builder: (context, parameters, child) => SegmentedButton<TimeAnchor>(
+        segments: [
+          ButtonSegment<TimeAnchor>(
+            value: TimeAnchor.depart,
+            label: Text("Departure"),
+          ),
+          ButtonSegment<TimeAnchor>(
+            value: TimeAnchor.arrive,
+            label: Text("Arrival"),
+          )
+        ],
+        selected: <TimeAnchor>{parameters.anchor},
+        showSelectedIcon: false,
+        onSelectionChanged: (Set<TimeAnchor> newSelection) {
+          parameters.anchor = newSelection.first;
+        },
+      ),
     );
   }
 }
 
-enum _Mode { longDistance, regional, all }
-
-class _ModeInput extends StatefulWidget {
+class _ModeInput extends StatelessWidget {
   const _ModeInput({
     super.key,
   });
 
   @override
-  State<_ModeInput> createState() => _ModeInputState();
-}
-
-class _ModeInputState extends State<_ModeInput> {
-  _Mode _mode = _Mode.all;
-
-  @override
   Widget build(BuildContext context) {
-    return SegmentedButton<_Mode>(
-      segments: [
-        ButtonSegment(
-          value: _Mode.longDistance,
-          label: Text("Long distance"),
-        ),
-        ButtonSegment(
-          value: _Mode.regional,
-          label: Text("Regional"),
-        ),
-        ButtonSegment(
-          value: _Mode.all,
-          label: Text("All"),
-        ),
-      ],
-      selected: <_Mode>{_mode},
-      onSelectionChanged: (Set<_Mode> newSelection) {
-        setState(() {
-          _mode = newSelection.first;
-        });
-      },
-      showSelectedIcon: false,
+    return Consumer<SearchParameters>(
+      builder: (context, parameters, child) => SegmentedButton<Mode>(
+        segments: [
+          ButtonSegment(
+            value: Mode.longDistance,
+            label: Text("Long distance"),
+          ),
+          ButtonSegment(
+            value: Mode.regional,
+            label: Text("Regional"),
+          ),
+          ButtonSegment(
+            value: Mode.all,
+            label: Text("All"),
+          ),
+        ],
+        selected: <Mode>{parameters.mode},
+        onSelectionChanged: (Set<Mode> newSelection) {
+          parameters.mode = newSelection.first;
+        },
+        showSelectedIcon: false,
+      ),
     );
   }
 }

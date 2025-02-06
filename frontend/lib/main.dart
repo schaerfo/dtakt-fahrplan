@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'package:provider/provider.dart';
+
+import 'models/search_parameters.dart';
 import 'widgets/search_parameter_input.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => SearchParameters(),
+      child: const MainApp(),
+    ),
+  );
 }
 
 class MainApp extends StatelessWidget {
