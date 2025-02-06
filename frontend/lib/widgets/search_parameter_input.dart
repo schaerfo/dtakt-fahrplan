@@ -18,11 +18,23 @@ class SearchParameterInput extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            LocationInput(label: "From"),
+            LocationInput(
+              label: "From",
+              onSelected: (Station value) {
+                Provider.of<EndpointNotifier>(context, listen: false)
+                    .setFrom(value);
+              },
+            ),
             SizedBox(
               width: 50,
             ),
-            LocationInput(label: "To"),
+            LocationInput(
+              label: "To",
+              onSelected: (Station value) {
+                Provider.of<EndpointNotifier>(context, listen: false)
+                    .setTo(value);
+              },
+            ),
           ],
         ),
         SizedBox(height: 20),

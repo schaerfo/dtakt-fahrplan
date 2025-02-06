@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/types.dart';
 import '../util/notifier_wrapper.dart';
 
-class SearchParameters extends ChangeNotifier {
+class EndpointNotifier extends ChangeNotifier {
   Station? _from;
   Station? _to;
 
