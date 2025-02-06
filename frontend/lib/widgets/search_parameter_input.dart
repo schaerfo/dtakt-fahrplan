@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'location_input.dart';
+
 class SearchParameterInput extends StatelessWidget {
   const SearchParameterInput({
     super.key,
@@ -13,11 +15,11 @@ class SearchParameterInput extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            _LocationInput(label: "From"),
+            LocationInput(label: "From"),
             SizedBox(
               width: 50,
             ),
-            _LocationInput(label: "To"),
+            LocationInput(label: "To"),
           ],
         ),
         SizedBox(height: 20),
@@ -41,28 +43,6 @@ class SearchParameterInput extends StatelessWidget {
           ],
         ),
       ],
-    );
-  }
-}
-
-class _LocationInput extends StatelessWidget {
-  final String label;
-
-  const _LocationInput({
-    required this.label,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: 400,
-      ),
-      child: SearchAnchor.bar(
-        barHintText: label,
-        suggestionsBuilder: (context, controller) => [],
-      ),
     );
   }
 }
