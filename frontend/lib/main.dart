@@ -1,3 +1,4 @@
+import 'package:dtakt_fahrplan_frontend/models/types.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -7,8 +8,13 @@ import 'widgets/search_parameter_input.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => SearchParameters(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => SearchParameters()),
+        ChangeNotifierProvider(
+            create: (_) => TimeAnchorNotifier(TimeAnchor.depart)),
+        ChangeNotifierProvider(create: (_) => ModeNotifier(Mode.all)),
+      ],
       child: const MainApp(),
     ),
   );

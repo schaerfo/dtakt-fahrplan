@@ -1,27 +1,14 @@
 import 'package:flutter/widgets.dart';
 
 import '../models/types.dart';
+import '../util/notifier_wrapper.dart';
 
 class SearchParameters extends ChangeNotifier {
   Station? _from;
   Station? _to;
-  var _mode = Mode.all;
-  var _anchor = TimeAnchor.depart;
 
   Station? get from => _from;
   Station? get to => _to;
-  get mode => _mode;
-  get anchor => _anchor;
-
-  set anchor(value) {
-    _anchor = value;
-    notifyListeners();
-  }
-
-  set mode(value) {
-    _mode = value;
-    notifyListeners();
-  }
 
   void setTo(Station value) {
     _to = value;
@@ -33,3 +20,6 @@ class SearchParameters extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+typedef ModeNotifier = NotifierWrapper<Mode>;
+typedef TimeAnchorNotifier = NotifierWrapper<TimeAnchor>;

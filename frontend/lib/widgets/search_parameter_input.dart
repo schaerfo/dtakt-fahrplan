@@ -57,8 +57,8 @@ class _TimeAnchorSelection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SearchParameters>(
-      builder: (context, parameters, child) => SegmentedButton<TimeAnchor>(
+    return Consumer<TimeAnchorNotifier>(
+      builder: (context, anchor, child) => SegmentedButton<TimeAnchor>(
         segments: [
           ButtonSegment<TimeAnchor>(
             value: TimeAnchor.depart,
@@ -69,10 +69,10 @@ class _TimeAnchorSelection extends StatelessWidget {
             label: Text("Arrival"),
           )
         ],
-        selected: <TimeAnchor>{parameters.anchor},
+        selected: <TimeAnchor>{anchor.value},
         showSelectedIcon: false,
         onSelectionChanged: (Set<TimeAnchor> newSelection) {
-          parameters.anchor = newSelection.first;
+          anchor.value = newSelection.first;
         },
       ),
     );
@@ -86,8 +86,8 @@ class _ModeInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SearchParameters>(
-      builder: (context, parameters, child) => SegmentedButton<Mode>(
+    return Consumer<ModeNotifier>(
+      builder: (context, mode, child) => SegmentedButton<Mode>(
         segments: [
           ButtonSegment(
             value: Mode.longDistance,
@@ -102,9 +102,9 @@ class _ModeInput extends StatelessWidget {
             label: Text("All"),
           ),
         ],
-        selected: <Mode>{parameters.mode},
+        selected: <Mode>{mode.value},
         onSelectionChanged: (Set<Mode> newSelection) {
-          parameters.mode = newSelection.first;
+          mode.value = newSelection.first;
         },
         showSelectedIcon: false,
       ),
