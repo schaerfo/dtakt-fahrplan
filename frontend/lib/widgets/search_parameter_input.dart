@@ -1,7 +1,7 @@
-import 'package:dtakt_fahrplan_frontend/models/search_parameters.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../models/search_parameters.dart';
 import '../models/types.dart';
 import 'location_input.dart';
 
@@ -29,16 +29,7 @@ class SearchParameterInput extends StatelessWidget {
         Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            OutlinedButton.icon(
-              onPressed: () {
-                showTimePicker(
-                  context: context,
-                  initialTime: TimeOfDay(hour: 8, minute: 00),
-                );
-              },
-              icon: Icon(Icons.access_time),
-              label: Text("8:00"),
-            ),
+            TimeInput(),
             SizedBox(width: 5),
             _TimeAnchorSelection(),
             SizedBox(width: 5),
@@ -46,6 +37,33 @@ class SearchParameterInput extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+}
+
+class TimeInput extends StatelessWidget {
+  const TimeInput({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Consumer<TimeNotifier>(
+      builder: (context, time, child) => OutlinedButton.icon(
+        onPressed: () async {
+          final newTime = await showTimePicker(
+            context: context,
+            initialTime: time.value,
+          );
+          if (newTime == null) {
+            return;
+          }
+          time.value = newTime;
+        },
+        icon: Icon(Icons.access_time),
+        // TODO use GlobalMaterialLocalizations
+        label: Text(DefaultMaterialLocalizations().formatTimeOfDay(time.value)),
+      ),
     );
   }
 }
