@@ -53,9 +53,14 @@ class LocationInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SearchAnchor.bar(
-      barHintText: label,
-      suggestionsBuilder: (context, controller) => [],
+    return ConstrainedBox(
+      constraints: BoxConstraints(
+        maxWidth: 400,
+      ),
+      child: SearchAnchor.bar(
+        barHintText: label,
+        suggestionsBuilder: (context, controller) => [],
+      ),
     );
   }
 }
