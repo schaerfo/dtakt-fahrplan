@@ -36,9 +36,12 @@ class MainApp extends StatelessWidget {
         colorSchemeSeed: _seedColor,
         brightness: Brightness.dark,
       ),
-      home: const Scaffold(
+      home: Scaffold(
         body: Center(
-          child: SearchParameterInput(),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 800),
+            child: SearchParameterInput(),
+          ),
         ),
       ),
     );
