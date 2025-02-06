@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 
 import '../models/types.dart';
 import '../util/notifier_wrapper.dart';
@@ -23,3 +23,4 @@ class SearchParameters extends ChangeNotifier {
 
 typedef ModeNotifier = NotifierWrapper<Mode>;
 typedef TimeAnchorNotifier = NotifierWrapper<TimeAnchor>;
+typedef TimeNotifier = NotifierWrapper<TimeOfDay>;

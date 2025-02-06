@@ -14,6 +14,7 @@ void main() {
         ChangeNotifierProvider(
             create: (_) => TimeAnchorNotifier(TimeAnchor.depart)),
         ChangeNotifierProvider(create: (_) => ModeNotifier(Mode.all)),
+        ChangeNotifierProvider(create: (_) => TimeNotifier(TimeOfDay(hour: 8, minute: 0))),
       ],
       child: const MainApp(),
     ),
