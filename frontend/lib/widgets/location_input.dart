@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'dart:convert';
-
 import 'dart:async';
-import 'package:http/http.dart' as http;
 
+import '../backend/motis_client.dart';
 import '../models/types.dart';
 
 const Duration debounceDuration = Duration(milliseconds: 500);
@@ -27,7 +25,7 @@ class _LocationInputState extends State<LocationInput> {
   // The query currently being searched for. If null, there is no pending
   // request.
   String? _currentQuery;
-  final _client = _MotisClient();
+  final _client = MotisClient();
 
   // The most recent suggestions received from the API.
   late Iterable<Widget> _lastStations = <Widget>[];
@@ -83,33 +81,6 @@ class _LocationInputState extends State<LocationInput> {
         },
       ),
     );
-  }
-}
-
-class _MotisClient {
-  final _client = http.Client();
-
-  // Searches the options, but injects a fake "network" delay.
-  Future<Iterable<Station>> searchLocation(String query) async {
-    if (query.isEmpty) {
-      return const Iterable<Station>.empty();
-    }
-    final uri = Uri(
-      scheme: 'https',
-      host: 'dtakt-fahrplan.v6.rocks',
-      path: 'api/v1/geocode',
-      queryParameters: {'text': query},
-    );
-    final response = await _client.get(uri);
-    if (response.statusCode != 200) {
-      print('Error: HTTP status ${response.statusCode}');
-      return const Iterable<Station>.empty();
-    }
-    final parsed = jsonDecode(utf8.decode(response.bodyBytes)) as List;
-    final result = parsed.map((station) {
-      return Station.fromJson(station);
-    });
-    return result;
   }
 }
 
