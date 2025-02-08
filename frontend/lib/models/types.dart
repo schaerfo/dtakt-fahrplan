@@ -18,6 +18,11 @@ class Station {
         'name': String name,
       } =>
         Station(id: id, name: name),
+      {
+        'stopId': String id,
+        'name': String name,
+      } =>
+        Station(id: id, name: name),
       _ => throw const FormatException('Failed to load station'),
     };
   }
