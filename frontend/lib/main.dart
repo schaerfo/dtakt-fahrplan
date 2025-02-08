@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'models/search_parameters.dart';
 import 'models/types.dart';
+import 'widgets/result_display.dart';
 import 'widgets/search_parameter_input.dart';
 
 void main() {
@@ -36,11 +37,28 @@ class MainApp extends StatelessWidget {
         colorSchemeSeed: _seedColor,
         brightness: Brightness.dark,
       ),
-      home: Scaffold(
-        body: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: 800),
-            child: SearchParameterInput(),
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: 800),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const SearchParameterInput(),
+              ResultDisplay(),
+            ],
           ),
         ),
       ),
