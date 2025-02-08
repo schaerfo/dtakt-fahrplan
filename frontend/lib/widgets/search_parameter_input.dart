@@ -12,43 +12,55 @@ class SearchParameterInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Row(
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.outlineVariant,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            LocationInput(
-              label: "From",
-              onSelected: (Station value) {
-                Provider.of<EndpointNotifier>(context, listen: false)
-                    .setFrom(value);
-              },
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                LocationInput(
+                  label: "From",
+                  onSelected: (Station value) {
+                    Provider.of<EndpointNotifier>(context, listen: false)
+                        .setFrom(value);
+                  },
+                ),
+                SizedBox(
+                  width: 50,
+                ),
+                LocationInput(
+                  label: "To",
+                  onSelected: (Station value) {
+                    Provider.of<EndpointNotifier>(context, listen: false)
+                        .setTo(value);
+                  },
+                ),
+              ],
             ),
-            SizedBox(
-              width: 50,
-            ),
-            LocationInput(
-              label: "To",
-              onSelected: (Station value) {
-                Provider.of<EndpointNotifier>(context, listen: false)
-                    .setTo(value);
-              },
+            SizedBox(height: 20),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TimeInput(),
+                SizedBox(width: 5),
+                _TimeAnchorSelection(),
+                SizedBox(width: 5),
+                _ModeInput(),
+              ],
             ),
           ],
         ),
-        SizedBox(height: 20),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TimeInput(),
-            SizedBox(width: 5),
-            _TimeAnchorSelection(),
-            SizedBox(width: 5),
-            _ModeInput(),
-          ],
-        ),
-      ],
+      ),
     );
   }
 }
