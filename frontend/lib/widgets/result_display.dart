@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart' as intl;
 import 'package:provider/provider.dart';
 
 import '../backend/motis_client.dart';
@@ -78,7 +79,141 @@ class _ResultListState extends State<ResultList> {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: _result,
-      builder: (context, snapshot) => Placeholder(),
+      builder: (context, snapshot) => snapshot.hasData
+          ? ListView.builder(
+              itemBuilder: (context, index) {
+                final journey = snapshot.data!.elementAt(index);
+                return _JourneyDisplay(journey: journey);
+              },
+              itemCount: snapshot.data!.length,
+            )
+          : SizedBox(),
     );
+  }
+}
+
+class _JourneyDisplay extends StatelessWidget {
+  const _JourneyDisplay({
+    super.key,
+    required this.journey,
+  });
+
+  final Journey journey;
+
+  @override
+  Widget build(BuildContext context) {
+    final start = intl.DateFormat.Hm().format(journey.start);
+    final end = intl.DateFormat.Hm().format(journey.end);
+    final duration = journey.end.difference(journey.start);
+    final durationStr =
+        '${duration.inHours}h ${duration.inMinutes - 60 * duration.inHours}min';
+    final transferStr = journey.transferCount > 0
+        ? '${journey.transferCount} transfer${journey.transferCount > 1 ? 's' : ''}'
+        : 'direct';
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(
+          color: Theme.of(context).colorScheme.outlineVariant,
+        ),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('$start - $end | $durationStr | $transferStr'),
+            _LegSequenceDisplay(
+              legs: journey.legs,
+            ),
+            Row(
+              children: [
+                Text(journey.from.name),
+                Spacer(),
+                Text(journey.to.name),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _LegSequenceDisplay extends StatelessWidget {
+  const _LegSequenceDisplay({
+    super.key,
+    required this.legs,
+  });
+
+  final Iterable<Leg> legs;
+
+  @override
+  Widget build(BuildContext context) {
+    final segments = <Widget>[_legSegment(context, legs.first)];
+    for (var i = 1; i < legs.length; ++i) {
+      segments.add(_transferSegment(legs.elementAt(i - 1), legs.elementAt(i)));
+      segments.add(_legSegment(context, legs.elementAt(i)));
+    }
+    return Row(
+      children: segments,
+    );
+  }
+
+  Widget _transferSegment(Leg from, Leg to) {
+    return Expanded(
+      flex: to.start.difference(from.end).inMinutes,
+      child: SizedBox(),
+    );
+  }
+
+  Widget _legSegment(BuildContext context, Leg leg) {
+    return Expanded(
+      flex: leg.end.difference(leg.start).inMinutes,
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          // have semi-circles on the left and right edges
+          borderRadius: BorderRadius.circular(100),
+          color: _colorForMode(Theme.of(context).colorScheme, leg.product),
+        ),
+        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 8),
+        child: Text(
+          leg.lineName,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            color:
+                _textColorForMode(Theme.of(context).colorScheme, leg.product),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Color _colorForMode(ColorScheme colorScheme, Product product) {
+    switch (product) {
+      case Product.highSpeed:
+        return colorScheme.primary;
+      case Product.longDistance:
+        return colorScheme.secondary;
+      case Product.regionalFast:
+      case Product.regional:
+      case Product.suburban:
+        return colorScheme.tertiary;
+    }
+  }
+
+  Color _textColorForMode(ColorScheme colorScheme, Product product) {
+    switch (product) {
+      case Product.highSpeed:
+        return colorScheme.onPrimary;
+      case Product.longDistance:
+        return colorScheme.onSecondary;
+      case Product.regionalFast:
+      case Product.regional:
+      case Product.suburban:
+        return colorScheme.onTertiary;
+    }
   }
 }
