@@ -156,8 +156,10 @@ class _LegSequenceDisplay extends StatelessWidget {
       segments.add(_TransferSegment(legs.elementAt(i - 1), legs.elementAt(i)));
       segments.add(_LegSegment(legs.elementAt(i)));
     }
-    return Row(
-      children: segments,
+    return IntrinsicHeight(
+      child: Row(
+        children: segments,
+      ),
     );
   }
 }
@@ -172,7 +174,12 @@ class _TransferSegment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: to.start.difference(from.end).inMinutes,
-      child: SizedBox(),
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 3),
+        child: CustomPaint(
+          painter: _TransferDotsPainter(context),
+        ),
+      ),
     );
   }
 }
@@ -230,5 +237,32 @@ class _LegSegment extends StatelessWidget {
       case Product.suburban:
         return colorScheme.onTertiary;
     }
+  }
+}
+
+class _TransferDotsPainter extends CustomPainter {
+  static const _targetPitch = 6.0;
+  static const _radius = 1.5;
+  BuildContext context;
+
+  _TransferDotsPainter(this.context);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final count = ((size.width - 2 * _radius) / _targetPitch).ceil();
+    final pitch = (size.width - 2 * _radius) / (count - 1);
+    for (int i = 0; i < count; ++i) {
+      final x = pitch == double.infinity ? _radius : i * pitch + _radius;
+      canvas.drawCircle(
+        Offset(x, size.height / 2),
+        _radius,
+        Paint()..color = Theme.of(context).colorScheme.onSurface,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
