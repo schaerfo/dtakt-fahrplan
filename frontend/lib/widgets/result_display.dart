@@ -151,24 +151,39 @@ class _LegSequenceDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final segments = <Widget>[_legSegment(context, legs.first)];
+    final segments = <Widget>[_LegSegment(legs.first)];
     for (var i = 1; i < legs.length; ++i) {
-      segments.add(_transferSegment(legs.elementAt(i - 1), legs.elementAt(i)));
-      segments.add(_legSegment(context, legs.elementAt(i)));
+      segments.add(_TransferSegment(legs.elementAt(i - 1), legs.elementAt(i)));
+      segments.add(_LegSegment(legs.elementAt(i)));
     }
     return Row(
       children: segments,
     );
   }
+}
 
-  Widget _transferSegment(Leg from, Leg to) {
+class _TransferSegment extends StatelessWidget {
+  final Leg from;
+  final Leg to;
+
+  const _TransferSegment(this.from, this.to);
+
+  @override
+  Widget build(BuildContext context) {
     return Expanded(
       flex: to.start.difference(from.end).inMinutes,
       child: SizedBox(),
     );
   }
+}
 
-  Widget _legSegment(BuildContext context, Leg leg) {
+class _LegSegment extends StatelessWidget {
+  final Leg leg;
+
+  const _LegSegment(this.leg);
+
+  @override
+  Widget build(BuildContext context) {
     return Expanded(
       flex: leg.end.difference(leg.start).inMinutes,
       child: Container(
