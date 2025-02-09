@@ -48,13 +48,13 @@ class SearchParameterInput extends StatelessWidget {
               ],
             ),
             SizedBox(height: 20),
-            Row(
-              mainAxisSize: MainAxisSize.min,
+            Wrap(
+              spacing: 5,
+              runSpacing: 5,
+              alignment: WrapAlignment.center,
               children: [
                 TimeInput(),
-                SizedBox(width: 5),
                 _TimeAnchorSelection(),
-                SizedBox(width: 5),
                 _ModeInput(),
               ],
             ),
