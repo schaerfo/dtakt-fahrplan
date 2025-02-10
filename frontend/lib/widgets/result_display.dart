@@ -6,6 +6,7 @@ import '../backend/motis_client.dart';
 import '../models/journey.dart';
 import '../models/search_parameters.dart';
 import '../models/types.dart';
+import 'product_badge.dart';
 
 class ResultDisplay extends StatelessWidget {
   const ResultDisplay({
@@ -193,50 +194,8 @@ class _LegSegment extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: leg.end.difference(leg.start).inMinutes,
-      child: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          // have semi-circles on the left and right edges
-          borderRadius: BorderRadius.circular(100),
-          color: _colorForMode(Theme.of(context).colorScheme, leg.product),
-        ),
-        padding: EdgeInsets.symmetric(vertical: 3, horizontal: 8),
-        child: Text(
-          leg.lineName,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-            color:
-                _textColorForMode(Theme.of(context).colorScheme, leg.product),
-          ),
-        ),
-      ),
+      child: ProductBadge(leg),
     );
-  }
-
-  Color _colorForMode(ColorScheme colorScheme, Product product) {
-    switch (product) {
-      case Product.highSpeed:
-        return colorScheme.primary;
-      case Product.longDistance:
-        return colorScheme.secondary;
-      case Product.regionalFast:
-      case Product.regional:
-      case Product.suburban:
-        return colorScheme.tertiary;
-    }
-  }
-
-  Color _textColorForMode(ColorScheme colorScheme, Product product) {
-    switch (product) {
-      case Product.highSpeed:
-        return colorScheme.onPrimary;
-      case Product.longDistance:
-        return colorScheme.onSecondary;
-      case Product.regionalFast:
-      case Product.regional:
-      case Product.suburban:
-        return colorScheme.onTertiary;
-    }
   }
 }
 
