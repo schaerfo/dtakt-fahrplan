@@ -152,50 +152,44 @@ class _LegSequenceDisplay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final segments = <Widget>[_LegSegment(legs.first)];
+    final items = <(TableColumnWidth, Widget)>[];
+    items.add(_legSegment(legs.first));
     for (var i = 1; i < legs.length; ++i) {
-      segments.add(_TransferSegment(legs.elementAt(i - 1), legs.elementAt(i)));
-      segments.add(_LegSegment(legs.elementAt(i)));
+      items.add(
+          _transferSegment(legs.elementAt(i - 1), legs.elementAt(i), context));
+      items.add(_legSegment(legs.elementAt(i)));
     }
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: segments,
-      ),
+    return Table(
+      columnWidths: Map.fromEntries(items.indexed
+          .map((indexedItem) => MapEntry(indexedItem.$1, indexedItem.$2.$1))),
+      children: [
+        TableRow(
+          children: items.map((item) => item.$2).toList(growable: false),
+        )
+      ],
     );
   }
-}
 
-class _TransferSegment extends StatelessWidget {
-  final Leg from;
-  final Leg to;
+  static (TableColumnWidth, Widget) _legSegment(Leg leg) {
+    return (
+      FlexColumnWidth(leg.end.difference(leg.start).inMinutes.toDouble()),
+      ProductBadge(leg),
+    );
+  }
 
-  const _TransferSegment(this.from, this.to);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: to.start.difference(from.end).inMinutes,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 3),
-        child: CustomPaint(
-          painter: _TransferDotsPainter(context),
+  static (TableColumnWidth, Widget) _transferSegment(
+      Leg from, Leg to, BuildContext context) {
+    return (
+      FlexColumnWidth(to.start.difference(from.end).inMinutes.toDouble()),
+      TableCell(
+        verticalAlignment: TableCellVerticalAlignment.fill,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 3),
+          child: CustomPaint(
+            painter: _TransferDotsPainter(context),
+          ),
         ),
       ),
-    );
-  }
-}
-
-class _LegSegment extends StatelessWidget {
-  final Leg leg;
-
-  const _LegSegment(this.leg);
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      flex: leg.end.difference(leg.start).inMinutes,
-      child: ProductBadge(leg),
     );
   }
 }
