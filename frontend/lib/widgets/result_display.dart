@@ -134,7 +134,7 @@ class _JourneyDisplay extends StatelessWidget {
                 Spacer(),
                 Text(journey.to.name),
               ],
-            )
+            ),
           ],
         ),
       ),
