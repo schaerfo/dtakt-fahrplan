@@ -159,6 +159,7 @@ class _LegSequenceDisplay extends StatelessWidget {
     }
     return IntrinsicHeight(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: segments,
       ),
     );
