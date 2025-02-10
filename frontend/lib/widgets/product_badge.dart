@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/journey.dart';
 
-class ProductBadge extends StatelessWidget{
+class ProductBadge extends StatelessWidget {
   final Leg leg;
 
   const ProductBadge(this.leg, {super.key});
@@ -21,8 +21,7 @@ class ProductBadge extends StatelessWidget{
         leg.lineName,
         overflow: TextOverflow.ellipsis,
         style: TextStyle(
-          color:
-          _textColorForMode(Theme.of(context).colorScheme, leg.product),
+          color: _textColorForMode(Theme.of(context).colorScheme, leg.product),
         ),
       ),
     );
