@@ -131,7 +131,7 @@ def main():
     train_parts_tag = tt.find(f"{NAMESPACE}trainParts")
     train_parts = {}
     stops = []
-    time_regex = re.compile(r"([0-9]{2}):[0-9]{2}:[0-9]{2}")
+    time_regex = re.compile(r"^((\d{2}):\d{2}:\d{2})(?:\.\d+)?$")
     for curr_train_part in train_parts_tag:
         train_part_id = curr_train_part.attrib['id']
         train_part = TrainPart(
@@ -153,13 +153,15 @@ def main():
                 if curr_times.attrib['scope'] == 'published':
                     def extract_time(key):
                         result = curr_times.attrib.get(key)
-                        day = curr_times.attrib.get(key + 'Day')
-                        if day:
-                            day = int(day)
+                        if result:
                             m = time_regex.search(result)
-                            hours = m[1]
-                            corrected_hours = int(hours) + 24 * day
-                            result = str(corrected_hours) + result[len(hours):]
+                            result = m[1]
+                            day = curr_times.attrib.get(key + 'Day')
+                            if day:
+                                day = int(day)
+                                hours = m[2]
+                                corrected_hours = int(hours) + 24 * day
+                                result = str(corrected_hours) + result[len(hours):]
                         return result
                     arrival = extract_time('arrival')
                     departure = extract_time('departure')
