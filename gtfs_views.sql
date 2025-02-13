@@ -46,9 +46,7 @@ CREATE VIEW "gtfs_stops" AS
     station_id as stop_id,
     name_db as stop_name,
     Breite as stop_lat,
-    Laenge as stop_lon,
-    1 as location_type,
-    NULL as parent_station
+    Laenge as stop_lon
   from passenger_station
 ;
 
