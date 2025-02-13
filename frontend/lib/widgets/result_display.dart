@@ -6,6 +6,7 @@ import '../backend/motis_client.dart';
 import '../models/journey.dart';
 import '../models/search_parameters.dart';
 import '../models/types.dart';
+import 'journey_details.dart';
 import 'product_badge.dart';
 
 class ResultDisplay extends StatelessWidget {
@@ -93,7 +94,7 @@ class _ResultListState extends State<ResultList> {
   }
 }
 
-class _JourneyDisplay extends StatelessWidget {
+class _JourneyDisplay extends StatefulWidget {
   const _JourneyDisplay({
     super.key,
     required this.journey,
@@ -102,14 +103,21 @@ class _JourneyDisplay extends StatelessWidget {
   final Journey journey;
 
   @override
+  State<_JourneyDisplay> createState() => _JourneyDisplayState();
+}
+
+class _JourneyDisplayState extends State<_JourneyDisplay> {
+  var _showDetails = false;
+
+  @override
   Widget build(BuildContext context) {
-    final start = intl.DateFormat.Hm().format(journey.start);
-    final end = intl.DateFormat.Hm().format(journey.end);
-    final duration = journey.end.difference(journey.start);
+    final start = intl.DateFormat.Hm().format(widget.journey.start);
+    final end = intl.DateFormat.Hm().format(widget.journey.end);
+    final duration = widget.journey.end.difference(widget.journey.start);
     final durationStr =
         '${duration.inHours}h ${duration.inMinutes - 60 * duration.inHours}min';
-    final transferStr = journey.transferCount > 0
-        ? '${journey.transferCount} transfer${journey.transferCount > 1 ? 's' : ''}'
+    final transferStr = widget.journey.transferCount > 0
+        ? '${widget.journey.transferCount} transfer${widget.journey.transferCount > 1 ? 's' : ''}'
         : 'direct';
     return Card(
       elevation: 0,
@@ -119,23 +127,35 @@ class _JourneyDisplay extends StatelessWidget {
         ),
         borderRadius: const BorderRadius.all(Radius.circular(12)),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('$start - $end | $durationStr | $transferStr'),
-            _LegSequenceDisplay(
-              legs: journey.legs,
-            ),
-            Row(
-              children: [
-                Text(journey.from.name),
-                Spacer(),
-                Text(journey.to.name),
+      clipBehavior: Clip.hardEdge,
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            _showDetails = !_showDetails;
+          });
+        },
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('$start - $end | $durationStr | $transferStr'),
+              _LegSequenceDisplay(
+                legs: widget.journey.legs,
+              ),
+              Row(
+                children: [
+                  Text(widget.journey.from.name),
+                  Spacer(),
+                  Text(widget.journey.to.name),
+                ],
+              ),
+              if (_showDetails) ...[
+                Divider(),
+                JourneyDetails(widget.journey),
               ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
