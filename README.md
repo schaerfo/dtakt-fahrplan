@@ -26,7 +26,9 @@ This is still work-in-progress, see the issues tab for details.
 
 For building the timetable the following software is required:
 
+* CUrl
 * dos2unix
+* jq
 * GNU Make
 * patch
 * Python >= 3.12
@@ -38,7 +40,7 @@ For building the timetable the following software is required:
 On Ubuntu 24.04 and later, these can be installed with:
 
 ```shell
-sudo apt-get install -y --no-install-recommends dos2unix make patch python3 python3-poetry sqlite3 unzip wget
+sudo apt-get install -y --no-install-recommends dos2unix jq make patch python3 python3-poetry sqlite3 unzip wget
 ```
 
 Additional Python packages will be installed by Poetry in the build process.

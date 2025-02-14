@@ -9,9 +9,21 @@ include python.mk
 $(output_dir)/dtakt-gtfs.zip: $(intermediate_dir)/dtakt-gtfs.db export_gtfs.py .python
 	poetry run python export_gtfs.py $< $@
 
-$(intermediate_dir)/dtakt-gtfs.db: $(intermediate_dir)/dtakt-station-location.db gtfs_views.sql
+$(intermediate_dir)/dtakt-gtfs.db: $(intermediate_dir)/dtakt-station-location-osm.db gtfs_views.sql
 	cp $< $@
 	sqlite3 $@ < gtfs_views.sql
+
+$(intermediate_dir)/dtakt-station-location-osm.db: $(intermediate_dir)/dtakt-station-location.db $(intermediate_dir)/station-location-osm.json merge_station_location.py .python
+	cp $< $@
+	poetry run python merge_station_location.py $@ $(intermediate_dir)/station-location-osm.json
+
+$(intermediate_dir)/station-location-osm.json: $(intermediate_dir)/overpass-query.txt
+	curl -X POST -H "Content-Type: text/plain" --data @$< -o $@ https://overpass-api.de/api/interpreter
+	# Incomplete results due to timeout have a "remark" item in the JSON root object
+	test `jq '. | has("remark")' $@` != "true" || (rm $@; false)
+
+$(intermediate_dir)/overpass-query.txt: $(intermediate_dir)/dtakt-station-location.db generate_overpass_query.py .python
+	poetry run python generate_overpass_query.py $< > $@
 
 $(intermediate_dir)/dtakt-station-location.db: $(intermediate_dir)/dtakt.db $(input_dir)/station_location.csv passenger_train_view.sql station_location.py .python
 	cp $< $@

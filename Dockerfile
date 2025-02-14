@@ -1,7 +1,9 @@
 FROM ubuntu:noble AS builder
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+curl \
 dos2unix \
+jq \
 make \
 patch \
 python3 \
@@ -21,8 +23,10 @@ RUN mkdir input && make -f input.mk
 COPY \
 db_ingest.py \
 export_gtfs.py \
+generate_overpass_query.py \
 gtfs_views.sql \
 Makefile \
+merge_station_location.py \
 passenger_train_view.sql \
 station_location.py \
 ./
