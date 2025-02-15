@@ -62,7 +62,6 @@ class _LegDetailsState extends State<_LegDetails> {
       defaultColumnWidth: IntrinsicColumnWidth(),
       columnWidths: {
         0: FixedColumnWidth(20),
-        3: FlexColumnWidth(),
       },
       children: [
         TableRow(
