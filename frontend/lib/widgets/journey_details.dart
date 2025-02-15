@@ -36,7 +36,7 @@ class JourneyDetails extends StatelessWidget {
 
 enum _Position { single, start, middle, end }
 
-class _LegDetails extends StatelessWidget {
+class _LegDetails extends StatefulWidget {
   final Leg leg;
   final _Position pos;
 
@@ -47,7 +47,16 @@ class _LegDetails extends StatelessWidget {
   }) : pos = position;
 
   @override
+  State<_LegDetails> createState() => _LegDetailsState();
+}
+
+class _LegDetailsState extends State<_LegDetails> {
+  var _showIntermediateStops = false;
+
+  @override
   Widget build(BuildContext context) {
+    final intermediateStopCount = widget.leg.stops.length - 2;
+    final nonStop = intermediateStopCount == 0;
     return Table(
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       defaultColumnWidth: IntrinsicColumnWidth(),
@@ -63,17 +72,24 @@ class _LegDetails extends StatelessWidget {
               child: CustomPaint(
                 painter: _TargetPainter(
                   context,
-                  before: pos == _Position.middle || pos == _Position.end
+                  before: widget.pos == _Position.middle ||
+                          widget.pos == _Position.end
                       ? _TargetConnection.transfer
                       : _TargetConnection.none,
                   after: _TargetConnection.leg,
                 ),
               ),
             ),
-            Center(child: Text(intl.DateFormat.Hm().format(leg.start))),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(leg.from.name),
+            Row(
+              children: [
+                Center(
+                  child: Text(intl.DateFormat.Hm().format(widget.leg.start)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(widget.leg.from.name),
+                ),
+              ],
             ),
           ],
         ),
@@ -82,19 +98,82 @@ class _LegDetails extends StatelessWidget {
             TableCell(
               verticalAlignment: TableCellVerticalAlignment.fill,
               child: CustomPaint(
+                painter: _ContinuousPainter(context),
+              ),
+            ),
+            nonStop
+                ? Padding(
+                    padding: const EdgeInsets.only(left: 12.0),
+                    child: Text(
+                      'non-stop',
+                      style: TextStyle(fontStyle: FontStyle.italic),
+                    ),
+                  )
+                : TextButton.icon(
+                    onPressed: () {
+                      setState(() {
+                        _showIntermediateStops = !_showIntermediateStops;
+                      });
+                    },
+                    label: Text(
+                        '$intermediateStopCount intermediate stop${intermediateStopCount == 1 ? '' : 's'}'),
+                    icon: Icon(_showIntermediateStops
+                        ? Icons.expand_less
+                        : Icons.expand_more),
+                    iconAlignment: IconAlignment.end,
+                  ),
+          ],
+        ),
+        if (_showIntermediateStops)
+          for (final currStop
+              in widget.leg.stops.take(widget.leg.stops.length - 1).skip(1))
+            TableRow(
+              children: [
+                TableCell(
+                  verticalAlignment: TableCellVerticalAlignment.fill,
+                  child: CustomPaint(
+                    painter: _IntermediateStopPainter(context),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Center(
+                      child:
+                          Text(intl.DateFormat.Hm().format(currStop.arrival!)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Text(currStop.station.name),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+        TableRow(
+          children: [
+            TableCell(
+              verticalAlignment: TableCellVerticalAlignment.fill,
+              child: CustomPaint(
                 painter: _TargetPainter(
                   context,
                   before: _TargetConnection.leg,
-                  after: pos == _Position.middle || pos == _Position.start
+                  after: widget.pos == _Position.middle ||
+                          widget.pos == _Position.start
                       ? _TargetConnection.transfer
                       : _TargetConnection.none,
                 ),
               ),
             ),
-            Center(child: Text(intl.DateFormat.Hm().format(leg.end))),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(leg.to.name),
+            Row(
+              children: [
+                Center(
+                  child: Text(intl.DateFormat.Hm().format(widget.leg.end)),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(widget.leg.to.name),
+                ),
+              ],
             ),
           ],
         ),
@@ -188,5 +267,45 @@ class _TargetPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return false;
+  }
+}
+
+class _ContinuousPainter extends CustomPainter {
+  final Color _color;
+
+  _ContinuousPainter(
+    BuildContext context,
+  ) : _color = Theme.of(context).colorScheme.onSurfaceVariant;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    canvas.drawLine(
+      Offset(size.width / 2, 0),
+      Offset(size.width / 2, size.height),
+      Paint()
+        ..color = _color
+        ..strokeWidth = _connectionWidth,
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
+  }
+}
+
+class _IntermediateStopPainter extends _ContinuousPainter {
+  static const _radius = 4.0;
+
+  _IntermediateStopPainter(super.context);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    super.paint(canvas, size);
+    canvas.drawCircle(
+      Offset(size.width / 2.0, size.height / 2.0),
+      _radius,
+      Paint()..color = super._color,
+    );
   }
 }
