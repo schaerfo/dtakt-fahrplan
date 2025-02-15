@@ -157,7 +157,7 @@ class _JourneyOverview extends StatelessWidget {
     final end = intl.DateFormat.Hm().format(journey.end);
     final duration = journey.end.difference(journey.start);
     final durationStr =
-        '${duration.inHours}h ${duration.inMinutes - 60 * duration.inHours}min';
+        '${duration.inHours != 0 ? '${duration.inHours}h ' : ' '}${duration.inMinutes - 60 * duration.inHours}min';
     final transferStr = journey.transferCount > 0
         ? '${journey.transferCount} transfer${journey.transferCount > 1 ? 's' : ''}'
         : 'direct';
