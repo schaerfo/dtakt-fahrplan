@@ -10,27 +10,42 @@ class JourneyDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return journey.legs.length == 1
-        ? _LegDetails(
-            journey.legs.first,
-            position: _Position.single,
-          )
-        : Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _LegDetails(
-                journey.legs.first,
-                position: _Position.start,
-              ),
-              for (final currLeg
-                  in journey.legs.take(journey.legs.length - 1).skip(1))
-                _LegDetails(
-                  currLeg,
-                  position: _Position.middle,
-                ),
-              _LegDetails(journey.legs.last, position: _Position.end),
-            ],
-          );
+    final legs = <Widget>[];
+    if (journey.legs.length == 1) {
+      legs.add(_LegDetails(
+        journey.legs.first,
+        position: _Position.single,
+      ));
+    } else {
+      legs.add(_LegDetails(
+        journey.legs.first,
+        position: _Position.start,
+      ));
+      for (var i = 1; i < journey.legs.length - 1; ++i) {
+        legs.add(_TransferDetails(
+          from: journey.legs.elementAt(i - 1),
+          to: journey.legs.elementAt(i),
+        ));
+        legs.add(_LegDetails(
+          journey.legs.elementAt(i),
+          position: _Position.middle,
+        ));
+      }
+      legs.add(_TransferDetails(
+        from: journey.legs.elementAt(journey.legs.length - 2),
+        to: journey.legs.last,
+      ));
+      legs.add(
+        _LegDetails(
+          journey.legs.last,
+          position: _Position.end,
+        ),
+      );
+    }
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: legs,
+    );
   }
 }
 
@@ -181,6 +196,41 @@ class _LegDetailsState extends State<_LegDetails> {
   }
 }
 
+class _TransferDetails extends StatelessWidget {
+  final Leg from;
+  final Leg to;
+
+  const _TransferDetails({super.key, required this.from, required this.to});
+
+  @override
+  Widget build(BuildContext context) {
+    final duration = to.start.difference(from.end);
+    final durationStr =
+        '${duration.inHours != 0 ? '${duration.inHours}h ' : ' '}${duration.inMinutes - 60 * duration.inHours}min';
+    return Table(
+      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+      defaultColumnWidth: IntrinsicColumnWidth(),
+      columnWidths: {
+        0: FixedColumnWidth(20),
+      },
+      children: [
+        TableRow(
+          children: [
+            TableCell(
+              verticalAlignment: TableCellVerticalAlignment.fill,
+              child: CustomPaint(
+                painter: _TransferPainter(context),
+              ),
+            ),
+            Icon(Icons.directions_walk),
+            Text(durationStr),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
 enum _TargetConnection { none, leg, transfer }
 
 const _connectionWidth = 2.0;
@@ -306,5 +356,33 @@ class _IntermediateStopPainter extends _ContinuousPainter {
       _radius,
       Paint()..color = super._color,
     );
+  }
+}
+
+class _TransferPainter extends CustomPainter {
+  final Color _color;
+
+  _TransferPainter(
+    BuildContext context,
+  ) : _color = Theme.of(context).colorScheme.onSurfaceVariant;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final available = size.height - 2 * _gap - 2 * _connectionRadius;
+    final count = (available / _targetPitch).ceil();
+    final pitch = available / (count - 1);
+    for (int i = 0; i < count; ++i) {
+      final y = i * pitch;
+      canvas.drawCircle(
+        Offset(size.width / 2, y),
+        _connectionRadius,
+        Paint()..color = _color,
+      );
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return false;
   }
 }
