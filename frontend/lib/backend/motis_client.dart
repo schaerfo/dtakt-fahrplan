@@ -32,6 +32,8 @@ class MotisClient {
 
   Future<Iterable<Journey>> searchJourneys(Station from, Station to,
       TimeOfDay time, TimeAnchor timeAnchor, Mode mode) async {
+    // Since the the schedule is the same on every day, the date does not matter
+    final dateTime = DateTime.utc(2025, 2, 16, time.hour, time.minute);
     final uri = Uri(
       scheme: 'https',
       host: 'dtakt-fahrplan.v6.rocks',
@@ -39,6 +41,12 @@ class MotisClient {
       queryParameters: {
         'fromPlace': from.id,
         'toPlace': to.id,
+        'time': dateTime.toIso8601String(),
+        'arriveBy': (timeAnchor == TimeAnchor.arrive).toString(),
+        if (mode != Mode.all)
+          'transitModes': mode == Mode.longDistance
+              ? 'HIGHSPEED_RAIL,LONG_DISTANCE'
+              : 'REGIONAL_RAIL,REGIONAL_FAST_RAIL,METRO',
       },
     );
     final response = await _client.get(uri);
