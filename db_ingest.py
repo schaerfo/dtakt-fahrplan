@@ -88,6 +88,34 @@ class TrainGroup(Base):
     trains: Mapped[List[Train]] = relationship()
 
 
+class TimeExtractor:
+    _time_regex = re.compile(r"^((\d{2}):\d{2}:\d{2})(?:\.\d+)?$")
+
+    def __init__(self):
+        self._day_offset = 0
+
+    # In some cases, there is a negative (departure|arrival)Day. Since GTFS does not allow negative times,
+    # we have to increase all times by an appropriate amount for the affected run
+    def extract_time(self, curr_times, key):
+        result = curr_times.attrib.get(key)
+        if result:
+            m = self._time_regex.search(result)
+            result = m[1]
+            day = curr_times.attrib.get(key + 'Day')
+            if day:
+                day = int(day)
+                if day < 0:
+                    self._day_offset = -day
+                day += self._day_offset
+            else:
+                day = self._day_offset
+            if day > 0:
+                hours = m[2]
+                corrected_hours = int(hours) + 24 * day
+                result = str(corrected_hours) + result[len(hours):]
+        return result
+
+
 def main():
     db_filename = sys.argv[2]
     Path(db_filename).unlink(missing_ok=True)
@@ -131,8 +159,8 @@ def main():
     train_parts_tag = tt.find(f"{NAMESPACE}trainParts")
     train_parts = {}
     stops = []
-    time_regex = re.compile(r"^((\d{2}):\d{2}:\d{2})(?:\.\d+)?$")
     for curr_train_part in train_parts_tag:
+        extractor = TimeExtractor()
         train_part_id = curr_train_part.attrib['id']
         train_part = TrainPart(
             dtakt_id=train_part_id,
@@ -151,20 +179,8 @@ def main():
             departure = None
             for curr_times in curr_ocp.iterfind(f"{NAMESPACE}times"):
                 if curr_times.attrib['scope'] == 'published':
-                    def extract_time(key):
-                        result = curr_times.attrib.get(key)
-                        if result:
-                            m = time_regex.search(result)
-                            result = m[1]
-                            day = curr_times.attrib.get(key + 'Day')
-                            if day:
-                                day = int(day)
-                                hours = m[2]
-                                corrected_hours = int(hours) + 24 * day
-                                result = str(corrected_hours) + result[len(hours):]
-                        return result
-                    arrival = extract_time('arrival')
-                    departure = extract_time('departure')
+                    arrival = extractor.extract_time(curr_times, 'arrival')
+                    departure = extractor.extract_time(curr_times, 'departure')
             station = stations[curr_ocp.attrib['ocpRef']]
             stops.append(Stop(
                 train_part=train_part,
