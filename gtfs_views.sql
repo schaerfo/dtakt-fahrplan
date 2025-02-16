@@ -48,6 +48,7 @@ CREATE VIEW "gtfs_stops" AS
     Breite as stop_lat,
     Laenge as stop_lon
   from passenger_station
+  where Laenge is not null
 ;
 
 CREATE VIEW "gtfs_stop_times" AS
