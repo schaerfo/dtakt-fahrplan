@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 
 import '../models/journey.dart';
+import 'product_badge.dart';
 
 class JourneyDetails extends StatelessWidget {
   final Journey journey;
@@ -72,6 +73,9 @@ class _LegDetailsState extends State<_LegDetails> {
   Widget build(BuildContext context) {
     final intermediateStopCount = widget.leg.stops.length - 2;
     final nonStop = intermediateStopCount == 0;
+    final duration = widget.leg.end.difference(widget.leg.start);
+    final durationStr =
+        '${duration.inHours != 0 ? '${duration.inHours}h ' : ' '}${duration.inMinutes - 60 * duration.inHours}min';
     return Table(
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       defaultColumnWidth: IntrinsicColumnWidth(),
@@ -115,27 +119,49 @@ class _LegDetailsState extends State<_LegDetails> {
                 painter: _ContinuousPainter(context),
               ),
             ),
-            nonStop
-                ? Padding(
-                    padding: const EdgeInsets.only(left: 12.0),
-                    child: Text(
-                      'non-stop',
-                      style: TextStyle(fontStyle: FontStyle.italic),
-                    ),
-                  )
-                : TextButton.icon(
-                    onPressed: () {
-                      setState(() {
-                        _showIntermediateStops = !_showIntermediateStops;
-                      });
-                    },
-                    label: Text(
-                        '$intermediateStopCount intermediate stop${intermediateStopCount == 1 ? '' : 's'}'),
-                    icon: Icon(_showIntermediateStops
-                        ? Icons.expand_less
-                        : Icons.expand_more),
-                    iconAlignment: IconAlignment.end,
-                  ),
+            Row(
+              children: [
+                SizedBox(width: 10.0),
+                Text(durationStr),
+                SizedBox(width: 10.0),
+                ProductBadge(widget.leg),
+              ],
+            ),
+          ],
+        ),
+        TableRow(
+          children: [
+            TableCell(
+              verticalAlignment: TableCellVerticalAlignment.fill,
+              child: CustomPaint(
+                painter: _ContinuousPainter(context),
+              ),
+            ),
+            Row(
+              children: [
+                nonStop
+                    ? Padding(
+                        padding: const EdgeInsets.only(left: 12.0),
+                        child: Text(
+                          'non-stop',
+                          style: TextStyle(fontStyle: FontStyle.italic),
+                        ),
+                      )
+                    : TextButton.icon(
+                        onPressed: () {
+                          setState(() {
+                            _showIntermediateStops = !_showIntermediateStops;
+                          });
+                        },
+                        label: Text(
+                            '$intermediateStopCount intermediate stop${intermediateStopCount == 1 ? '' : 's'}'),
+                        icon: Icon(_showIntermediateStops
+                            ? Icons.expand_less
+                            : Icons.expand_more),
+                        iconAlignment: IconAlignment.end,
+                      ),
+              ],
+            ),
           ],
         ),
         if (_showIntermediateStops)
