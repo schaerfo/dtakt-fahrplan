@@ -4,7 +4,7 @@ CREATE VIEW "gtfs_agency" AS
     1 as agency_id,
     'Deutschlandtakt' as agency_name,
     'https://www.deutschlandtakt.de' as agency_url,
-    'Europe/Berlin' as agency_timezone
+    'Etc/UTC' as agency_timezone
 ;
 
 CREATE VIEW "gtfs_calendar" AS
