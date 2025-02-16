@@ -78,6 +78,16 @@ class _ResultListState extends State<ResultList> {
       future: _result,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
+          if (snapshot.data!.isEmpty) {
+            return Expanded(
+              child: Center(
+                child: Text(
+                  "No journeys found",
+                  style: TextStyle(fontStyle: FontStyle.italic),
+                ),
+              ),
+            );
+          }
           return ListView.builder(
             itemBuilder: (context, index) {
               final journey = snapshot.data!.elementAt(index);
