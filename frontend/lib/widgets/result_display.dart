@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:provider/provider.dart';
@@ -226,7 +228,8 @@ class _LegSequenceDisplay extends StatelessWidget {
 
   static (TableColumnWidth, Widget) _legSegment(Leg leg) {
     return (
-      FlexColumnWidth(leg.end.difference(leg.start).inMinutes.toDouble()),
+      FlexColumnWidth(
+          max(1.0, leg.end.difference(leg.start).inMinutes.toDouble())),
       ProductBadge(leg),
     );
   }
