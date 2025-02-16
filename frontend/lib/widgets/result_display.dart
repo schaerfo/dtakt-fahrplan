@@ -76,15 +76,20 @@ class _ResultListState extends State<ResultList> {
     _result = _fetchJourneys();
     return FutureBuilder(
       future: _result,
-      builder: (context, snapshot) => snapshot.hasData
-          ? ListView.builder(
-              itemBuilder: (context, index) {
-                final journey = snapshot.data!.elementAt(index);
-                return _JourneyDisplay(journey: journey);
-              },
-              itemCount: snapshot.data!.length,
-            )
-          : SizedBox(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+            itemBuilder: (context, index) {
+              final journey = snapshot.data!.elementAt(index);
+              return _JourneyDisplay(journey: journey);
+            },
+            itemCount: snapshot.data!.length,
+          );
+        } else if (snapshot.hasError) {
+          print(snapshot.error);
+        }
+        return SizedBox();
+      },
     );
   }
 }
