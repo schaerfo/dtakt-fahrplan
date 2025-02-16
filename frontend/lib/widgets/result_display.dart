@@ -72,13 +72,8 @@ class _ResultListState extends State<ResultList> {
   }
 
   @override
-  void initState() {
-    super.initState();
-    _result = _fetchJourneys();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    _result = _fetchJourneys();
     return FutureBuilder(
       future: _result,
       builder: (context, snapshot) => snapshot.hasData
