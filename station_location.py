@@ -1,3 +1,6 @@
+# Copyright 2025 Christian Schärf
+# SPDX-License-Identifier: MIT
+
 import pandas as pd
 import sqlite3
 import sys
