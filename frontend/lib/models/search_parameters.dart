@@ -20,6 +20,13 @@ class EndpointNotifier extends ChangeNotifier {
     _from = value;
     notifyListeners();
   }
+
+  void swap() {
+    Station? tmp = _from;
+    _from = _to;
+    _to = tmp;
+    notifyListeners();
+  }
 }
 
 typedef ModeNotifier = NotifierWrapper<Mode>;

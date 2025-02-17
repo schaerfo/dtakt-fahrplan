@@ -9,10 +9,12 @@ const Duration debounceDuration = Duration(milliseconds: 500);
 
 class LocationInput extends StatefulWidget {
   final String label;
+  final Station? initialValue;
   final void Function(Station) onSelected;
 
   const LocationInput({
     required this.label,
+    this.initialValue,
     required this.onSelected,
     super.key,
   });
@@ -25,6 +27,7 @@ class _LocationInputState extends State<LocationInput> {
   // The query currently being searched for. If null, there is no pending
   // request.
   String? _currentQuery;
+  final _controller = SearchController();
   final _client = MotisClient();
 
   // The most recent suggestions received from the API.
@@ -54,6 +57,25 @@ class _LocationInputState extends State<LocationInput> {
   void initState() {
     super.initState();
     _debouncedSearch = _debounce(_search);
+    _updateValue();
+  }
+
+  @override
+  void didUpdateWidget(LocationInput oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _updateValue();
+  }
+
+  void _updateValue() {
+    if (widget.initialValue != null) {
+      // Avoid updating the search controller immediately after a search result
+      // has been selected
+      if (widget.initialValue!.name != _controller.text) {
+        _controller.text = widget.initialValue!.name;
+      }
+    } else {
+      _controller.clear();
+    }
   }
 
   @override
@@ -61,6 +83,7 @@ class _LocationInputState extends State<LocationInput> {
     return Expanded(
       child: SearchAnchor.bar(
         barHintText: widget.label,
+        searchController: _controller,
         suggestionsBuilder:
             (BuildContext context, SearchController controller) async {
           final Iterable<Station>? stations =

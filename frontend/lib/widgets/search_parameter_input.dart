@@ -26,27 +26,35 @@ class SearchParameterInput extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                LocationInput(
-                  label: AppLocalizations.of(context)!.from,
-                  onSelected: (Station value) {
-                    Provider.of<EndpointNotifier>(context, listen: false)
-                        .setFrom(value);
-                  },
-                ),
-                SizedBox(
-                  width: 50,
-                ),
-                LocationInput(
-                  label: AppLocalizations.of(context)!.to,
-                  onSelected: (Station value) {
-                    Provider.of<EndpointNotifier>(context, listen: false)
-                        .setTo(value);
-                  },
-                ),
-              ],
+            Consumer<EndpointNotifier>(
+              builder: (context, endpoints, child) => Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  LocationInput(
+                    label: AppLocalizations.of(context)!.from,
+                    initialValue: endpoints.from,
+                    onSelected: (Station value) {
+                      endpoints.setFrom(value);
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: IconButton(
+                      onPressed: () {
+                        endpoints.swap();
+                      },
+                      icon: Icon(Icons.swap_horiz),
+                    ),
+                  ),
+                  LocationInput(
+                    label: AppLocalizations.of(context)!.to,
+                    initialValue: endpoints.to,
+                    onSelected: (Station value) {
+                      endpoints.setTo(value);
+                    },
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20),
             Wrap(
