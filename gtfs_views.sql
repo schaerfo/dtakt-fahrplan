@@ -1,3 +1,6 @@
+-- Copyright 2025 Christian Schärf
+-- SPDX-License-Identifier: MIT
+
 BEGIN TRANSACTION;
 CREATE VIEW "gtfs_agency" AS
   select

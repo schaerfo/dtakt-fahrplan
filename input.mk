@@ -1,3 +1,6 @@
+# Copyright 2025 Christian Schärf
+# SPDX-License-Identifier: MIT
+
 input_dir := input
 
 input: $(input_dir)/station_location.csv $(input_dir)/Export_fixed.railml.diff $(input_dir)/dtakt-schedule.zip

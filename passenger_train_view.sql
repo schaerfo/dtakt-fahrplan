@@ -1,3 +1,6 @@
+-- Copyright 2025 Christian Schärf
+-- SPDX-License-Identifier: MIT
+
 CREATE VIEW "train_with_part" AS
   select
     train.train_id,
