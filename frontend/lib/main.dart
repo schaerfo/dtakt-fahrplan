@@ -32,7 +32,14 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       themeMode: ThemeMode.light,
-      theme: ThemeData(colorSchemeSeed: _seedColor),
+      theme: ThemeData(
+        colorSchemeSeed: _seedColor,
+        textTheme: TextTheme(
+          titleMedium: TextStyle(
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       darkTheme: ThemeData(
         colorSchemeSeed: _seedColor,
         brightness: Brightness.dark,

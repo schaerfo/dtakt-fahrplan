@@ -202,12 +202,19 @@ class _LegDetailsState extends State<_LegDetails> {
         ),
         Row(
           children: [
+            SizedBox(width: 5),
             Center(
-              child: Text(intl.DateFormat.Hm().format(when)),
+              child: Text(
+                intl.DateFormat.Hm().format(when),
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Text(station.name),
+              child: Text(
+                station.name,
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
             ),
           ],
         ),
