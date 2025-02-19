@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 
 import '../models/journey.dart';
+import '../models/types.dart';
 import 'product_badge.dart';
 
 class JourneyDetails extends StatelessWidget {
@@ -83,33 +84,13 @@ class _LegDetailsState extends State<_LegDetails> {
         0: FixedColumnWidth(20),
       },
       children: [
-        TableRow(
-          children: [
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.fill,
-              child: CustomPaint(
-                painter: _TargetPainter(
-                  context,
-                  before: widget.pos == _Position.middle ||
-                          widget.pos == _Position.end
-                      ? _TargetConnection.transfer
-                      : _TargetConnection.none,
-                  after: _TargetConnection.leg,
-                ),
-              ),
-            ),
-            Row(
-              children: [
-                Center(
-                  child: Text(intl.DateFormat.Hm().format(widget.leg.start)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(widget.leg.from.name),
-                ),
-              ],
-            ),
-          ],
+        _layoverRow(
+          when: widget.leg.start,
+          station: widget.leg.from,
+          before: widget.pos == _Position.middle || widget.pos == _Position.end
+              ? _TargetConnection.transfer
+              : _TargetConnection.none,
+          after: _TargetConnection.leg,
         ),
         TableRow(
           children: [
@@ -189,31 +170,44 @@ class _LegDetailsState extends State<_LegDetails> {
                 ),
               ],
             ),
-        TableRow(
-          children: [
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.fill,
-              child: CustomPaint(
-                painter: _TargetPainter(
-                  context,
-                  before: _TargetConnection.leg,
-                  after: widget.pos == _Position.middle ||
-                          widget.pos == _Position.start
-                      ? _TargetConnection.transfer
-                      : _TargetConnection.none,
-                ),
-              ),
+        _layoverRow(
+          when: widget.leg.end,
+          station: widget.leg.to,
+          before: _TargetConnection.leg,
+          after: widget.pos == _Position.middle || widget.pos == _Position.start
+              ? _TargetConnection.transfer
+              : _TargetConnection.none,
+        ),
+      ],
+    );
+  }
+
+  TableRow _layoverRow({
+    required DateTime when,
+    required Station station,
+    required _TargetConnection before,
+    required _TargetConnection after,
+  }) {
+    return TableRow(
+      children: [
+        TableCell(
+          verticalAlignment: TableCellVerticalAlignment.fill,
+          child: CustomPaint(
+            painter: _TargetPainter(
+              context,
+              before: before,
+              after: after,
             ),
-            Row(
-              children: [
-                Center(
-                  child: Text(intl.DateFormat.Hm().format(widget.leg.end)),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(widget.leg.to.name),
-                ),
-              ],
+          ),
+        ),
+        Row(
+          children: [
+            Center(
+              child: Text(intl.DateFormat.Hm().format(when)),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(station.name),
             ),
           ],
         ),
