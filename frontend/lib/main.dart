@@ -39,6 +39,9 @@ class MainApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        dividerTheme: DividerThemeData(
+          space: 0,
+        ),
       ),
       darkTheme: ThemeData(
         colorSchemeSeed: _seedColor,
