@@ -249,7 +249,7 @@ class _TransferDetails extends StatelessWidget {
                 painter: _TransferPainter(context),
               ),
             ),
-            Icon(Icons.directions_walk),
+            Icon(Icons.settings_ethernet),
             Text(durationStr),
           ],
         ),
