@@ -22,8 +22,7 @@ class ResultDisplay extends StatelessWidget {
     final timeAnchor = Provider.of<TimeAnchorNotifier>(context);
     final time = Provider.of<TimeNotifier>(context);
     final mode = Provider.of<ModeNotifier>(context);
-    final bothEndpointsSet = endpoints.from != null && endpoints.to != null;
-    if (bothEndpointsSet) {
+    if (endpoints.bothEndpointsSet) {
       return Expanded(
         child: ResultList(
           endpoints.from!,

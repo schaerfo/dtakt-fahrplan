@@ -9,6 +9,7 @@ class EndpointNotifier extends ChangeNotifier {
 
   Station? get from => _from;
   Station? get to => _to;
+  bool get bothEndpointsSet => from != null && to != null;
 
   void setTo(Station value) {
     _to = value;
