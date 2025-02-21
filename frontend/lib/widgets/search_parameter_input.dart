@@ -53,7 +53,7 @@ class SearchParameterInput extends StatelessWidget {
               runSpacing: 5,
               alignment: WrapAlignment.center,
               children: [
-                TimeInput(),
+                _TimeInput(),
                 _TimeAnchorSelection(),
                 _ModeInput(),
               ],
@@ -65,8 +65,8 @@ class SearchParameterInput extends StatelessWidget {
   }
 }
 
-class TimeInput extends StatelessWidget {
-  const TimeInput({
+class _TimeInput extends StatelessWidget {
+  const _TimeInput({
     super.key,
   });
 
