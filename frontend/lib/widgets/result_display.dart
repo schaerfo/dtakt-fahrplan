@@ -22,18 +22,15 @@ class ResultDisplay extends StatelessWidget {
     final timeAnchor = Provider.of<TimeAnchorNotifier>(context);
     final time = Provider.of<TimeNotifier>(context);
     final mode = Provider.of<ModeNotifier>(context);
-    if (endpoints.bothEndpointsSet) {
-      return Expanded(
-        child: ResultList(
-          endpoints.from!,
-          endpoints.to!,
-          time.value,
-          timeAnchor.value,
-          mode.value,
-        ),
-      );
-    }
-    return SizedBox.shrink();
+    return Expanded(
+      child: ResultList(
+        endpoints.from!,
+        endpoints.to!,
+        time.value,
+        timeAnchor.value,
+        mode.value,
+      ),
+    );
   }
 }
 

@@ -47,30 +47,40 @@ class MainApp extends StatelessWidget {
         colorSchemeSeed: _seedColor,
         brightness: Brightness.dark,
       ),
-      home: Home(),
+      home: Scaffold(
+        body: Home(),
+      ),
     );
   }
 }
 
 class Home extends StatelessWidget {
-  const Home({
+  final _parameterInputKey = GlobalKey();
+
+  Home({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    final endpoints = Provider.of<EndpointNotifier>(context);
+    if (endpoints.bothEndpointsSet) {
+      return Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 800),
           child: Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
-              const SearchParameterInput(),
+              SearchParameterInput(key: _parameterInputKey),
               ResultDisplay(),
             ],
           ),
         ),
+      );
+    }
+    return Center(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 800),
+        child: SearchParameterInput(key: _parameterInputKey),
       ),
     );
   }
