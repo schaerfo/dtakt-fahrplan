@@ -1,0 +1,27 @@
+{
+  "all": "All",
+  "arrival": "Arrival",
+  "departure": "Departure",
+  "from": "From",
+  "nIntermediateStops": "{count, plural, =1{1 intermediate stop} other{{count} intermediate stops}}",
+  "@nIntermediateStops": {
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "longDistance": "Long distance",
+  "noJourneysFound": "No journeys found",
+  "nonStop": "non-stop",
+  "regional": "Regional",
+  "to": "To",
+  "nTransfers": "{count, plural, =0{direct} =1{1 transfer} other{{count} transfers}}",
+  "@transfer": {
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  }
+}

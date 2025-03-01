@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart' as intl;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../backend/motis_client.dart';
@@ -81,7 +81,7 @@ class _ResultListState extends State<ResultList> {
             return Expanded(
               child: Center(
                 child: Text(
-                  "No journeys found",
+                  AppLocalizations.of(context)!.noJourneysFound,
                   style: TextStyle(fontStyle: FontStyle.italic),
                 ),
               ),
@@ -162,12 +162,14 @@ class _JourneyOverview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final start = intl.DateFormat.Hm().format(journey.start);
-    final end = intl.DateFormat.Hm().format(journey.end);
+    final localizations = MaterialLocalizations.of(context);
+    final start =
+        localizations.formatTimeOfDay(TimeOfDay.fromDateTime(journey.start));
+    final end =
+        localizations.formatTimeOfDay(TimeOfDay.fromDateTime(journey.end));
     final durationStr = formatDuration(journey.end.difference(journey.start));
-    final transferStr = journey.transferCount > 0
-        ? '${journey.transferCount} transfer${journey.transferCount > 1 ? 's' : ''}'
-        : 'direct';
+    final transferStr =
+        AppLocalizations.of(context)!.nTransfers(journey.transferCount);
     return InkWell(
       onTap: onTap,
       child: Padding(

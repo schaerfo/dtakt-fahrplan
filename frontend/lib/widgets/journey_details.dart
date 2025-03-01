@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart' as intl;
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../models/journey.dart';
 import '../models/types.dart';
@@ -124,7 +124,7 @@ class _LegDetailsState extends State<_LegDetails> {
                     ? Padding(
                         padding: const EdgeInsets.only(left: 12.0),
                         child: Text(
-                          'non-stop',
+                          AppLocalizations.of(context)!.nonStop,
                           style: TextStyle(fontStyle: FontStyle.italic),
                         ),
                       )
@@ -134,8 +134,8 @@ class _LegDetailsState extends State<_LegDetails> {
                             _showIntermediateStops = !_showIntermediateStops;
                           });
                         },
-                        label: Text(
-                            '$intermediateStopCount intermediate stop${intermediateStopCount == 1 ? '' : 's'}'),
+                        label: Text(AppLocalizations.of(context)!
+                            .nIntermediateStops(intermediateStopCount)),
                         icon: Icon(_showIntermediateStops
                             ? Icons.expand_less
                             : Icons.expand_more),
@@ -159,8 +159,9 @@ class _LegDetailsState extends State<_LegDetails> {
                 Row(
                   children: [
                     Center(
-                      child:
-                          Text(intl.DateFormat.Hm().format(currStop.arrival!)),
+                      child: Text(MaterialLocalizations.of(context)
+                          .formatTimeOfDay(
+                              TimeOfDay.fromDateTime(currStop.arrival!))),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
@@ -205,7 +206,8 @@ class _LegDetailsState extends State<_LegDetails> {
             SizedBox(width: 5),
             Center(
               child: Text(
-                intl.DateFormat.Hm().format(when),
+                MaterialLocalizations.of(context)
+                    .formatTimeOfDay(TimeOfDay.fromDateTime(when)),
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),

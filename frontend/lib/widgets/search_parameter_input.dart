@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../models/search_parameters.dart';
@@ -29,7 +30,7 @@ class SearchParameterInput extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 LocationInput(
-                  label: "From",
+                  label: AppLocalizations.of(context)!.from,
                   onSelected: (Station value) {
                     Provider.of<EndpointNotifier>(context, listen: false)
                         .setFrom(value);
@@ -39,7 +40,7 @@ class SearchParameterInput extends StatelessWidget {
                   width: 50,
                 ),
                 LocationInput(
-                  label: "To",
+                  label: AppLocalizations.of(context)!.to,
                   onSelected: (Station value) {
                     Provider.of<EndpointNotifier>(context, listen: false)
                         .setTo(value);
@@ -85,8 +86,8 @@ class _TimeInput extends StatelessWidget {
           time.value = newTime;
         },
         icon: Icon(Icons.access_time),
-        // TODO use GlobalMaterialLocalizations
-        label: Text(DefaultMaterialLocalizations().formatTimeOfDay(time.value)),
+        label:
+            Text(MaterialLocalizations.of(context).formatTimeOfDay(time.value)),
       ),
     );
   }
@@ -104,11 +105,11 @@ class _TimeAnchorSelection extends StatelessWidget {
         segments: [
           ButtonSegment<TimeAnchor>(
             value: TimeAnchor.depart,
-            label: Text("Departure"),
+            label: Text(AppLocalizations.of(context)!.departure),
           ),
           ButtonSegment<TimeAnchor>(
             value: TimeAnchor.arrive,
-            label: Text("Arrival"),
+            label: Text(AppLocalizations.of(context)!.arrival),
           )
         ],
         selected: <TimeAnchor>{anchor.value},
@@ -133,15 +134,15 @@ class _ModeInput extends StatelessWidget {
         segments: [
           ButtonSegment(
             value: Mode.longDistance,
-            label: Text("Long distance"),
+            label: Text(AppLocalizations.of(context)!.longDistance),
           ),
           ButtonSegment(
             value: Mode.regional,
-            label: Text("Regional"),
+            label: Text(AppLocalizations.of(context)!.regional),
           ),
           ButtonSegment(
             value: Mode.all,
-            label: Text("All"),
+            label: Text(AppLocalizations.of(context)!.all),
           ),
         ],
         selected: <Mode>{mode.value},

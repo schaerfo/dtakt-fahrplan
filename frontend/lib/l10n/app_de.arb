@@ -1,0 +1,13 @@
+{
+  "all": "Alle",
+  "arrival": "Ankunft",
+  "departure": "Abfahrt",
+  "from": "Von",
+  "nIntermediateStops": "{count, plural, =1{1 Zwischenhalt} other{{count} Zwischenhalte}}",
+  "longDistance": "Fernverkehr",
+  "noJourneysFound": "Keine Verbindungen gefunden",
+  "nonStop": "Ohne Zwischenhalt",
+  "regional": "Regionalverkehr",
+  "to": "Nach",
+  "nTransfers": "{count, plural, =0{direkt} =1{1 Umstieg} other{{count} Umstiege}}"
+}
