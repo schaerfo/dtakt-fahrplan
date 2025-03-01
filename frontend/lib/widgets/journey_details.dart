@@ -3,6 +3,7 @@ import 'package:intl/intl.dart' as intl;
 
 import '../models/journey.dart';
 import '../models/types.dart';
+import '../util/format_duration.dart';
 import 'product_badge.dart';
 
 class JourneyDetails extends StatelessWidget {
@@ -74,9 +75,8 @@ class _LegDetailsState extends State<_LegDetails> {
   Widget build(BuildContext context) {
     final intermediateStopCount = widget.leg.stops.length - 2;
     final nonStop = intermediateStopCount == 0;
-    final duration = widget.leg.end.difference(widget.leg.start);
     final durationStr =
-        '${duration.inHours != 0 ? '${duration.inHours}h ' : ' '}${duration.inMinutes - 60 * duration.inHours}min';
+        formatDuration(widget.leg.end.difference(widget.leg.start));
     return Table(
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       defaultColumnWidth: IntrinsicColumnWidth(),
@@ -231,9 +231,7 @@ class _TransferDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final duration = to.start.difference(from.end);
-    final durationStr =
-        '${duration.inHours != 0 ? '${duration.inHours}h ' : ' '}${duration.inMinutes - 60 * duration.inHours}min';
+    final durationStr = formatDuration(to.start.difference(from.end));
     return Table(
       defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       defaultColumnWidth: IntrinsicColumnWidth(),

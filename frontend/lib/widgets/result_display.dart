@@ -8,6 +8,7 @@ import '../backend/motis_client.dart';
 import '../models/journey.dart';
 import '../models/search_parameters.dart';
 import '../models/types.dart';
+import '../util/format_duration.dart';
 import 'journey_details.dart';
 import 'product_badge.dart';
 
@@ -163,9 +164,7 @@ class _JourneyOverview extends StatelessWidget {
   Widget build(BuildContext context) {
     final start = intl.DateFormat.Hm().format(journey.start);
     final end = intl.DateFormat.Hm().format(journey.end);
-    final duration = journey.end.difference(journey.start);
-    final durationStr =
-        '${duration.inHours != 0 ? '${duration.inHours}h ' : ' '}${duration.inMinutes - 60 * duration.inHours}min';
+    final durationStr = formatDuration(journey.end.difference(journey.start));
     final transferStr = journey.transferCount > 0
         ? '${journey.transferCount} transfer${journey.transferCount > 1 ? 's' : ''}'
         : 'direct';
