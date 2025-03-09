@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
 
 import 'models/search_parameters.dart';
 import 'models/types.dart';
+import 'widgets/info_buttons.dart';
 import 'widgets/result_display.dart';
 import 'widgets/search_parameter_input.dart';
 
@@ -41,6 +43,9 @@ class MainApp extends StatelessWidget {
           titleMedium: TextStyle(
             fontWeight: FontWeight.bold,
           ),
+          displayMedium: GoogleFonts.comfortaa(
+            fontWeight: FontWeight.w600,
+          ),
         ),
         dividerTheme: DividerThemeData(
           space: 0,
@@ -68,22 +73,44 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final endpoints = Provider.of<EndpointNotifier>(context);
     if (endpoints.bothEndpointsSet) {
-      return Center(
-        child: ConstrainedBox(
-          constraints: BoxConstraints(maxWidth: 800),
-          child: Column(
-            children: [
-              SearchParameterInput(key: _parameterInputKey),
-              ResultDisplay(),
-            ],
+      return Column(
+        children: [
+          Container(
+            alignment: Alignment.center,
+            color: Theme.of(context).colorScheme.primaryContainer,
+            child: InfoButtons(),
           ),
-        ),
+          Expanded(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: 800),
+                child: Column(
+                  children: [
+                    SearchParameterInput(key: _parameterInputKey),
+                    ResultDisplay(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       );
     }
     return Center(
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: 800),
-        child: SearchParameterInput(key: _parameterInputKey),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            AppLocalizations.of(context)!.title,
+            style: Theme.of(context).textTheme.displayMedium,
+            textAlign: TextAlign.center,
+          ),
+          InfoButtons(),
+          ConstrainedBox(
+            constraints: BoxConstraints(maxWidth: 800),
+            child: SearchParameterInput(key: _parameterInputKey),
+          ),
+        ],
       ),
     );
   }
