@@ -38,7 +38,7 @@ COPY frontend/pubspec.lock frontend/pubspec.yaml ./
 RUN dart pub get
 COPY frontend ./
 # wasm compilation does not work when a string containing a comma is supplied to --dart-define 😢
-RUN flutter build web --dart-define-from-file=.env
+RUN flutter build web --dart-define-from-file=.env --no-web-resources-cdn
 
 FROM ghcr.io/motis-project/motis:2 AS import
 COPY motis/ .

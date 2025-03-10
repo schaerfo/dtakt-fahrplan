@@ -11,6 +11,7 @@ import 'widgets/result_display.dart';
 import 'widgets/search_parameter_input.dart';
 
 void main() {
+  GoogleFonts.config.allowRuntimeFetching = false;
   runApp(
     MultiProvider(
       providers: [

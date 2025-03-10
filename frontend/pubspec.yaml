@@ -23,5 +23,11 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter:
+  assets:
+    - assets/google_fonts/comfortaa/
+  fonts:
+    - family: Roboto
+      fonts:
+        - asset: assets/google_fonts/roboto/Roboto-Regular.ttf
   generate: true
   uses-material-design: true
