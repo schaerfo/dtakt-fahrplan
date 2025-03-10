@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 
 import '../models/journey.dart';
 import '../models/types.dart';
+import '../util/environment.dart';
 
 class MotisClient {
   final _client = http.Client();
@@ -14,7 +15,7 @@ class MotisClient {
     }
     final uri = Uri(
       scheme: 'https',
-      host: 'dtakt-fahrplan.v6.rocks',
+      host: Environment.motisHost,
       path: 'api/v1/geocode',
       queryParameters: {'text': query},
     );
@@ -36,7 +37,7 @@ class MotisClient {
     final dateTime = DateTime.utc(2025, 2, 16, time.hour, time.minute);
     final uri = Uri(
       scheme: 'https',
-      host: 'dtakt-fahrplan.v6.rocks',
+      host: Environment.motisHost,
       path: 'api/v1/plan',
       queryParameters: {
         'fromPlace': from.id,
