@@ -1,3 +1,6 @@
+// Copyright 2025 Christian Schärf
+// SPDX-License-Identifier: MIT
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';

@@ -1,3 +1,6 @@
+// Copyright 2025 Christian Schärf
+// SPDX-License-Identifier: MIT
+
 enum TimeAnchor { depart, arrive }
 
 enum Mode { longDistance, regional, all }
