@@ -286,6 +286,14 @@ class InfoButtons extends StatelessWidget {
     _showDialog(
       context: context,
       titleText: AppLocalizations.of(context)!.imprint,
+      additionalActions: [
+        TextButton(
+          onPressed: () {
+            showLicensePage(context: context);
+          },
+          child: Text(MaterialLocalizations.of(context).viewLicensesButtonLabel),
+        ),
+      ],
       content: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -321,6 +329,7 @@ class InfoButtons extends StatelessWidget {
     required BuildContext context,
     required String titleText,
     required Widget content,
+    List<Widget>? additionalActions,
   }) {
     showDialog<void>(
       context: context,
@@ -331,6 +340,7 @@ class InfoButtons extends StatelessWidget {
           child: content,
         ),
         actions: [
+          if (additionalActions != null) ...additionalActions,
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();

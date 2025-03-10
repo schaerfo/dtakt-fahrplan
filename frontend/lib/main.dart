@@ -1,4 +1,6 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,6 +14,14 @@ import 'widgets/search_parameter_input.dart';
 
 void main() {
   GoogleFonts.config.allowRuntimeFetching = false;
+  LicenseRegistry.addLicense(() async* {
+    final license = await rootBundle.loadString('assets/google_fonts/comfortaa/OFL.txt');
+    yield LicenseEntryWithLineBreaks(['Comfortaa'], license);
+  });
+  LicenseRegistry.addLicense(() async* {
+    final license = await rootBundle.loadString('assets/google_fonts/roboto/OFL.txt');
+    yield LicenseEntryWithLineBreaks(['Roboto'], license);
+  });
   runApp(
     MultiProvider(
       providers: [
