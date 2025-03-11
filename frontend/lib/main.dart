@@ -69,6 +69,7 @@ class MainApp extends StatelessWidget {
         colorSchemeSeed: _seedColor,
         brightness: Brightness.dark,
       ),
+      onGenerateTitle: (context) => AppLocalizations.of(context)!.title,
       home: Scaffold(
         body: Home(),
       ),
