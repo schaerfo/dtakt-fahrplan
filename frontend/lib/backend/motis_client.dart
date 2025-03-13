@@ -37,7 +37,7 @@ class MotisClient {
   Future<Iterable<Journey>> searchJourneys(Station from, Station to,
       TimeOfDay time, TimeAnchor timeAnchor, Mode mode) async {
     // Since the the schedule is the same on every day, the date does not matter
-    final dateTime = DateTime.utc(2025, 2, 16, time.hour, time.minute);
+    final dateTime = DateTime.utc(2025, 8, 16, time.hour, time.minute);
     final uri = Uri(
       scheme: 'https',
       host: Environment.motisHost,
