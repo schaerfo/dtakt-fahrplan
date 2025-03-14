@@ -1,0 +1,59 @@
+{
+  "about": "About this page",
+  "aboutContent1": "On this site you can search for train journeys between any stations. This is based on the timetable of the Deutschlandtakt (more precisely the 3rd expert draft of 2020). Thus you can easily see how your personal rail journeys will change as a result of the Deutschlandtakt.",
+  "aboutContent2": "Please note that the timetable data is not yet fully taken into account. In particular, stations that are being newly opened or reopened part of the Deutschlandtakt and stations abroad are missing. Changeover times at stations are also not taken into account due to missing data.",
+  "aboutRouting1": "Routing is performed using ",
+  "aboutRouting2": ".",
+  "all": "All",
+  "arrival": "Arrival",
+  "contact": "Contact:",
+  "corrections": "Corrections of the timetable data",
+  "dataSources": "Data sources",
+  "departure": "Departure",
+  "from": "From",
+  "highSpeedTrains": "High-speed trains",
+  "imprint": "Imprint",
+  "informationDeutschlandtakt": "About the Deutschlandtakt",
+  "informationDeutschlandtaktContent1": "The Deutschlandtakt is a concept for an integrated clock-facing timetable for the railways in Germany, similar to the timetable in Switzerland. Most importantly, this means that connections are coordinated in hub stations, reducing transfer times. This principle is applied to high-speed, long-distance and regional services.",
+  "informationDeutschlandtaktContent2": "The concept was developed under the leadership of SMA und Partner AG on behalf of the Federal Ministry for Digital and Transport.",
+  "informationDeutschlandtaktContent3": "In the process, numerous infrastructure projects were derived from the timetable: First, the timetable was constructed, then the infrastructure expansion projects needed for implementing the timetable were derived.",
+  "informationWikipediaGerman": "Information on Wikipedia (only in German)",
+  "nIntermediateStops": "{count, plural, =1{1 intermediate stop} other{{count} intermediate stops}}",
+  "@nIntermediateStops": {
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  },
+  "legal": "Imprint/Privacy",
+  "longDistance": "Long distance",
+  "longDistanceTrains": "Long distance trains",
+  "noJourneysFound": "No journeys found",
+  "nonStop": "non-stop",
+  "officialWebsite": "Official website (only in German)",
+  "osmContributors": "OpenStreetMap contributors",
+  "osmStationData": "OpenStreetMap station data",
+  "privacy": "Privacy information",
+  "privacyContent": "No personal information is being stored or transmitted to third parties.",
+  "regional": "Regional",
+  "regionalTrains": "Regional trains",
+  "sourceCode": "Source code on GitHub",
+  "thirdExpertDraft": "Third expert draft of the Deutschlandtakt",
+  "title": "Deutschlandtakt Journey Planner",
+  "to": "To",
+  "trainCategories": "Train categories",
+  "trainCategoriesContent1": "The Deutschlandtakt is worded in an operator-neutral way. Therefore the train categories have generic names instead of the branding used by existing railway operators. The categorization is primarily based on the top speed of the trains and the frequency of the stops.",
+  "trainCategoriesContent2": "Long-distance trains with a top speed of 230\u00a0km/h to 300\u00a0km/h",
+  "trainCategoriesContent3": "Long-distance trains or fast regional trains with a top-speed of 160\u00A0km/h or 200\u00a0km/h. The routes are in part though-services of existing regional routes. The Deutschlandtakt makes no statements regarding the fare classification of the lines.",
+  "trainCategoriesContent4": "Further subdivided into suburban trains (S), local trains (N), which usually stop at all stations outside of suburban railway networks, and limited-stop trains (E), which stop only at selected stations.",
+  "transportMinistry": "Federal Ministry for Digital and Transport via FragDenStaat",
+  "nTransfers": "{count, plural, =0{direct} =1{1 transfer} other{{count} transfers}}",
+  "@transfer": {
+    "placeholders": {
+      "count": {
+        "type": "num"
+      }
+    }
+  }
+}

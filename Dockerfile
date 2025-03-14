@@ -32,6 +32,14 @@ station_location.py \
 ./
 RUN mkdir intermediate out && make
 
+FROM ghcr.io/cirruslabs/flutter AS ui
+WORKDIR /frontend
+COPY frontend/pubspec.lock frontend/pubspec.yaml ./
+RUN dart pub get
+COPY frontend ./
+# wasm compilation does not work when a string containing a comma is supplied to --dart-define 😢
+RUN flutter build web --dart-define-from-file=.env --no-web-resources-cdn
+
 FROM ghcr.io/motis-project/motis:2 AS import
 COPY motis/ .
 COPY --from=builder /build/out/dtakt-gtfs.zip .
@@ -39,3 +47,4 @@ RUN ./motis import
 
 FROM ghcr.io/motis-project/motis:2
 COPY --from=import data data
+COPY --from=ui /frontend/build/web ui_flutter
