@@ -31,15 +31,20 @@ class Leg {
   String id;
   String lineName;
   Product product;
+  String? headsign;
 
   Station get from => _stops.first.station;
   DateTime get start => _stops.first.departure!;
   Station get to => _stops.last.station;
   DateTime get end => _stops.last.arrival!;
 
-  Leg(Iterable<Stop> stops,
-      {required this.id, required this.lineName, required this.product})
-      : _stops = List<Stop>.of(stops);
+  Leg(
+    Iterable<Stop> stops, {
+    required this.id,
+    required this.lineName,
+    required this.product,
+    this.headsign,
+  }) : _stops = List<Stop>.of(stops);
 }
 
 class Stop {
