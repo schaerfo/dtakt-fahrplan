@@ -50,7 +50,7 @@ class SearchParameterInput extends StatelessWidget {
                     ),
                   ),
                   LocationInput(
-                    label: AppLocalizations.of(context)!.to,
+                    label: AppLocalizations.of(context)!.toCapitalized,
                     initialValue: endpoints.to,
                     onSelected: (Station value) {
                       endpoints.setTo(value);
