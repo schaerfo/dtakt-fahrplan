@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS "route_type" (
   FOREIGN KEY ("code") REFERENCES "category"("code")
 );
 INSERT INTO "route_type" VALUES
- ('X',106),
+ ('X',2),
  ('F',102),
  ('A',101),
  ('N',106),
@@ -58,7 +58,7 @@ INSERT INTO "route_type" VALUES
  ('C',101),
  ('D',101),
  ('H',102),
- ('RRX',106),
+ ('RRX',2),
  ('RbZ',106),
  ('B',101),
  ('AS',104)
