@@ -41,6 +41,7 @@
   "sourceCode": "Source code on GitHub",
   "thirdExpertDraft": "Third expert draft of the Deutschlandtakt",
   "title": "Deutschlandtakt Journey Planner",
+  "to": "to",
   "toCapitalized": "To",
   "trainCategories": "Train categories",
   "trainCategoriesContent1": "The Deutschlandtakt is worded in an operator-neutral way. Therefore the train categories have generic names instead of the branding used by existing railway operators. The categorization is primarily based on the top speed of the trains and the frequency of the stops.",

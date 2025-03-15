@@ -109,6 +109,11 @@ class _LegDetailsState extends State<_LegDetails> {
                 Text(durationStr),
                 SizedBox(width: 10.0),
                 ProductBadge(widget.leg),
+                if (widget.leg.headsign != null) ...[
+                  SizedBox(width: 10.0),
+                  Text(
+                      '${AppLocalizations.of(context)!.to} ${widget.leg.headsign}'),
+                ],
               ],
             ),
           ],

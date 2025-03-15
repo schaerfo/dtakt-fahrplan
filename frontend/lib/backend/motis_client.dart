@@ -84,6 +84,7 @@ class MotisClient {
       id: leg['tripId'],
       lineName: leg['routeShortName'],
       product: _convertProduct(leg['mode']),
+      headsign: (leg['headsign'] as String).isEmpty ? null : leg['headsign'],
     );
   }
 
