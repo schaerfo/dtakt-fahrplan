@@ -40,8 +40,26 @@ CREATE VIEW "gtfs_trips" AS
   select
     group_id as route_id,
     (select service_id from gtfs_calendar) as service_id,
-    train_id as trip_id
+    train_id as trip_id,
+    trip_headsign
   from passenger_train_with_part
+  join (
+    select
+      stop1.train_part_id,
+      station_id,
+      name_db as trip_headsign
+    from (
+      select
+        train_part_id,
+        max(sequence) as sequence
+      from stop
+      join passenger_station using (station_id)
+      where name_db is not null
+      group by train_part_id
+    ) as stop1
+    join stop using (train_part_id, sequence)
+    join passenger_station using (station_id)
+  ) using (train_part_id)
 ;
 
 CREATE VIEW "gtfs_stops" AS
