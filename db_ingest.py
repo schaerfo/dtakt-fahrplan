@@ -25,26 +25,23 @@ class Base(DeclarativeBase):
 class Station(Base):
     __tablename__ = "station"
 
-    station_id: Mapped[int] = mapped_column(primary_key=True)
+    station_id: Mapped[str] = mapped_column(primary_key=True)
     name: Mapped[str]
-    dtakt_id: Mapped[str]
     operational_type: Mapped[str | None]
 
 
 class Category(Base):
     __tablename__ = "category"
 
-    category_id: Mapped[int] = mapped_column(primary_key=True)
+    category_id: Mapped[str] = mapped_column(primary_key=True)
     code: Mapped[str]
-    dtakt_id: Mapped[str]
     description: Mapped[str]
 
 
 class TrainPart(Base):
     __tablename__ = "train_part"
 
-    train_part_id: Mapped[int] = mapped_column(primary_key=True)
-    dtakt_id: Mapped[str]
+    train_part_id: Mapped[str] = mapped_column(primary_key=True)
     category_id: Mapped[int] = mapped_column(ForeignKey("category.category_id"))
 
     category: Mapped[Category] = relationship()
@@ -68,8 +65,7 @@ class Stop(Base):
 class Train(Base):
     __tablename__ = "train"
 
-    train_id: Mapped[int] = mapped_column(primary_key=True)
-    dtakt_id: Mapped[str]
+    train_id: Mapped[str] = mapped_column(primary_key=True)
     description: Mapped[str]
     train_number: Mapped[str | None]
     line_name: Mapped[str | None]
@@ -83,8 +79,7 @@ class Train(Base):
 class TrainGroup(Base):
     __tablename__ = "train_group"
 
-    train_group_id: Mapped[int] = mapped_column(primary_key=True)
-    dtakt_id: Mapped[str]
+    train_group_id: Mapped[str] = mapped_column(primary_key=True)
     code: Mapped[str]
     train_number = Mapped[int]
 
@@ -141,8 +136,8 @@ def main():
         #if op_type == "blockSignal":
         #    continue
         stations[ocp_id] = Station(
+            station_id=ocp_id,
             name=name,
-            dtakt_id=ocp_id,
             operational_type=op_type,
         )
 
@@ -154,7 +149,7 @@ def main():
         cat_code = curr_category.attrib['code']
         cat_descr = curr_category.attrib['description']
         categories[cat_id] = Category(
-            dtakt_id=cat_id,
+            category_id=cat_id,
             code=cat_code,
             description=cat_descr,
         )
@@ -166,7 +161,7 @@ def main():
         extractor = TimeExtractor()
         train_part_id = curr_train_part.attrib['id']
         train_part = TrainPart(
-            dtakt_id=train_part_id,
+            train_part_id=train_part_id,
             category=categories[curr_train_part.attrib['categoryRef']],
         )
         train_parts[train_part_id] = train_part
@@ -207,7 +202,7 @@ def main():
         if line_name_tag is not None:
             line_name = line_name_tag.text
         trains[train_id] = Train(
-            dtakt_id=train_id,
+            train_id=train_id,
             description=train_descr,
             train_number=train_num,
             line_name=line_name,
@@ -229,7 +224,7 @@ def main():
             trains[train_ref].sequence = child.attrib['sequence']
             member_trains.append(trains[train_ref])
         train_groups.append(TrainGroup(
-            dtakt_id=train_group_id,
+            train_group_id=train_group_id,
             code=code,
             train_number=train_num,
             trains=member_trains,

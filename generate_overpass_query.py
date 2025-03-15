@@ -41,7 +41,7 @@ out;
 
 def main():
     with sqlite3.connect(sys.argv[1]) as conn:
-        df = pd.read_sql('''SELECT "name", substr(replace(dtakt_id, '_x0020_', ' '), 2) as ds100 FROM "passenger_station" WHERE "Laenge" IS NULL''', conn)
+        df = pd.read_sql('''SELECT "name", substr(replace(station_id, '_x0020_', ' '), 2) as ds100 FROM "passenger_station" WHERE "Laenge" IS NULL''', conn)
     station_nodes = '\n'.join(df.apply(lambda row: STATION_QUERY.format(row['name'], row['ds100']), axis=1))
     print(OVERPASS_QUERY.format('|'.join(df['name']), station_nodes))
 
