@@ -294,7 +294,8 @@ class InfoButtons extends StatelessWidget {
           onPressed: () {
             showLicensePage(context: context);
           },
-          child: Text(MaterialLocalizations.of(context).viewLicensesButtonLabel),
+          child:
+              Text(MaterialLocalizations.of(context).viewLicensesButtonLabel),
         ),
       ],
       content: Column(

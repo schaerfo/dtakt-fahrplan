@@ -18,11 +18,13 @@ import 'widgets/search_parameter_input.dart';
 void main() {
   GoogleFonts.config.allowRuntimeFetching = false;
   LicenseRegistry.addLicense(() async* {
-    final license = await rootBundle.loadString('assets/google_fonts/comfortaa/OFL.txt');
+    final license =
+        await rootBundle.loadString('assets/google_fonts/comfortaa/OFL.txt');
     yield LicenseEntryWithLineBreaks(['Comfortaa'], license);
   });
   LicenseRegistry.addLicense(() async* {
-    final license = await rootBundle.loadString('assets/google_fonts/roboto/OFL.txt');
+    final license =
+        await rootBundle.loadString('assets/google_fonts/roboto/OFL.txt');
     yield LicenseEntryWithLineBreaks(['Roboto'], license);
   });
   runApp(
