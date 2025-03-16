@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/journey.dart';
+import '../models/types.dart';
 
 Color backgroundProductColor(ColorScheme colorScheme, Product product) {
   switch (product) {
