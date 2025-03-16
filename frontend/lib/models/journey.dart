@@ -6,9 +6,7 @@ import 'types.dart';
 enum Product {
   highSpeed,
   longDistance,
-  regionalFast,
   regional,
-  suburban,
 }
 
 class Journey {

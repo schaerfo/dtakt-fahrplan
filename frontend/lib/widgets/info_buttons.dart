@@ -206,7 +206,7 @@ class InfoButtons extends StatelessWidget {
                   [],
                   id: '',
                   lineName: 'E 1',
-                  product: Product.regionalFast,
+                  product: Product.regional,
                 ),
               ),
             ],

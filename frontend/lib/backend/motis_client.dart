@@ -102,11 +102,9 @@ class MotisClient {
   _convertProduct(String product) {
     switch (product) {
       case 'METRO':
-        return Product.suburban;
       case 'REGIONAL_RAIL':
-        return Product.regional;
       case 'REGIONAL_FAST_RAIL':
-        return Product.regionalFast;
+        return Product.regional;
       case 'LONG_DISTANCE':
         return Product.longDistance;
       case 'HIGHSPEED_RAIL':
