@@ -3,10 +3,12 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../generated/l10n/app_localizations.dart';
 import '../models/journey.dart';
+import '../models/theme_toggle.dart';
 import '../models/types.dart';
 import '../util/environment.dart';
 import 'product_badge.dart';
@@ -56,6 +58,8 @@ class InfoButtons extends StatelessWidget {
           },
           child: Text(AppLocalizations.of(context)!.legal),
         ),
+        Text("•"),
+        _BrightnessButton(),
       ],
     );
   }
@@ -410,6 +414,26 @@ class _MotisReferenceState extends State<_MotisReference> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _BrightnessButton extends StatelessWidget {
+  const _BrightnessButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final themeToggle = Provider.of<ThemeToggle>(context);
+    return IconButton(
+      onPressed: () {
+        themeToggle.toggle(context);
+      },
+      icon: Icon(switch (themeToggle.brightness(context)) {
+        Brightness.light => Icons.dark_mode_outlined,
+        Brightness.dark => Icons.light_mode_outlined,
+      }),
     );
   }
 }
