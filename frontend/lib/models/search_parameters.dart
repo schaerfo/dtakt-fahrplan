@@ -1,6 +1,7 @@
 // Copyright 2025 Christian Schärf
 // SPDX-License-Identifier: MIT
 
+import 'package:dtakt_fahrplan_frontend/models/journey.dart';
 import 'package:flutter/material.dart';
 
 import '../models/types.dart';
@@ -32,6 +33,6 @@ class EndpointNotifier extends ChangeNotifier {
   }
 }
 
-typedef ModeNotifier = NotifierWrapper<Mode>;
+typedef ProductNotifier = NotifierWrapper<Set<Product>>;
 typedef TimeAnchorNotifier = NotifierWrapper<TimeAnchor>;
 typedef TimeNotifier = NotifierWrapper<TimeOfDay>;

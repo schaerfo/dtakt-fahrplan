@@ -3,8 +3,6 @@
 
 enum TimeAnchor { depart, arrive }
 
-enum Mode { longDistance, regional, all }
-
 enum Product {
   highSpeed,
   longDistance,

@@ -25,14 +25,14 @@ class ResultDisplay extends StatelessWidget {
     final endpoints = Provider.of<EndpointNotifier>(context);
     final timeAnchor = Provider.of<TimeAnchorNotifier>(context);
     final time = Provider.of<TimeNotifier>(context);
-    final mode = Provider.of<ModeNotifier>(context);
+    final products = Provider.of<ProductNotifier>(context);
     return Expanded(
       child: ResultList(
         endpoints.from!,
         endpoints.to!,
         time.value,
         timeAnchor.value,
-        mode.value,
+        products.value,
       ),
     );
   }
@@ -43,14 +43,14 @@ class ResultList extends StatefulWidget {
   final Station to;
   final TimeOfDay time;
   final TimeAnchor timeAnchor;
-  final Mode mode;
+  final Set<Product> products;
 
   const ResultList(
     this.from,
     this.to,
     this.time,
     this.timeAnchor,
-    this.mode, {
+    this.products, {
     super.key,
   });
 
@@ -68,7 +68,7 @@ class _ResultListState extends State<ResultList> {
       widget.to,
       widget.time,
       widget.timeAnchor,
-      widget.mode,
+      widget.products,
     );
     return results;
   }
