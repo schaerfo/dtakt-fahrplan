@@ -73,16 +73,16 @@ class MainApp extends StatelessWidget {
       ),
       onGenerateTitle: (context) => AppLocalizations.of(context)!.title,
       home: Scaffold(
-        body: Home(),
+        body: _Home(),
       ),
     );
   }
 }
 
-class Home extends StatelessWidget {
+class _Home extends StatelessWidget {
   final _parameterInputKey = GlobalKey();
 
-  Home({
+  _Home({
     super.key,
   });
 
