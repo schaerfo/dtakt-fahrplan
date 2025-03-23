@@ -25,10 +25,10 @@ dev_dependencies:
 flutter:
   assets:
     - assets/google_fonts/comfortaa/
+    - assets/google_fonts/roboto/OFL.txt
   fonts:
     - family: Roboto
       fonts:
         - asset: assets/google_fonts/roboto/Roboto-Regular.ttf
-        - asset: assets/google_fonts/roboto/OFL.txt
   generate: true
   uses-material-design: true
