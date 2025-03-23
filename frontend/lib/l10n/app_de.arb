@@ -1,7 +1,7 @@
 {
   "about": "Über diese Seite",
   "aboutContent1": "Auf dieser Seite können Sie Bahnverbindungen zwischen beliebigen Bahnhöfen suchen. Dabei liegt der Fahrplan des Deutschlandtaktes (genauer des 3. Gutachterentwurfes von 2020) zugrunde. Dadurch können Sie auf einfache Weise feststellen, wie sich Ihre persönlichen Bahnreisen durch den Deutschlandtakt verändern.",
-  "aboutContent2": "Bitte bachten Sie dabei, dass die Fahrplandaten noch nicht vollständig berücksichtigt werden. Insbesondere fehlen Halte, die mit dem Deutschlandtakt erstmalig oder wieder in Betrieb gehen sowie Halte im Ausland. Auch werden Umstiegszeiten an Bahnhöfen aufgrund fehlernder Daten nicht berücksichtigt.",
+  "aboutContent2": "Bitte bachten Sie dabei, dass die Fahrplandaten noch nicht vollständig berücksichtigt werden. Insbesondere fehlen Halte, die mit dem Deutschlandtakt erstmalig oder wieder in Betrieb gehen sowie Halte im Ausland. Auch werden Umstiegszeiten an Bahnhöfen aufgrund fehlender Daten nicht berücksichtigt.",
   "aboutRouting1": "Die Verbindungssuche erfolgt mittels ",
   "aboutRouting2": ".",
   "all": "Alle",
