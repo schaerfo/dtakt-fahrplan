@@ -20,6 +20,7 @@ void main() {
   LicenseRegistry.addLicense(() async* {
     final licenses = {
       'Comfortaa': 'assets/google_fonts/comfortaa/OFL.txt',
+      'Noto Sans': 'assets/google_fonts/notosans/OFL.txt',
       'Roboto': 'assets/google_fonts/roboto/OFL.txt',
     };
     for (final item in licenses.entries) {
@@ -66,6 +67,9 @@ class MainApp extends StatelessWidget {
         dividerTheme: DividerThemeData(
           space: 0,
         ),
+        fontFamilyFallback: const [
+          'Noto Sans',
+        ],
       ),
       darkTheme: ThemeData(
         colorSchemeSeed: _seedColor,

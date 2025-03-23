@@ -25,8 +25,12 @@ dev_dependencies:
 flutter:
   assets:
     - assets/google_fonts/comfortaa/
+    - assets/google_fonts/notosans/OFL.txt
     - assets/google_fonts/roboto/OFL.txt
   fonts:
+    - family: Noto Sans
+      fonts:
+        - asset: assets/google_fonts/notosans/NotoSans-Regular.ttf
     - family: Roboto
       fonts:
         - asset: assets/google_fonts/roboto/Roboto-Regular.ttf
