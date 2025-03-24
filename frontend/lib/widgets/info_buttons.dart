@@ -391,19 +391,18 @@ class _MotisReferenceState extends State<_MotisReference> {
         children: [
           TextSpan(
             text: AppLocalizations.of(context)!.aboutRouting1,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: DefaultTextStyle.of(context).style,
           ),
           TextSpan(
             text: "Motis",
             recognizer: _recognizer,
-            style: Theme.of(context)
-                .textTheme
-                .bodyMedium!
+            style: DefaultTextStyle.of(context)
+                .style
                 .copyWith(color: Theme.of(context).colorScheme.primary),
           ),
           TextSpan(
             text: AppLocalizations.of(context)!.aboutRouting2,
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: DefaultTextStyle.of(context).style,
           ),
         ],
       ),
