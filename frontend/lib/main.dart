@@ -55,6 +55,7 @@ class MainApp extends StatelessWidget {
       supportedLocales: AppLocalizations.supportedLocales,
       themeMode: ThemeMode.light,
       theme: ThemeData(
+        fontFamily: "Roboto",
         colorSchemeSeed: _seedColor,
         textTheme: TextTheme(
           titleMedium: TextStyle(
