@@ -65,7 +65,6 @@ class InfoButtons extends StatelessWidget {
       titleText: AppLocalizations.of(context)!.about,
       content: Column(
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             AppLocalizations.of(context)!.aboutContent1,
@@ -77,7 +76,18 @@ class InfoButtons extends StatelessWidget {
             textAlign: TextAlign.justify,
           ),
           SizedBox(height: 10),
-          _MotisReference(),
+          // Left-align text by expanding horizontally
+          ConstrainedBox(
+            constraints: BoxConstraints.tightFor(width: double.infinity),
+            child: _MotisReference(),
+          ),
+          TextButton(
+            onPressed: () {
+              launchUrl(
+                  Uri.parse("https://github.com/schaerfo/dtakt-fahrplan/"));
+            },
+            child: Text(AppLocalizations.of(context)!.sourceCode),
+          ),
         ],
       ),
     );
@@ -306,16 +316,7 @@ class InfoButtons extends StatelessWidget {
           SizedBox(height: 10),
           Text(
               "${AppLocalizations.of(context)!.contact} ${Environment.imprintEmail}"),
-          TextButton(
-            onPressed: () {
-              launchUrl(
-                  Uri.parse("https://github.com/schaerfo/dtakt-fahrplan/"));
-            },
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
-            ),
-            child: Text(AppLocalizations.of(context)!.sourceCode),
-          ),
+          SizedBox(height: 10),
           Text(
             AppLocalizations.of(context)!.privacy,
             style: Theme.of(context).textTheme.titleMedium,
