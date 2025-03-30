@@ -1,6 +1,7 @@
 // Copyright 2025 Christian Schärf
 // SPDX-License-Identifier: MIT
 
+import 'package:dtakt_fahrplan_frontend/util/product_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -90,6 +91,7 @@ class _LegDetailsState extends State<_LegDetails> {
         _layoverRow(
           when: widget.leg.start,
           station: widget.leg.from,
+          product: widget.leg.product,
           before: widget.pos == _Position.middle || widget.pos == _Position.end
               ? _TargetConnection.transfer
               : _TargetConnection.none,
@@ -100,7 +102,8 @@ class _LegDetailsState extends State<_LegDetails> {
             TableCell(
               verticalAlignment: TableCellVerticalAlignment.fill,
               child: CustomPaint(
-                painter: _ContinuousPainter(context),
+                painter:
+                    _ContinuousPainter(context, product: widget.leg.product),
               ),
             ),
             Row(
@@ -123,7 +126,8 @@ class _LegDetailsState extends State<_LegDetails> {
             TableCell(
               verticalAlignment: TableCellVerticalAlignment.fill,
               child: CustomPaint(
-                painter: _ContinuousPainter(context),
+                painter:
+                    _ContinuousPainter(context, product: widget.leg.product),
               ),
             ),
             Row(
@@ -161,7 +165,8 @@ class _LegDetailsState extends State<_LegDetails> {
                 TableCell(
                   verticalAlignment: TableCellVerticalAlignment.fill,
                   child: CustomPaint(
-                    painter: _IntermediateStopPainter(context),
+                    painter: _IntermediateStopPainter(context,
+                        product: widget.leg.product),
                   ),
                 ),
                 Row(
@@ -182,6 +187,7 @@ class _LegDetailsState extends State<_LegDetails> {
         _layoverRow(
           when: widget.leg.end,
           station: widget.leg.to,
+          product: widget.leg.product,
           before: _TargetConnection.leg,
           after: widget.pos == _Position.middle || widget.pos == _Position.start
               ? _TargetConnection.transfer
@@ -194,6 +200,7 @@ class _LegDetailsState extends State<_LegDetails> {
   TableRow _layoverRow({
     required DateTime when,
     required Station station,
+    required Product product,
     required _TargetConnection before,
     required _TargetConnection after,
   }) {
@@ -204,6 +211,7 @@ class _LegDetailsState extends State<_LegDetails> {
           child: CustomPaint(
             painter: _TargetPainter(
               context,
+              product: product,
               before: before,
               after: after,
             ),
@@ -269,83 +277,82 @@ class _TransferDetails extends StatelessWidget {
 enum _TargetConnection { none, leg, transfer }
 
 const _connectionWidth = 2.0;
-const _connectionRadius = _connectionWidth / 2;
-const _targetPitch = 4.0;
-const _targetRadius = 5.0;
-const _gap = 3.0;
+const _stopRadius = 3.0;
+const _intermediateStopRadius = _stopRadius;
+const _timelineRadius = 5.0;
+const _timelineWidth = 2 * _timelineRadius;
+
+Color _connectionColor(BuildContext context) =>
+    Theme.of(context).colorScheme.onSurfaceVariant;
+
+class _TimelineColors {
+  final Color background;
+  final Color foreground;
+  final Color connection;
+
+  _TimelineColors(BuildContext context, Product product)
+      : background =
+            backgroundProductColor(Theme.of(context).colorScheme, product),
+        foreground =
+            foregroundProductColor(Theme.of(context).colorScheme, product),
+        connection = _connectionColor(context);
+}
 
 class _TargetPainter extends CustomPainter {
   final _TargetConnection before;
   final _TargetConnection after;
-  final Color _color;
+  final _TimelineColors _colors;
 
   _TargetPainter(BuildContext context,
-      {required this.before, required this.after})
-      : _color = Theme.of(context).colorScheme.onSurfaceVariant;
+      {required Product product, required this.before, required this.after})
+      : _colors = _TimelineColors(context, product);
 
   @override
   void paint(Canvas canvas, Size size) {
     if (before == _TargetConnection.leg) {
       canvas.drawLine(
         Offset(size.width / 2, 0),
-        Offset(size.width / 2, size.height / 2 - _targetRadius - _gap),
+        Offset(size.width / 2, size.height / 2),
         Paint()
-          ..color = _color
-          ..strokeWidth = _connectionWidth,
+          ..color = _colors.background
+          ..strokeWidth = _timelineWidth,
       );
     } else if (before == _TargetConnection.transfer) {
-      final available =
-          size.height - _targetRadius - 2 * _gap - 2 * _connectionRadius;
-      final count = (available / _targetPitch).ceil();
-      final pitch = available / (count - 1);
-      final start =
-          size.height / 2.0 - _targetRadius - _gap - _connectionRadius;
-      for (int i = 0; i < (count / 2.0).floor(); ++i) {
-        final y = start - i * pitch;
-        canvas.drawCircle(
-          Offset(size.width / 2, y),
-          _connectionRadius,
-          Paint()..color = _color,
-        );
-      }
-    }
-    canvas.drawCircle(
-      Offset(size.width / 2, size.height / 2),
-      _targetRadius,
-      Paint()
-        ..color = _color
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 2,
-    );
-    canvas.drawCircle(
-      Offset(size.width / 2, size.height / 2),
-      2,
-      Paint()..color = _color,
-    );
-    if (after == _TargetConnection.leg) {
       canvas.drawLine(
-        Offset(size.width / 2, size.height / 2 + _targetRadius + _gap),
-        Offset(size.width / 2, size.height),
+        Offset(size.width / 2, 0),
+        Offset(size.width / 2, size.height / 2),
         Paint()
-          ..color = _color
+          ..color = _colors.connection
           ..strokeWidth = _connectionWidth,
       );
-    } else if (after == _TargetConnection.transfer) {
-      final available =
-          size.height - _targetRadius - 2 * _gap - 2 * _connectionRadius;
-      final count = (available / _targetPitch).ceil();
-      final pitch = available / (count - 1);
-      final start =
-          size.height / 2.0 + _targetRadius + _gap + _connectionRadius;
-      for (int i = 0; i < (count / 2.0).floor(); ++i) {
-        final y = start + i * pitch;
-        canvas.drawCircle(
-          Offset(size.width / 2, y),
-          _connectionRadius,
-          Paint()..color = _color,
-        );
-      }
     }
+    if (after == _TargetConnection.leg) {
+      canvas.drawLine(
+        Offset(size.width / 2, size.height / 2),
+        Offset(size.width / 2, size.height),
+        Paint()
+          ..color = _colors.background
+          ..strokeWidth = _timelineWidth,
+      );
+    } else if (after == _TargetConnection.transfer) {
+      canvas.drawLine(
+        Offset(size.width / 2, size.height / 2),
+        Offset(size.width / 2, size.height),
+        Paint()
+          ..color = _colors.connection
+          ..strokeWidth = _connectionWidth,
+      );
+    }
+    canvas.drawCircle(
+      Offset(size.width / 2, size.height / 2),
+      _timelineRadius,
+      Paint()..color = _colors.background,
+    );
+    canvas.drawCircle(
+      Offset(size.width / 2, size.height / 2),
+      _stopRadius,
+      Paint()..color = _colors.foreground,
+    );
   }
 
   @override
@@ -355,11 +362,10 @@ class _TargetPainter extends CustomPainter {
 }
 
 class _ContinuousPainter extends CustomPainter {
-  final Color _color;
+  final _TimelineColors _colors;
 
-  _ContinuousPainter(
-    BuildContext context,
-  ) : _color = Theme.of(context).colorScheme.onSurfaceVariant;
+  _ContinuousPainter(BuildContext context, {required Product product})
+      : _colors = _TimelineColors(context, product);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -367,8 +373,8 @@ class _ContinuousPainter extends CustomPainter {
       Offset(size.width / 2, 0),
       Offset(size.width / 2, size.height),
       Paint()
-        ..color = _color
-        ..strokeWidth = _connectionWidth,
+        ..color = _colors.background
+        ..strokeWidth = _timelineWidth,
     );
   }
 
@@ -379,17 +385,15 @@ class _ContinuousPainter extends CustomPainter {
 }
 
 class _IntermediateStopPainter extends _ContinuousPainter {
-  static const _radius = 4.0;
-
-  _IntermediateStopPainter(super.context);
+  _IntermediateStopPainter(super.context, {required super.product});
 
   @override
   void paint(Canvas canvas, Size size) {
     super.paint(canvas, size);
     canvas.drawCircle(
       Offset(size.width / 2.0, size.height / 2.0),
-      _radius,
-      Paint()..color = super._color,
+      _intermediateStopRadius,
+      Paint()..color = super._colors.foreground,
     );
   }
 }
@@ -397,23 +401,17 @@ class _IntermediateStopPainter extends _ContinuousPainter {
 class _TransferPainter extends CustomPainter {
   final Color _color;
 
-  _TransferPainter(
-    BuildContext context,
-  ) : _color = Theme.of(context).colorScheme.onSurfaceVariant;
+  _TransferPainter(BuildContext context) : _color = _connectionColor(context);
 
   @override
   void paint(Canvas canvas, Size size) {
-    final available = size.height - 2 * _gap - 2 * _connectionRadius;
-    final count = (available / _targetPitch).ceil();
-    final pitch = available / (count - 1);
-    for (int i = 0; i < count; ++i) {
-      final y = i * pitch;
-      canvas.drawCircle(
-        Offset(size.width / 2, y),
-        _connectionRadius,
-        Paint()..color = _color,
-      );
-    }
+    canvas.drawLine(
+      Offset(size.width / 2, 0),
+      Offset(size.width / 2, size.height),
+      Paint()
+        ..color = _color
+        ..strokeWidth = _connectionWidth,
+    );
   }
 
   @override
