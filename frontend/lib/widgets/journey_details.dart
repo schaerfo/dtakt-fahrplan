@@ -171,6 +171,7 @@ class _LegDetailsState extends State<_LegDetails> {
                 ),
                 Row(
                   children: [
+                    SizedBox(width: 10.0),
                     Center(
                       child: Text(MaterialLocalizations.of(context)
                           .formatTimeOfDay(
