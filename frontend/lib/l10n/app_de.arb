@@ -39,8 +39,8 @@
   "toCapitalized": "Nach",
   "trainCategories": "Zugkategorien",
   "trainCategoriesContent1": "Der Deutschlandtakt ist betreiberneutral formuliert. Deshalb sind die Zugkategorien generisch bezeichnet anstatt mit den Markennamen, die von bestehenden Eisenbahnunternehmen verwendet werden. Die Kategorisierung richtet sich nach vor allem nach der Höchstgeschwindigkeit der Züge und der Anzahl der Halte.",
-  "trainCategoriesContent2": "Fernverkehrszüge mit einer Höchstgeschwindigkeit von 230\u00a0km\u2060/\u2060h bis 300\u00a0km\u2060/\u2060h",
-  "trainCategoriesContent3": "Fernverkehr oder schneller Regionalverkehr mit einer Höchstgeschwindigkeit von 160\u00a0km\u2060/\u2060h oder 200\u00a0km\u2060/\u2060h. Die Linien sind teilweise Durchbindungen heutiger Regionalverkehrslinien. Der Deutschlandtakt trifft keine Aussagen bezüglich der tariflichen Einstufung der Linien.",
+  "trainCategoriesContent2": "Fernverkehrszüge mit einer Höchstgeschwindigkeit von 230\u202fkm\u2060/\u2060h bis 300\u202fkm\u2060/\u2060h",
+  "trainCategoriesContent3": "Fernverkehr oder schneller Regionalverkehr mit einer Höchstgeschwindigkeit von 160\u202fkm\u2060/\u2060h oder 200\u202fkm\u2060/\u2060h. Die Linien sind teilweise Durchbindungen heutiger Regionalverkehrslinien. Der Deutschlandtakt trifft keine Aussagen bezüglich der tariflichen Einstufung der Linien.",
   "trainCategoriesContent4": "Weiter unterteilt in S-Bahnen (S), Nahverkehrszüge (N), die außerhalb von S-Bahn-Netzen üblicherweise an allen Stationen halten, und Expresszügen (E), die nur an ausgewählen Stationen halten.",
   "transportMinistry": "Bundesministerium für Digitales und Verkehr via FragDenStaat",
   "nTransfers": "{count, plural, =0{direkt} =1{1 Umstieg} other{{count} Umstiege}}"
