@@ -122,10 +122,34 @@ class _Home extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            AppLocalizations.of(context)!.title,
-            style: Theme.of(context).textTheme.displayMedium,
-            textAlign: TextAlign.center,
+          LayoutBuilder(
+            builder: (context, constraints) {
+              // Measure the width of the unwrapped text
+              final unwrappedText = AppLocalizations.of(context)!.title;
+              final style = Theme.of(context).textTheme.displayMedium;
+              final ts = TextSpan(
+                text: unwrappedText,
+                style: style,
+              );
+              final tp = TextPainter(
+                text: ts,
+                maxLines: 1,
+                textDirection: TextDirection.ltr,
+              );
+              tp.layout(maxWidth: constraints.maxWidth);
+              final useWrappedText = tp.didExceedMaxLines;
+              tp.dispose();
+              return FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  useWrappedText
+                      ? AppLocalizations.of(context)!.titleWrapped
+                      : unwrappedText,
+                  style: style,
+                  textAlign: TextAlign.center,
+                ),
+              );
+            },
           ),
           InfoButtons(),
           ConstrainedBox(
