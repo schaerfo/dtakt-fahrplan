@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../models/journey.dart';
+import '../models/types.dart';
 import '../util/environment.dart';
 import 'product_badge.dart';
 
@@ -206,7 +207,7 @@ class InfoButtons extends StatelessWidget {
                   [],
                   id: '',
                   lineName: 'E 1',
-                  product: Product.regionalFast,
+                  product: Product.regional,
                 ),
               ),
             ],

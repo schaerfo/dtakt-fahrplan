@@ -140,27 +140,29 @@ class _ModeInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ModeNotifier>(
-      builder: (context, mode, child) => SegmentedButton<Mode>(
+    return Consumer<ProductNotifier>(
+      builder: (context, product, child) => SegmentedButton<Product>(
         segments: [
           ButtonSegment(
-            value: Mode.longDistance,
+            value: Product.highSpeed,
+            label: Text(AppLocalizations.of(context)!.highSpeed),
+          ),
+          ButtonSegment(
+            value: Product.longDistance,
             label: Text(AppLocalizations.of(context)!.longDistance),
           ),
           ButtonSegment(
-            value: Mode.regional,
+            value: Product.regional,
             label: Text(AppLocalizations.of(context)!.regional),
           ),
-          ButtonSegment(
-            value: Mode.all,
-            label: Text(AppLocalizations.of(context)!.all),
-          ),
         ],
-        selected: <Mode>{mode.value},
-        onSelectionChanged: (Set<Mode> newSelection) {
-          mode.value = newSelection.first;
+        selected: product.value,
+        multiSelectionEnabled: true,
+        emptySelectionAllowed: false,
+        onSelectionChanged: (Set<Product> newSelection) {
+          product.value = newSelection;
         },
-        showSelectedIcon: false,
+        showSelectedIcon: true,
       ),
     );
   }

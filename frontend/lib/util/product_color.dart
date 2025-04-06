@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../models/journey.dart';
+import '../models/types.dart';
 
 Color backgroundProductColor(ColorScheme colorScheme, Product product) {
   switch (product) {
@@ -8,9 +8,7 @@ Color backgroundProductColor(ColorScheme colorScheme, Product product) {
       return colorScheme.primary;
     case Product.longDistance:
       return colorScheme.secondary;
-    case Product.regionalFast:
     case Product.regional:
-    case Product.suburban:
       return colorScheme.tertiary;
   }
 }
@@ -21,9 +19,7 @@ Color foregroundProductColor(ColorScheme colorScheme, Product product) {
       return colorScheme.onPrimary;
     case Product.longDistance:
       return colorScheme.onSecondary;
-    case Product.regionalFast:
     case Product.regional:
-    case Product.suburban:
       return colorScheme.onTertiary;
   }
 }

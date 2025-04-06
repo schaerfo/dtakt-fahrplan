@@ -3,14 +3,6 @@
 
 import 'types.dart';
 
-enum Product {
-  highSpeed,
-  longDistance,
-  regionalFast,
-  regional,
-  suburban,
-}
-
 class Journey {
   final List<Leg> _legs;
   Iterable<Leg> get legs => _legs;

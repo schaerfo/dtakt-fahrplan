@@ -35,7 +35,7 @@ class MotisClient {
   }
 
   Future<Iterable<Journey>> searchJourneys(Station from, Station to,
-      TimeOfDay time, TimeAnchor timeAnchor, Mode mode) async {
+      TimeOfDay time, TimeAnchor timeAnchor, Set<Product> products) async {
     // Since the the schedule is the same on every day, the date does not matter
     final dateTime = DateTime.utc(2025, 8, 16, time.hour, time.minute);
     final uri = Uri(
@@ -47,10 +47,15 @@ class MotisClient {
         'toPlace': to.id,
         'time': dateTime.toIso8601String(),
         'arriveBy': (timeAnchor == TimeAnchor.arrive).toString(),
-        if (mode != Mode.all)
-          'transitModes': mode == Mode.longDistance
-              ? 'HIGHSPEED_RAIL,LONG_DISTANCE'
-              : 'REGIONAL_RAIL,REGIONAL_FAST_RAIL,METRO',
+        'transitModes': [
+          if (products.contains(Product.highSpeed)) 'HIGHSPEED_RAIL',
+          if (products.contains(Product.longDistance)) 'LONG_DISTANCE',
+          if (products.contains(Product.regional)) ...[
+            'REGIONAL_RAIL',
+            'REGIONAL_FAST_RAIL',
+            'METRO'
+          ],
+        ].join(','),
       },
     );
     final response = await _client.get(uri);
@@ -102,11 +107,9 @@ class MotisClient {
   _convertProduct(String product) {
     switch (product) {
       case 'METRO':
-        return Product.suburban;
       case 'REGIONAL_RAIL':
-        return Product.regional;
       case 'REGIONAL_FAST_RAIL':
-        return Product.regionalFast;
+        return Product.regional;
       case 'LONG_DISTANCE':
         return Product.longDistance;
       case 'HIGHSPEED_RAIL':
