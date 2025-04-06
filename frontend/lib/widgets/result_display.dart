@@ -81,12 +81,10 @@ class _ResultListState extends State<ResultList> {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           if (snapshot.data!.isEmpty) {
-            return Expanded(
-              child: Center(
-                child: Text(
-                  AppLocalizations.of(context)!.noJourneysFound,
-                  style: TextStyle(fontStyle: FontStyle.italic),
-                ),
+            return Center(
+              child: Text(
+                AppLocalizations.of(context)!.noJourneysFound,
+                style: TextStyle(fontStyle: FontStyle.italic),
               ),
             );
           }
