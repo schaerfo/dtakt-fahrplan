@@ -83,9 +83,18 @@ class _LocationInputState extends State<LocationInput> {
 
   @override
   Widget build(BuildContext context) {
-    return SearchAnchor.bar(
-      barHintText: widget.label,
+    return SearchAnchor(
       searchController: _controller,
+      builder: (BuildContext context, SearchController controller) => TextField(
+        controller: _controller,
+        decoration: InputDecoration(
+          labelText: widget.label,
+          filled: true,
+        ),
+        onTap: () {
+          _controller.openView();
+        },
+      ),
       suggestionsBuilder:
           (BuildContext context, SearchController controller) async {
         final Iterable<Station>? stations =
