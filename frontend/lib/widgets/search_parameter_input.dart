@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../models/search_parameters.dart';
 import '../models/types.dart';
+import '../util/responsive.dart';
 import 'location_input.dart';
 
 class SearchParameterInput extends StatelessWidget {
@@ -64,6 +65,7 @@ class SearchParameterInput extends StatelessWidget {
               spacing: 5,
               runSpacing: 5,
               alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 _TimeInput(),
                 _TimeAnchorSelection(),
@@ -140,8 +142,42 @@ class _ModeInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ProductNotifier>(
-      builder: (context, product, child) => SegmentedButton<Product>(
+    return Consumer<ProductNotifier>(builder: (context, product, child) {
+      if (useNarrowLayout(context)) {
+        return MenuAnchor(
+          builder: (context, controller, child) => IconButton.outlined(
+            onPressed: () {
+              if (controller.isOpen) {
+                controller.close();
+              } else {
+                controller.open();
+              }
+            },
+            icon: Icon(Icons.directions_railway),
+          ),
+          menuChildren: [
+            buildProductToggle(
+              product,
+              context,
+              Product.highSpeed,
+              AppLocalizations.of(context)!.highSpeed,
+            ),
+            buildProductToggle(
+              product,
+              context,
+              Product.longDistance,
+              AppLocalizations.of(context)!.longDistance,
+            ),
+            buildProductToggle(
+              product,
+              context,
+              Product.regional,
+              AppLocalizations.of(context)!.regional,
+            ),
+          ],
+        );
+      }
+      return SegmentedButton<Product>(
         segments: [
           ButtonSegment(
             value: Product.highSpeed,
@@ -163,6 +199,27 @@ class _ModeInput extends StatelessWidget {
           product.value = newSelection;
         },
         showSelectedIcon: true,
+      );
+    });
+  }
+
+  MenuItemButton buildProductToggle(ProductNotifier currentSelection,
+      BuildContext context, Product product, String label) {
+    return MenuItemButton(
+      onPressed: () {
+        final newSelection = Set<Product>.from(currentSelection.value);
+        if (newSelection.contains(product)) {
+          newSelection.remove(product);
+        } else {
+          newSelection.add(product);
+        }
+        currentSelection.value = newSelection;
+      },
+      child: Row(
+        children: [
+          if (currentSelection.value.contains(product)) Icon(Icons.check),
+          Text(label),
+        ],
       ),
     );
   }
