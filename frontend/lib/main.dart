@@ -1,6 +1,7 @@
 // Copyright 2025 Christian Schärf
 // SPDX-License-Identifier: MIT
 
+import 'package:dtakt_fahrplan_frontend/util/responsive.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -97,11 +98,12 @@ class _Home extends StatelessWidget {
     if (endpoints.bothEndpointsSet) {
       return Column(
         children: [
-          Container(
-            alignment: Alignment.center,
-            color: Theme.of(context).colorScheme.primaryContainer,
-            child: InfoButtons(),
-          ),
+          if (!useNarrowLayout(context))
+            Container(
+              alignment: Alignment.center,
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: InfoButtons(),
+            ),
           Expanded(
             child: Center(
               child: ConstrainedBox(
