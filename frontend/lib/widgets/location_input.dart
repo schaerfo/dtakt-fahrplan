@@ -83,29 +83,27 @@ class _LocationInputState extends State<LocationInput> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SearchAnchor.bar(
-        barHintText: widget.label,
-        searchController: _controller,
-        suggestionsBuilder:
-            (BuildContext context, SearchController controller) async {
-          final Iterable<Station>? stations =
-              (await _debouncedSearch(controller.text))?.toList();
-          if (stations == null) {
-            return _lastStations;
-          }
-          _lastStations = List.of(stations.map((Station item) {
-            return ListTile(
-              title: Text(item.name),
-              onTap: () {
-                controller.closeView(item.name);
-                widget.onSelected(item);
-              },
-            );
-          }));
+    return SearchAnchor.bar(
+      barHintText: widget.label,
+      searchController: _controller,
+      suggestionsBuilder:
+          (BuildContext context, SearchController controller) async {
+        final Iterable<Station>? stations =
+            (await _debouncedSearch(controller.text))?.toList();
+        if (stations == null) {
           return _lastStations;
-        },
-      ),
+        }
+        _lastStations = List.of(stations.map((Station item) {
+          return ListTile(
+            title: Text(item.name),
+            onTap: () {
+              controller.closeView(item.name);
+              widget.onSelected(item);
+            },
+          );
+        }));
+        return _lastStations;
+      },
     );
   }
 }

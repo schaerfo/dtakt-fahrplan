@@ -31,34 +31,64 @@ class SearchParameterInput extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Consumer<EndpointNotifier>(
-              builder: (context, endpoints, child) => Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  LocationInput(
-                    label: AppLocalizations.of(context)!.from,
-                    initialValue: endpoints.from,
-                    onSelected: (Station value) {
-                      endpoints.setFrom(value);
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                    child: IconButton(
-                      onPressed: () {
-                        endpoints.swap();
-                      },
-                      icon: Icon(Icons.swap_horiz),
+              builder: (context, endpoints, child) {
+                final fromInput = LocationInput(
+                  label: AppLocalizations.of(context)!.from,
+                  initialValue: endpoints.from,
+                  onSelected: (Station value) {
+                    endpoints.setFrom(value);
+                  },
+                );
+                final toInput = LocationInput(
+                  label: AppLocalizations.of(context)!.toCapitalized,
+                  initialValue: endpoints.to,
+                  onSelected: (Station value) {
+                    endpoints.setTo(value);
+                  },
+                );
+                if (useNarrowLayout(context)) {
+                  return Stack(
+                    alignment: AlignmentDirectional.centerEnd,
+                    children: [
+                      Column(
+                        children: [
+                          fromInput,
+                          SizedBox(height: 10.0),
+                          toInput,
+                        ],
+                      ),
+                      IconButton.outlined(
+                        onPressed: () {
+                          endpoints.swap();
+                        },
+                        icon: Icon(Icons.swap_vert),
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStateProperty.resolveWith(
+                              (states) => Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainerLow),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(child: fromInput),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: IconButton(
+                        onPressed: () {
+                          endpoints.swap();
+                        },
+                        icon: Icon(Icons.swap_horiz),
+                      ),
                     ),
-                  ),
-                  LocationInput(
-                    label: AppLocalizations.of(context)!.toCapitalized,
-                    initialValue: endpoints.to,
-                    onSelected: (Station value) {
-                      endpoints.setTo(value);
-                    },
-                  ),
-                ],
-              ),
+                    Expanded(child: toInput),
+                  ],
+                );
+              },
             ),
             SizedBox(height: 20),
             Wrap(
