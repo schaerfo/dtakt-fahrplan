@@ -24,10 +24,13 @@ dev_dependencies:
 
 flutter:
   assets:
-    - assets/google_fonts/comfortaa/
+    - assets/google_fonts/comfortaa/OFL.txt
     - assets/google_fonts/notosans/OFL.txt
     - assets/google_fonts/roboto/OFL.txt
   fonts:
+    - family: Comfortaa
+      fonts:
+        - asset: assets/google_fonts/comfortaa/Comfortaa-SemiBold.ttf
     - family: Noto Sans
       fonts:
         - asset: assets/google_fonts/notosans/NotoSans-Regular.ttf

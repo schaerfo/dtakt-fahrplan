@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'package:provider/provider.dart';
 
@@ -16,7 +15,6 @@ import 'widgets/result_display.dart';
 import 'widgets/search_parameter_input.dart';
 
 void main() {
-  GoogleFonts.config.allowRuntimeFetching = false;
   LicenseRegistry.addLicense(() async* {
     final licenses = {
       'Comfortaa': 'assets/google_fonts/comfortaa/OFL.txt',
@@ -62,7 +60,8 @@ class MainApp extends StatelessWidget {
           titleMedium: TextStyle(
             fontWeight: FontWeight.bold,
           ),
-          displayMedium: GoogleFonts.comfortaa(
+          displayMedium: TextStyle(
+            fontFamily: "Comfortaa",
             fontWeight: FontWeight.w600,
           ),
         ),
