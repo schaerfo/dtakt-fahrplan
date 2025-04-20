@@ -335,7 +335,7 @@ class InfoButtons extends StatelessWidget {
     required BuildContext context,
     required String titleText,
     required Widget content,
-    List<Widget>? additionalActions,
+    List<Widget> additionalActions = const [],
   }) {
     showDialog<void>(
       context: context,
@@ -346,7 +346,7 @@ class InfoButtons extends StatelessWidget {
           child: content,
         ),
         actions: [
-          if (additionalActions != null) ...additionalActions,
+          ...additionalActions,
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
