@@ -343,7 +343,9 @@ class InfoButtons extends StatelessWidget {
         title: Text(titleText),
         content: ConstrainedBox(
           constraints: BoxConstraints(maxWidth: 600),
-          child: content,
+          child: SingleChildScrollView(
+            child: content,
+          ),
         ),
         actions: [
           ...additionalActions,

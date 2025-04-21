@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 import '../models/search_parameters.dart';
 import '../models/types.dart';
+import '../util/responsive.dart';
 import 'location_input.dart';
 
 class SearchParameterInput extends StatelessWidget {
@@ -30,40 +31,71 @@ class SearchParameterInput extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Consumer<EndpointNotifier>(
-              builder: (context, endpoints, child) => Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  LocationInput(
-                    label: AppLocalizations.of(context)!.from,
-                    initialValue: endpoints.from,
-                    onSelected: (Station value) {
-                      endpoints.setFrom(value);
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                    child: IconButton(
-                      onPressed: () {
-                        endpoints.swap();
-                      },
-                      icon: Icon(Icons.swap_horiz),
+              builder: (context, endpoints, child) {
+                final fromInput = LocationInput(
+                  label: AppLocalizations.of(context)!.from,
+                  initialValue: endpoints.from,
+                  onSelected: (Station value) {
+                    endpoints.setFrom(value);
+                  },
+                );
+                final toInput = LocationInput(
+                  label: AppLocalizations.of(context)!.toCapitalized,
+                  initialValue: endpoints.to,
+                  onSelected: (Station value) {
+                    endpoints.setTo(value);
+                  },
+                );
+                if (useNarrowLayout(context)) {
+                  return Stack(
+                    alignment: AlignmentDirectional.centerEnd,
+                    children: [
+                      Column(
+                        children: [
+                          fromInput,
+                          SizedBox(height: 10.0),
+                          toInput,
+                        ],
+                      ),
+                      IconButton.outlined(
+                        onPressed: () {
+                          endpoints.swap();
+                        },
+                        icon: Icon(Icons.swap_vert),
+                        style: ButtonStyle(
+                          backgroundColor: WidgetStateProperty.resolveWith(
+                              (states) => Theme.of(context)
+                                  .colorScheme
+                                  .surfaceContainerLow),
+                        ),
+                      ),
+                    ],
+                  );
+                }
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Expanded(child: fromInput),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: IconButton(
+                        onPressed: () {
+                          endpoints.swap();
+                        },
+                        icon: Icon(Icons.swap_horiz),
+                      ),
                     ),
-                  ),
-                  LocationInput(
-                    label: AppLocalizations.of(context)!.toCapitalized,
-                    initialValue: endpoints.to,
-                    onSelected: (Station value) {
-                      endpoints.setTo(value);
-                    },
-                  ),
-                ],
-              ),
+                    Expanded(child: toInput),
+                  ],
+                );
+              },
             ),
             SizedBox(height: 20),
             Wrap(
               spacing: 5,
               runSpacing: 5,
               alignment: WrapAlignment.center,
+              crossAxisAlignment: WrapCrossAlignment.center,
               children: [
                 _TimeInput(),
                 _TimeAnchorSelection(),
@@ -140,8 +172,42 @@ class _ModeInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<ProductNotifier>(
-      builder: (context, product, child) => SegmentedButton<Product>(
+    return Consumer<ProductNotifier>(builder: (context, product, child) {
+      if (useNarrowLayout(context)) {
+        return MenuAnchor(
+          builder: (context, controller, child) => IconButton.outlined(
+            onPressed: () {
+              if (controller.isOpen) {
+                controller.close();
+              } else {
+                controller.open();
+              }
+            },
+            icon: Icon(Icons.directions_railway),
+          ),
+          menuChildren: [
+            buildProductToggle(
+              product,
+              context,
+              Product.highSpeed,
+              AppLocalizations.of(context)!.highSpeed,
+            ),
+            buildProductToggle(
+              product,
+              context,
+              Product.longDistance,
+              AppLocalizations.of(context)!.longDistance,
+            ),
+            buildProductToggle(
+              product,
+              context,
+              Product.regional,
+              AppLocalizations.of(context)!.regional,
+            ),
+          ],
+        );
+      }
+      return SegmentedButton<Product>(
         segments: [
           ButtonSegment(
             value: Product.highSpeed,
@@ -163,6 +229,27 @@ class _ModeInput extends StatelessWidget {
           product.value = newSelection;
         },
         showSelectedIcon: true,
+      );
+    });
+  }
+
+  MenuItemButton buildProductToggle(ProductNotifier currentSelection,
+      BuildContext context, Product product, String label) {
+    return MenuItemButton(
+      onPressed: () {
+        final newSelection = Set<Product>.from(currentSelection.value);
+        if (newSelection.contains(product)) {
+          newSelection.remove(product);
+        } else {
+          newSelection.add(product);
+        }
+        currentSelection.value = newSelection;
+      },
+      child: Row(
+        children: [
+          if (currentSelection.value.contains(product)) Icon(Icons.check),
+          Text(label),
+        ],
       ),
     );
   }

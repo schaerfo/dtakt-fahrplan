@@ -1,6 +1,7 @@
 // Copyright 2025 Christian Schärf
 // SPDX-License-Identifier: MIT
 
+import 'package:dtakt_fahrplan_frontend/util/responsive.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -97,11 +98,12 @@ class _Home extends StatelessWidget {
     if (endpoints.bothEndpointsSet) {
       return Column(
         children: [
-          Container(
-            alignment: Alignment.center,
-            color: Theme.of(context).colorScheme.primaryContainer,
-            child: InfoButtons(),
-          ),
+          if (!useNarrowLayout(context))
+            Container(
+              alignment: Alignment.center,
+              color: Theme.of(context).colorScheme.primaryContainer,
+              child: InfoButtons(),
+            ),
           Expanded(
             child: Center(
               child: ConstrainedBox(
@@ -122,10 +124,37 @@ class _Home extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            AppLocalizations.of(context)!.title,
-            style: Theme.of(context).textTheme.displayMedium,
-            textAlign: TextAlign.center,
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                // Measure the width of the unwrapped text
+                final unwrappedText = AppLocalizations.of(context)!.title;
+                final style = Theme.of(context).textTheme.displayMedium;
+                final ts = TextSpan(
+                  text: unwrappedText,
+                  style: style,
+                );
+                final tp = TextPainter(
+                  text: ts,
+                  maxLines: 1,
+                  textDirection: TextDirection.ltr,
+                );
+                tp.layout(maxWidth: constraints.maxWidth);
+                final useWrappedText = tp.didExceedMaxLines;
+                tp.dispose();
+                return FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    useWrappedText
+                        ? AppLocalizations.of(context)!.titleWrapped
+                        : unwrappedText,
+                    style: style,
+                    textAlign: TextAlign.center,
+                  ),
+                );
+              },
+            ),
           ),
           InfoButtons(),
           ConstrainedBox(
