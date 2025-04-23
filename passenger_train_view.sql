@@ -26,13 +26,12 @@ CREATE VIEW "passenger_train_with_part" AS
 CREATE VIEW "station_with_location" AS
   select
     station.*,
-    location_id,
+    DS100,
     name_db,
     Laenge,
     Breite
   from station
-  left join ds100 on substr(replace(station_id, '_x0020_', ' '), 2) = ds100.DS100
-  left join station_location using (location_id)
+  left join station_location on substr(replace(station_id, '_x0020_', ' '), 2) = station_location.DS100
 ;
 
 CREATE VIEW "passenger_station" AS
