@@ -166,6 +166,7 @@ def main():
         )
         train_parts[train_part_id] = train_part
         ocps_tag = curr_train_part.find(f"{NAMESPACE}ocpsTT")
+        stop_sequence = 1
         for curr_ocp in ocps_tag:
             if curr_ocp.attrib['ocpType'] == 'pass':
                 continue
@@ -183,10 +184,11 @@ def main():
             stops.append(Stop(
                 train_part=train_part,
                 station=station,
-                sequence=sequence,
+                sequence=stop_sequence,
                 arrival=arrival,
                 departure=departure,
             ))
+            stop_sequence += 1
 
     trains_tag = tt.find(f"{NAMESPACE}trains")
     trains = {}
