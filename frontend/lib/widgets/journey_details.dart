@@ -3,8 +3,8 @@
 
 import 'package:dtakt_fahrplan_frontend/util/product_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../generated/l10n/app_localizations.dart';
 import '../models/journey.dart';
 import '../models/types.dart';
 import '../util/format_duration.dart';

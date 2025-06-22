@@ -2,9 +2,9 @@
 // SPDX-License-Identifier: MIT
 
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
+import '../generated/l10n/app_localizations.dart';
 import '../models/search_parameters.dart';
 import '../models/types.dart';
 import '../util/responsive.dart';

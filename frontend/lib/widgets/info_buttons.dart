@@ -3,9 +3,9 @@
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../generated/l10n/app_localizations.dart';
 import '../models/journey.dart';
 import '../models/types.dart';
 import '../util/environment.dart';

@@ -5,10 +5,10 @@ import 'package:dtakt_fahrplan_frontend/util/responsive.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import 'package:provider/provider.dart';
 
+import 'generated/l10n/app_localizations.dart';
 import 'models/search_parameters.dart';
 import 'models/types.dart';
 import 'widgets/info_buttons.dart';
