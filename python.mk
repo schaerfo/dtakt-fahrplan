@@ -4,5 +4,5 @@
 python: .python
 
 .python: pyproject.toml poetry.lock
-	poetry install --sync
+	poetry sync
 	touch .python
