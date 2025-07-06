@@ -1,0 +1,671 @@
+name,DS100,Laenge,Breite,osm_id,osm_name
+Basel SBB,XSB,7.5896417,47.5476225,3080746011.0,Basel SBB
+Bft Einf SBB PB,RXBA,,,,
+Stuttgart Flughafen NBS,TFL N,9.1924211,48.692426,8372657436.0,Stuttgart Flughafen Fernbahnhof
+Stuttgart Hbf,TS F,9.1821173,48.7842663,6242866774.0,Stuttgart Hauptbahnhof
+Üst Richterich,KRIC,,,,
+Alsdorf-Mariagrube,KMAG,6.1853578,50.8663192,523027110.0,Mariagrube Maf
+Alsdorf-Hoengen,YKHOE,6.2122024,50.8686201,91834039.0,Hoengen
+Alsdorf-Hoengen Gewerbegebiet,YKHOEG,,,,
+Siersdorf,KSIE,6.2267319,50.8982624,9941817.0,Siersdorf
+Baesweiler-Setterich,YKSET,6.2035269,50.9228939,171416.0,Setterich
+Baesweiler Gewerbegebiet,YKBASG,6.1738707,50.9191355,613398621.0,Gewerbegebiet ITS
+Baesweiler Carl-Alexander-Park,YKBASC,6.1583687,50.9086087,3393059.0,Carl-Alexander Park
+Emmerich Grenze,EXEM,6.1665657,51.8407809,2385169282.0,Grenze Bundesrepublik Deutschland/Niederlande
+Zevenaar,XNZV,6.0775263,51.9279081,417702.0,Zevenaar
+Arnhem,XNAH,5.8762345,52.0056642,272939.0,Arnhem
+Jena Burgau,YUJB,11.593222,50.8967027,3424024.0,Burgau
+Binz LB,XBINZLB,13.6109363,54.3923739,5261023408.0,Binz LB
+Jagdschloß,XJAGD,13.6250811,52.2982658,24336890.0,Jagdschloss
+Garftitz,XGARF,13.6421498,54.3694529,332074556.0,Garftitz
+Sellin (Rügen) West,XSELLW,,,,
+Sellin (Rügen) Ost,XSELLO,13.6988792,54.3712554,376224508.0,Sellin-Ost
+Baabe,XBAAB,13.7043671,54.3602126,1437797.0,Baabe
+Philippshagen,XPHS,13.706913,54.331315,2730583112.0,Philippshagen
+Göhren (Rügen),XGOE,13.7184611,54.3287284,190633415.0,Rugen
+Berlin-Schöneberg Bbf,BSBB,13.336329,52.496107,2878157401.0,Mellenthin Schmidt bbf
+Berlin-Düppel,BDP,13.2400309,52.4260371,79995218.0,Justizvollzugsanstalt Düppel
+Europarc (Dreilinden),YBEUP,13.1881368,52.4063125,797808872.0,Europarc Dreilinden
+Birkenwerder,BBI,13.2831336,52.6884408,1310088.0,Birkenwerder
+Wankendorf,AWD,10.2049631,54.1126768,310415.0,Wankendorf
+Liege-Guillemins,XBLIG,5.5664376,50.6243164,1235738044.0,Liège-Guillemins
+Bruxelles-Nord,XBBN,4.3608851,50.8603888,31093284.0,Brussel Noord - Bruxelles Nord
+Bruxelles-Midi,XBB,4.3362419,50.8356748,17401552.0,Bruxelles-Midi - Brussel-Zuid
+München Hbf Bfplatz,MHBP,,,,
+München Marienhof,MMHO,11.5762099,48.138639,10180597915.0,Marienhof
+München Ost tief,MOPT,,,,
+Heerlen,XNH,5.9815066,50.8775239,406105.0,Heerlen
+Landgraaf,XNLG,6.0293103,50.9024566,406384.0,Landgraaf
+XNEM,XNEM,,,,
+Hof Mitte,YNHOM,13.4135828,52.51868,4974583270.0,Amtsgericht Mitte
+Forbach,XFFB,6.8958562,49.1862822,1162548.0,Forbach
+Paris Est,XFPO,2.3594905,48.8770979,2506241285.0,Paris Gare de l'Est
+Abzw Waldhausen,HWHN,10.2311449,49.2370225,9900803722.0,Abzw. Rothof
+Birkengrund,BBGN,13.2720337,52.3158955,1169704080.0,Birkengrund
+Schaffhausen,RSCF,8.634513,47.6960491,1683703.0,Schaffhausen
+AKSG,AKSG,,,,
+Kiel-Gaarden Hp,AKGA,,,,
+AKWD,AKWD,29.833333,19.05,7731290305.0,Jabal Nuşub Akoda
+AFFB,AFFB,,,,
+Bft Bergedf Gbf,ABG G,,,,
+Merzbrück,KSME,6.2040024,50.8235581,428548471.0,Merzbrück
+Eschweiler-St. Jöris,KSJ,6.2019318,50.8351319,2917414153.0,Eschweiler-St.Jöris
+Barby,LBY,4.3129272,49.5217295,3258139.0,Barby
+Bft Gütergl Gks,LGK S,,,,
+Ingolstadt Nord Audi,MINA,11.4226207,48.7843602,29205372.0,N30
+Hürth-Fischenich,YKHF,6.8929108,50.8576404,276057965.0,Fischenich
+Köln-Klettenberg,YKKKL,6.9265085,50.8907866,370566.0,Köln-Eifeltor;Köln-Klettenberg
+Köln Weißhausstr.,YKKWS,6.9360156,50.919382,1367727578.0,Weißhausstraße
+Köln Aachener Str.,YKKAAS,6.6975158,50.9363468,7920892.0,Köln-Aachener-Straße
+Vilkerath,YKVIR,7.3191637,50.9616795,295195290.0,Vilkerath
+Kierspe,YEKIS,7.6006513,51.1278531,168557.0,Kierspe
+Abzw Pommelsbr,NPOM,,,,
+Höltinghausen,HHOE,8.1258968,52.8601723,304322211.0,Höltinghausen
+Neu Ulm Industrie,YNEU,10.0108288,48.3947288,108799424.0,Ecodrom Kartbahn Neu-Ulm
+Burlafingen,YBUR,10.0693397,48.4135573,9584119.0,Burlafingen
+Jettingen Hp,YMJETH,,,,
+Bft A Hirbl Str,MAHI,,,,
+Klein Reken,EKREK,7.0381773,51.7867359,34078997.0,Klein Reken
+Elmschenhagen Ost,AKEO,,,,
+Schwentinental Gutenbergstraße,ARSO,10.2161803,54.2880543,150792269.0,Gutenbergstraße
+Preetz Nord,APZN,,,,
+Preetz Krankenhaus,APZK,10.2777504,54.2391841,554647012.0,Erweiterung Krankenhaus
+Reg-Walhallastr.,NRWA,,,,
+Reg-Wutzlhofen,NRWU,,,,
+Regenstauf-Diesenbach,YNRGFD,12.1173358,49.1316505,46909406.0,Diesenbach
+Ponholz,NPO,12.0999347,49.1672764,148887407.0,Ponholz
+Hamburg-Altona Nord,AAN,9.94472,53.5614,183607.0,Altona-Nord
+Frankfurt (Main) Hbf Fernbahn,YFFF,,,,
+Linz Hbf,XAL,14.2918619,48.2902408,215682892.0,Linz Hauptbahnhof
+St. Pölten Hbf,XAP,15.6246812,48.2082798,2465563392.0,St.  Pölten Hauptbahnhof
+Wien Meidling,XAWG,16.3339652,48.1745297,66432827.0,Wien Meidling
+Wien Hbf ,XAWBF,16.3779391,48.1849883,1839787470.0,Wien Hauptbahnhof
+Hüttengrund     Awanst,UHGR,11.1973278,50.3834973,3066794481.0,Hüttengrund (Awanst)
+Görsdorf (Thür.),YUGDF,10.9575674,50.3737881,11078127883.0,Görsdorf (Thür)
+Tiefenlauter,YNTFL,10.9698222,50.336172,310004357.0,Tiefenlauter
+Zoobrücke,KKZO,6.9761086,50.9541083,583391209.0,Zoobrücke
+Gruiten Hp,KGUH,7.010356,51.214573,4565955908.0,Haan-Gruiten
+Köln-Humboldt/Gremberg,YKKHG,7.0076759,50.9256036,2613740.0,Humboldt/Gremberg
+Köln-Poll,YKKPO,7.0008194,50.9084322,443949.0,Köln-Poll
+Köln Bonntor,KKBT,6.9527445,50.9163838,3190285956.0,Köln Bonntor
+Abzw Berliner   Straße,KKMN,7.3346981,49.3412907,906645377.0,Abzw. Berliner Straße
+Aš,XTAS,12.1895886,50.2216257,439457.0,Aš
+Hazlov,XTHAZ,12.2723776,50.1563411,439467.0,Hazlov
+Vojtanov obec,XTVO,12.3131605,50.1623376,33153063.0,Vojtanov obec
+Františkovy Láznĕ,XTF,12.3488519,50.1223741,439479.0,Františkovy Lázně
+Františkovy Láznĕ Aquaforum,XTFA,12.3590365,50.1169154,832574155.0,Františkovy Lázně-Aquaforum
+Cheb,XTCH,12.3703526,50.0793511,439454.0,Cheb
+Schönwalde (Barmim) Bf,BSWHN,,,,
+Mühlenbeck (b Berlin),BMK,,,,
+Schildow-Mönchmühle,BSCM,,,,
+Schildow,BSCW,13.377057,52.6355634,10603012.0,Schildow
+Berlin Wilhelmsruher Damm,BMWD,13.3672402,52.5965954,30831795.0,Berlin-Wilhelmsruher Damm
+München Poccistr.,YMPS,11.5502436,48.1254879,2644689622.0,Poccistraße
+Kufstein,XAKN,12.1692134,47.582996,85918.0,Kufstein
+Salzburg Hbf,XASB,13.045853,47.8130618,302097253.0,Salzburg Hauptbahnhof
+Hahnenfurth-Düssel,YKHD,7.0554244,51.2539836,8224122274.0,Hahnenfurth/Düssel
+Binsfeld,KBIN,6.7055682,49.9637377,1259124.0,Binsfeld
+Bubenheim,KBUB,8.1185166,49.6278195,1254388.0,Bubenheim
+Jakobwüllesheim,KJAK,6.5594104,50.7631926,173820968.0,Jakobwüllesheim
+Domažlice,XTDO,12.9298338,49.4407069,438629.0,Domažlice
+Česká Kubice,XTC,12.8587956,49.369376,439255.0,Česká Kubice
+Furth i W Grenze,NXFU,12.8451436,49.3079592,154234597.0,"Landestormuseum ""Heimat – Grenze – Drache"""
+Abzw Horchh Br,KHBR,,,,
+Rurich,KRUR,6.27117,51.0139679,78349634.0,Rurich
+Körrenzig,KKRR,6.282195,51.0010601,28449575.0,Körrenzig
+Linnich Bbf,YKLINB,,,,
+Kostrzyn,XPK,17.2275394,52.3983662,2698546.0,Kostrzyn
+Grafenwiesen,GRAF,12.8803839,49.2012054,959886.0,Grafenwiesen
+Hohenwarth Campingplatz,NHWC,12.9248023,49.2049059,275249918.0,Hohenwarth Campingplatz
+Arrach,NAAR,12.993517,49.191712,959919.0,Arrach
+Frahelsbruck,NFRB,13.0331642,49.1937139,355151728.0,Frahelsbruck
+Lindau-Reutin,MLIR,9.7031148,47.5524552,4815522994.0,Lindau-Reutin
+Bad Neuenahr Mitte,YKNEBM,7.1455794,50.549062,1170629439.0,Bad Neuenahr-Mitte
+F048A,F048A,,,,
+Didierw Anst,NDIW,,,,
+Teublitz Anst,NTZ,,,,
+Burglengenfeld,NBF,12.03996,49.2071077,962186.0,Burglengenfeld
+Karower Kreuz (oben F),BKAK O,,,,
+Uhldingen-Mühlhofen Ort,YRUDMO,,,,
+Bft BASF Südtor,RLBST,,,,
+Neumarkt (Opf) Süd,YNNTS,11.4611403,49.2815797,205382366.0,Amtsgericht Neumarkt i.d.OPf.
+Regensburg-Klenzenbrücke,NKLE,,,,
+Andernach Süd,YKANDS,7.4064715,50.4214151,281954745.0,Andernach Süd
+Bremen Achterstr.,YHBAT,8.8598507,53.1002026,4001234.0,Achterstraße
+Bremen Universität/Technologiepark,YHBUT,,,,
+Albstadt-Laufen,TAL,8.9062684,48.2249896,2926635364.0,Albstadt-Laufen
+Schwäbisch Gmünd Ost,YTSGO,9.8364468,48.8030701,73899605.0,Schwäbisch Gmünd-Ost
+Aalen West,YTAW,10.0554832,48.824286,1663148840.0,Aalen-West
+Lyon Part Dieu,XFLPD,4.8601192,45.7605453,20842381.0,Lyon Part-Dieu
+Chalon-sur-Saone,XFCS,4.8534326,46.7831001,2078971.0,Chalon-sur-Saône
+Besancon,XFBI,6.0243622,47.2380222,103599.0,Besançon
+Belfort,XFBF,6.8628942,47.6379599,75618.0,Belfort
+Mulhouse-Ville,XFMV,7.342934,47.7417759,3808763779.0,Mulhouse-Ville
+Strasbourg,XFSTG,7.7507127,48.584614,71033.0,Strasbourg
+Potsdam Pirschheide (oben),BPHO,,,,
+Trier Hafenstraße,YSTRH,6.6822801,49.7913394,1264976823.0,Trier Hafenstraße
+Coburg-Beiersdorf,YNCB,10.9307939,50.2865335,8602926558.0,Coburg-Beiersdorf
+Bln-Marzahn,BMAR,,,,
+Schwaigerloh,MSL,11.8309533,48.3521505,5927447655.0,Schwaigerloh
+Bft Bonn Gbf,KB  G,,,,
+Volkach,NVOL,10.2261848,49.8656925,284500.0,Volkach
+Escherndorf,NESC,10.1738952,49.861478,360020751.0,Escherndorf
+Eisenheim,NEIS,10.1656881,49.8897929,182343.0,Eisenheim
+Prosselsheim,NPRO,10.1265733,49.8639445,182344.0,Prosselsheim
+Münster Halle Münsterland,YEMHML,7.6374563,51.9469017,25640695.0,Halle Münsterland
+Münster-Loddenheide,YEMLH,7.6489385,51.9348218,141423028.0,Loddenheide
+Gremmendorf WLE,EGMD,,,,
+Angelmodde,YEAGM,7.7048406,51.9174086,3719218.0,Angelmodde
+Wolbeck WLE,EWBC,,,,
+Kellinghusen,AKG,9.7188996,53.949549,450224.0,Kellinghusen
+Neckarsulm AVG,TN  G,9.2194872,49.1888033,3202251805.0,Neckarsulm AVG
+Braunschweig West,HBSW,10.4901773,52.2370527,9071752515.0,Braunschweig West
+Apen,HAP,7.8097336,53.2214255,1187347.0,Apen
+Geretsried Süd,MGES,11.4816483,47.8508503,9425771916.0,Geretsried Süd
+Geretsried Mitte,MGEM,11.4621595,47.8724554,9425772652.0,Geretsried Mitte
+Geltingen,MGEL,4.3625475,52.0783923,7473378.0,Baron van Geltingenlaan
+Merklingen,TMKL,9.7557738,48.5101058,2772187.0,Merklingen
+Flensburg Alter Bf,AFHF,,,,
+Flensburg Schulen/Exe,YAFSE,9.4304626,54.7805463,4385863963.0,"Berufsfachschule Holzbildhauerei, Werkkunstschule Flensburg"
+ANW,ANW,-99.9889935,42.5730157,697420052.0,Ainsworth Regional Airport
+Venlo,XNVL,6.1511724,51.3924489,405106.0,Venlo
+Albersloh,EABL,7.7332412,51.8679353,56275496.0,Albersloh
+Sendenhorst WLE,ESDH,,,,
+Itzehoe-Alsen,AALS,9.5033368,53.909049,12765776546.0,Itzehoe Alsen
+Frankfurt Flughafen Terminal 3,YFFLT3,8.5786581,50.0300498,507852946.0,Terminal 3
+Frankfurt-Fechenheim,FFFE,8.7693856,50.123015,3339222.0,Fechenheim
+Frankfurt Bergen-Enkheim,YFBEK,8.7473928,50.1395666,31998331.0,Frankfurt-Bergen-Enkheim
+Frankfurt Berger Höhe,YFBEH,,,,
+Bad Vilbel-Gronau Süd,YFGRS,,,,
+Neermoor,HNEM,7.4418682,53.3067155,14968556.0,Neermoor
+Eckernförde Süd,AECS,9.8552087,54.4575301,106165707.0,Sperrgebiet Eckernförde-Süd
+Eckernförde Nord,AECN,9.867354,54.4750372,30541336.0,Kaserne Nord
+Eutingen Nord Hp,YTETN,,,,
+Münster-Preußenstadion 2931,YEMBF,7.6260706,51.9305271,194798090.0,Preußenstadion
+Hamm-Westtünnen,YEHAT,7.858809,51.6503902,1282002356.0,Hamm-Westtünnen
+Adendorf,AADF,10.4392992,53.281748,1392133.0,Adendorf
+F-Ginnheim,FFGI,8.6498558,50.143081,4097527.0,Ginnheim
+Köln-Bocklemünd,YKBOC,6.8504253,50.9754577,364223.0,Köln-Bocklemünd
+Pulheim Gewerbepark,YKPIN,,,,
+Grevenbroich Süd,YKGRS,6.6211189,51.0748028,235641243.0,Grevenbroich-Süd
+Bft Os Hbf Schnk,HO  S,,,,
+Sudmühle,ESDM,7.6871135,51.9939766,31056446.0,Sudmühle
+Schkeuditz Ost,LSDO,12.2249368,51.4015315,26851133.0,Oststraße
+Bft H Steintorbf,LHST,,,,
+Vehrte,HVEH,8.1532691,52.3410311,6045609425.0,Vehrte
+Belm,HBEM,8.1247011,52.3029003,1819474.0,Belm
+Lörrach Zentralklinikum,RLZK,7.7097065,47.6415253,1117613136.0,Zentralklinikum Lörrach
+Lübeck Moisling,ALM,10.6338837,53.8372025,11396227051.0,Lübeck-Moisling
+Ffm Ost tief,YFFOT,,,,
+Münster Danziger Freiheit,YEMM,7.6582048,51.9671022,814891820.0,Warendorfer Straße
+Rosdorf,HRDF,9.7272251,53.9776685,450223.0,Rosdorf
+Purkshof Hp,WPKH,,,,
+Bft Os Hbf Vorb,HO  N,,,,
+Schwetzingen Nord,YRSZN,8.5618978,49.4004393,1462156813.0,Schwetzingen-Nord
+Schwetzingen-Hirschacker,YRSZH,8.5571199,49.4060806,1127452164.0,Schwetzingen-Hirschacker
+Bft Heidingsf. O,NWHO,,,,
+Frankfurt-Nied Ost,FFNDO,,,,
+Abzw Mz Landstr,FMLA,,,,
+Bad Vilbel-Massenheim,YFVLM,8.7207875,50.1906783,3297970.0,Massenheim
+Frankfurt Nieder-Erlenbach,YFNIEE,8.7119602,50.2026088,3299379.0,Nieder-Erlenbach
+Frankfurt-Harheim Ost,YFHAO,,,,
+Frankfurt-Harheim West,YFHAW,,,,
+Frankfurt Nieder-Eschbach,YFNE,8.6665757,50.2017654,3342011.0,Nieder-Eschbach
+Frankfurt Ober-Eschbach,YFOE,8.652699,50.2158445,2435290934.0,Comfort Business Apartment Frankfurt
+Bad Homburg Gonzenheim,YFHOG,8.6211242,50.2200212,4203880589.0,Bad Homburg
+Eschborn Ost,FESO,8.5796057,50.1381983,488858373.0,Eschborn-Ost
+Düsseldorfer Str.,FDUS,13.3239297,52.4952225,231883017.0,Düsseldorfer Straße
+Dunantsiedlung,FDR,,,,
+Höchst Stadtpark,FHOEP,8.5560866,50.1114295,8079333.0,Höchster Stadtpark
+Industriepark Ost,FIPO,13.2677386,52.3237778,4491392.0,Industriepark-Ost
+Industriepark Süd,FHIS,8.4345815,49.451517,261445507.0,Industriepark Süd
+Mörfelder Landstraße,YFMFL,8.6788827,50.0939897,926255419.0,Mörfelder Landstraße
+Wilhelm-Leuschner-Strasse,YFNISL,13.0994092,52.4119545,10423052.0,Wilhelm-Leuschner-Straße
+Neu Isenburg Zentrum,YFNISSTD,8.6989594,50.0506068,52470387.0,Parkhaus (Nord) Isenburg-Zentrum
+Neu-Isenburg Am Trieb,YFNIST,8.7064176,50.0533754,39585906.0,Am Trieb
+Neu-Isenburg Birkengewann,YFNISB,8.7110588,50.0510239,237524786.0,Birkengewann
+Laatzen Mitte,HLM,9.8152498,52.3053869,11623875.0,Laatzen-Mitte
+Hildesheim-Marienburg,HMBR,9.9787669,52.1127791,9570750610.0,Marienburg
+Karower Kreuz (unten),BKAK U,,,,
+Güdingen Hp,SGD,,,,
+Rendsburg-Seemühlen,YARSM,9.6161636,54.311916,18335011.0,Seemühlen
+Sarreguemines,XFSM,7.0708865,49.1094836,90243.0,Sarreguemines
+Bregenz,XAB,9.7472924,47.5025779,75073.0,Bregenz
+Döbeln Zentrum,DDEZ,13.1064555,51.1252452,224383594.0,Feuerwehrtechnisches Zentrum
+AENG,AENG,11.1731945,61.777025,3745355450.0,Åeng
+Hiltersdorf,NHIL,11.9392132,49.4304791,289742012.0,Hiltersdorf
+Konstanz Grenze,RXKZ,8.7170814,47.691865,3029799806.0,Grenze
+Oberreitnau,YMOB,9.6831748,47.5932325,148427488.0,Oberreitnau
+Weißenberg,YMWEB,14.658726,51.1968328,1309659.0,Weißenberg
+Bk Schlachters,MSLS,9.746292,47.5880912,148477652.0,Schlachters
+Hergensweiler,MHGW,9.7770643,47.6111666,959435.0,Hergensweiler
+Praunheim,FGEP,8.6215134,50.1507958,3342354.0,Praunheim
+Swinoujscie Centrum,XPSM,14.2335224,53.9146048,272323973.0,Świnoujście Centrum
+Enschede Hp,XNES,,,,
+Bonn-Vilich Hp,KVIL,,,,
+Ramersdorf Hp,KRAM,,,,
+Langendorf,WLDF,13.5092561,49.1962745,439231.0,Dlouhá Ves
+Tannenheim,WTAN,21.70525,53.54236,31570571.0,Wielki Las
+Pruchten,WOPR,12.675384,54.3773772,374277.0,Pruchten
+Zingst,DSWOP,12.6821366,54.4387302,374275.0,Zingst
+Prerow,WOP,12.5660206,54.445906,374252.0,Prerow
+Münster-Kinderhaus,YEMKI,7.6025935,51.9942949,3857115.0,Kinderhaus
+Krefeld Obergplatz,KKRP,6.5379491,51.3296808,810227237.0,Obergplatz
+Ge-Buer Nord,EGBN,7.0455599,51.5663823,6960336159.0,GE-1064
+Abzw Westerholt,EWSH,,,,
+Hohenebra,UHO,10.8141467,51.3062925,849487322.0,Hohenebra
+Ko Mosel Gbf,KKOM,,,,
+Kilchberg,TKC,8.5459483,47.3225316,1682152.0,Kilchberg (ZH)
+S002H,S002H,,,,
+Trier-Euren,SEU,6.6122715,49.7380689,11816904219.0,Trier-Euren
+Trier West,STRW,6.6236823,49.7516361,805000058.0,Trier West
+Bft Ehrang Süd,SEG S,,,,
+Bft Ehrang Mitte,SEG M,,,,
+Jägerhaus Hp,MJGS,8.5475622,49.5804823,1973925463.0,Jägerhaus
+Verliehausen,HVLH,9.6695362,51.6137264,1252536870.0,Verliehausen
+Verl/Bz Detmold,EVR,,,,
+Verl Eiserstraße,YEVRE,8.4669592,51.8761526,88582839.0,Eiserstraße
+Gütersloh-Spexard,EGLS,8.4090922,51.8826206,2305380311.0,Spexard
+Gütersloh Welle,YEGLW,8.4054367,51.8969766,1772767743.0,Die Welle
+Gütersloh Carl-Miele-Straße,YEGCMS,8.3878612,51.912452,24285373.0,Carl-Miele-Straße
+Gütersloh Nord,EGLN,8.3872415,51.9091312,41829591.0,Gütersloh Nord
+Blankenhagen,EBKH,12.3416938,54.1707198,393348.0,Blankenhagen
+Marienfeld (Westf),EMFD,,,,
+Harsewinkel,EHWK,8.2252425,51.9617153,138702.0,Harsewinkel
+Scharnitz,XAA,11.2647993,47.3902687,122794.0,Scharnitz
+Ehrwald (Zugspitzbahn),XAEZ,10.9136298,47.4095316,2991585248.0,Ehrwald-Zugspitzbahn
+Lermoos,XALM,10.8877611,47.3989427,37839.0,Lermoos
+Lähn,XALN,8.3363118,50.5514354,412935.0,Lahn
+Bichlbach-Berw.,XABI,,,,
+Bichlbach-Almk,XABIA,,,,
+Heiterw-Plansee,XAHP,,,,
+Reutte Schulzentrum,XARTS,10.7249315,47.4914827,3999080605.0,"Reutte, Schulzentrum"
+Reutte in Tirol,XART,10.7215867,47.493097,2992481871.0,Reutte in Tirol
+Pillach,XAPL,,,,
+Musau,XAMU,10.6707332,47.5348549,28756.0,Musau
+Ulrichsbr-Füssen,XAU,10.6644896,47.5429925,933006774.0,Ulrichsbrücke-Füssen
+Vils,XAV,12.6112678,48.5725793,409111.0,Vils
+Schönbichl,XASBL,12.0312352,46.8463384,3700210323.0,Schönbichl - Bel Colle
+Igel Grenze,SXIG,,,,
+Wasserbillig,XLW,6.5013499,49.7143407,95782558.0,Wasserbillig
+Salmrohr,SSMR,6.8461724,49.9279358,11323305865.0,Salmrohr
+Kaufbeuren-Neugablonz,YMKNG,10.6495704,47.9002091,21452083.0,Kaufbeuren / Neugablonz
+Kaufbeuren Nord,YMKFN,10.8622329,48.0737856,2493804140.0,Automobilforum Kaufbeuren – Landsberg
+Marktoberdorf Nord,YMMON,10.6169276,47.7903021,9698349117.0,"Marktoberdorf, Nord"
+Stadt Füssen,MAFU,10.6994589,47.5665982,523126186.0,Museum der Stadt Füssen
+Osnabrück Rosenplatz,HORS,8.0509711,52.26558,768967628.0,Rosenplatz
+Buxheim,MBUX,10.1325355,48.0005416,114083.0,Buxheim
+Memmingen Klinikum,YMMKL,10.169301,47.9835569,1112494074.0,Klinikum
+Memmingen-Amendingen,YMMAN,10.1781597,48.0044859,115216425.0,Amendingen
+Heimertingen,MHMG,10.1570671,48.0368466,958632.0,Heimertingen
+Fellheim,YMFEM,10.1527079,48.0732097,958631.0,Fellheim
+Pleß (Iller),MPLI,10.1561346,48.1187418,499313137.0,Bahnradweg Iller-Roth-Günz
+Senden Nord,MSEDN,7.4883046,51.8549598,157741.0,Senden
+TBO T,TBO T,1.1140809,41.1449543,10803802577.0,TBO
+Dĕčín hl.n.,XTD,14.201296,50.7734783,5062517821.0,Děčín hlavní nádraží
+Dĕčín-Přípeř Hp,XTDPR,,,,
+Dĕčín-Prostřední Žleb,XTDP,14.2306016,50.7937727,5662733287.0,Děčín-Prostřední Žleb
+Dĕčín-Čertova voda Hp,XTDC,,,,
+Dolní Žleb za Hp,XTDZ,,,,
+Dolní Žleb,XTDL,14.2161609,50.8418233,1598927193.0,Dolní Žleb
+Mittelndorf Hp,DMDF,,,,
+Dolní Poustevna,XTDA,14.2873374,50.9803948,439584.0,Dolní Poustevna
+Kyritz Nord,WKYN,,,,
+Falkenhagn DB-Gr,WFAG,,,,
+Falkenhagen (Pr),WFA,12.2062039,53.207665,5734834815.0,Falkenhagen (PR)
+Meyenburg BB/MV,WQME,,,,
+Wendessen,HWEN,10.5852732,52.1562569,1729696.0,Wendessen
+Büren/Eversburg,HBEVE,,,,
+Büren-Kromschröder,HBKRO,7.967302,52.3084599,3156190853.0,Kromschröder
+Wersen,HWRS,7.9411496,52.3138323,236954099.0,Wersen
+Westerkappeln,HWTK,7.8772237,52.3141716,155572.0,Westerkappeln
+Mettingen (Westf),HMET,,,,
+Schlickelde,HSKD,7.7520244,52.3310813,471240556.0,Schlickelde
+Recke-Espel,HRES,7.739656,52.3386666,471240555.0,Espel
+Recke,HRKE,7.7175072,52.3702697,155638.0,Recke
+Seifhennersdorf,DSFH,14.6092022,50.9346533,418708.0,Seifhennersdorf
+Varnsdorf-pivovar Kocour,XTVK,14.6042648,50.9185717,12844977333.0,Varnsdorf–pivovar Kocour
+Varnsdorf staré nádraží,XTSVD,14.612838,50.9098567,9992566441.0,"Varnsdorf, staré nádraží"
+Varnsdorf,XTVD,14.6194058,50.9124244,439609.0,Varnsdorf
+Hrádek n. N.,XTHR,15.72645,50.3300284,8576423749.0,"Cerekvice nad Bystřicí, Hrádek"
+Salzgitter-Fredenberg,YHSFB,10.3009127,52.1458026,129966180.0,Fredenberg
+Leiferde West,HLFW,,,,
+Rüningen,HRUE,10.5015414,52.220655,235634021.0,Rüningen
+Umrathshsn.Bf Hp,MURB,,,,
+Braunschweig-Kralenriede,YHBSKR,10.5382962,52.3038665,68701564.0,Kralenriede
+Bienrode,HBRD,10.5284859,52.3191304,68698491.0,Bienrode
+Isenbüttel,HIB,10.5783233,52.4362812,1357837.0,Isenbüttel
+Bad Empfing,MBEP,12.6399475,47.8812674,5351501638.0,Empfing
+Hengelo,XNHL,6.7924049,52.2658726,404388.0,Hengelo
+Oldenzaal,XNOD,6.9241615,52.3116616,415447.0,Oldenzaal
+Weissach,TWSS,8.9273862,48.8467574,722149.0,Weissach
+Wolfsburg West,YHWOW,10.7373762,52.4212999,272913542.0,Wolfsburg-West
+Finsterbach,YMFIB,13.9190176,46.6753753,11982261.0,Finsterbach
+Szczecin Gu.,XPSU,,,,
+Szczecin Glowny,XPSG,14.5521073,53.4193238,53212530.0,Szczecin Główny
+Feldolling,YMFD,11.8559291,47.8955872,479246641.0,Feldolling
+Rosenheim Aicherpark,YMROA,12.0883297,47.8514981,642904702.0,Rosenheim Aicherpark
+Hagenwerder Gre,DXHW,,,,
+Horka Mitte Hp,BHRM,,,,
+Bad Kreuznach Pfingstwiese,YSBKNP,7.8676987,49.8517388,528506651.0,Pfingstwiese
+Bad Kreuznach Rheingrafenstr.,YSBKNR,7.8447691,49.8104179,149272088.0,Rheingrafenstraße
+Sarnau,FSR,18.20066,51.06256,692611711.0,Sarnów
+Nordhorn-Blanke,YHNDB,7.0747736,52.4169928,4957525273.0,Nordhorn-Blanke
+Neuenhaus Süd,YHNEHS,6.9624841,52.4898406,128595101.0,Neuenhaus Süd
+Karlovy Vary,XTKV,12.8701437,50.2306216,439482.0,Karlovy Vary
+Beuchow,XBEU,13.9034987,51.848385,5624368.0,Beuchow
+Posewald Hp,XPOSE H,,,,
+Seelvitz,XSEEL,13.5614887,54.3675675,450022741.0,Seelvitz
+Serams,XSER,13.5885425,54.3778071,332345406.0,Serams
+Weener Gr,HXWE,,,,
+Matting Ausw.,NMAH,,,,
+Hamlar,MHAM,10.8275271,48.6953234,271928565.0,Hamlar
+Lollar Nord,YFLOLN,8.720976,50.6641715,1770439318.0,Staufenberg-Nord Lollar-Nord
+Daubringen,YFDAU,8.7382348,50.6513795,14286268.0,Daubringen
+Mainzlar,FMAI,8.7440006,50.6601021,14286269.0,Mainzlar
+Treis,YFTR,8.7857719,50.6680837,13765313.0,Treis
+Allendorf,YFADF,7.9982619,50.2679502,539713.0,Allendorf
+Londorf,YFLDF,8.8621774,50.6751511,295436046.0,Londorf
+Nieuwe Schans,XNNS,5.4966049,51.8373481,44041174.0,Nieuwe Schans
+Bunde,HBUD,7.2695448,53.184017,1255784.0,Bunde
+Ihrhove,HIHV,7.4550939,53.1696945,1343496189.0,Ihrhove
+Steilküste / Wittenbeck,XSTEI,11.7944136,54.144748,71502974.0,Steilküste
+Heiligendamm,XHEI,11.842199,54.1423664,1577748241.0,Heiligendamm
+Freiberg DB-Gr,DFRG,12.2550432,50.3218867,70914682.0,Graben
+Plesná Hp,XTPLA,,,,
+Vojtanov,XTV,12.3168787,50.168417,438944.0,Vojtanov
+Žírovice-Seníky,XTZS,12.3353168,50.1479918,263691648.0,Žírovice-Seníky
+Tršnice,XTTR,12.3877057,50.1134692,424429.0,Tršnice
+Eich (Sachs),DEI,12.3401918,50.5457575,11668633770.0,Eich (Sachs)
+Muldenberg,DMB,12.3996339,50.4150504,15731788.0,Muldenberg
+Klingenthal Gre,DXK,,,,
+Lichtenfels West,YNLFW,8.7815184,51.1524866,6169743408.0,West
+Weiden (Oberpf) Nord,YNWDON,,,,
+Marktredwitz Süd,YNMRS,12.1097084,50.0057736,177605112.0,Marktredwitz-Süd
+Wiesbaden-Dotzheim,FW  D,8.2140305,50.0600493,28463258.0,Wiesbaden-Dotzheim
+Chausseehaus,FCH,8.1695393,50.097218,8403169645.0,Chausseehaus
+Eiserne Hand,FEH,11.4834592,53.9134487,1048849051.0,Eiserne Hand
+Hahn-Wehen,FHWE,8.171606,50.1432996,901589109.0,Eschbachtal bei Wehen
+Bad Schwalbach,FBSB,8.071992,50.141688,1734859.0,Bad Schwalbach
+Obermarchtal,YTOBM,9.5692149,48.2327187,2803465.0,Obermarchtal
+Untermarchtal,YTUNTM,9.6112511,48.2411597,2803466.0,Untermarchtal
+Dintenhofen,YTDINT,9.7124665,48.2522292,98816403.0,Dintenhofen
+Dettingen,YTDET,8.9343816,48.4368485,6682478.0,Dettingen
+Balubeuren-Weiler,YTBLW,,,,
+Niederarnbach,MNAR,11.326977,48.6438593,220588933.0,Niederarnbach
+Traben-Trarbach Schule,YSTTS,7.107241,49.9416954,797889451.0,Gymnasium Traben-Trarbach
+Perl-Grenze,SXPE,6.3808234,49.467208,8149497719.0,Tod an der Grenze 1939
+Langenneufnach,MLFN,10.6064224,48.2646867,935164.0,Langenneufnach
+Wollmetshofen,MWOH,10.617246,48.2829545,291071189.0,Wollmetshofen
+Fischach,MFIS,10.6554555,48.2902043,968903.0,Fischach
+Margertshausen,MMGH,10.7092968,48.3097837,282689801.0,Margertshausen
+Trier Nord,STR N,6.653458,49.7673956,172614.0,Nord
+Reutlingen-Storlach,TREST,9.2188281,48.5103954,1346135694.0,Reutlingen Storlach
+Vitzenburg,UVZ,11.5522679,51.2986293,2406541.0,Vitzenburg
+Bft Karsdorf,UKF,,,,
+Bft Freyburg,UFB,,,,
+Flacht,FFLA,8.0495289,50.3439264,538922.0,Flacht
+Oberneisen,FONN,8.075684,50.3240344,538924.0,Oberneisen
+Hahnstätten,FHNS,8.0689303,50.3048012,538926.0,Hahnstätten
+Zollhaus (Nass),FZO,8.0619982,50.2891172,1350794136.0,Zollhaus (Nass)
+Rückershausen,FRU,8.2990999,50.9512519,978541822.0,Rückershausen
+Kettenbach,FKET,8.078519,50.2462544,1482812.0,Kettenbach
+Michelbach (Nass),FMIB,,,,
+Hohenstein (Nass),FHST,8.0513855,50.1968443,292949078.0,Hohenstein (Nass)
+Rohrbach,NRB,7.2655417,49.0460974,122809.0,Rohrbach-lès-Bitche
+Reutlingen Bösmannsäcker,TREBO,9.1951051,48.4949227,1549533007.0,Reutlingen Bösmannsäcker
+Bft Tübingen Gbf,TT  G,,,,
+Bft Bendorf(Rh.),KBEN,,,,
+Bft Heidingsf. W,NWHW,,,,
+Golling-Abtenau,XAGA,13.1640565,47.6008219,2647539046.0,Golling-Abtenau
+Bischofshofen,XABO,13.2170933,47.4168029,405583.0,Bischofshofen
+St. Johann im Pongau,XASJ,13.3,47.3,533765.0,Bezirk St. Johann im Pongau
+Schwarzach-St. Veit,XASW,13.1545947,47.3185635,3508395180.0,Schwarzach-St. Veit
+Dorfgastein,XADG,13.0985967,47.2405868,539294.0,Dorfgastein
+Bad Hofgastein,XABH,13.1060635,47.1703104,969533.0,Bad Hofgastein
+Bad Gastein,XABG,13.160853,47.0871124,969550.0,Bad Gastein
+Mallnitz-Obervellach,XAMO,13.1760099,46.9817738,2095047438.0,Mallnitz-Obervellach
+Spittal-Millstättersee,XASP,13.487963,46.7958049,151074020.0,Spittal-Millstättersee
+Villach Hbf,XAVH,13.8484445,46.6186176,2507246162.0,Villach Hauptbahnhof
+Velden am Wörthersee,XAVE,14.0450583,46.6151882,106105.0,Velden am Wörther See
+Pörtschach am Wörthersee,XAPW,14.1448209,46.6359543,105936.0,Pörtschach am Wörther See
+Krumpendorf/Wörthersee,XAKR,14.2105211,46.6337743,105933.0,Krumpendorf am Wörthersee
+Klagenfurt Hbf,XAKT,14.3137028,46.6156856,3225806984.0,Klagenfurt Hauptbahnhof
+Graz Hbf,XAG,15.4171886,47.0722121,27561430.0,Graz Hauptbahnhof
+Twistesee Bbf,FTWS,,,,
+Luxembourg,XLL,6.1296751,49.8158683,2171347.0,Lëtzebuerg
+Grafling,NGF,12.9771049,48.8944283,959815.0,Grafling
+Rheinfelden-Warmbach,YRRHW,7.765418,47.5533761,496009362.0,Warmbach
+Bad Säckingen-Wallbach,YRSAEW,7.9143046,47.5665213,2165471.0,Wallbach
+Waldshut West,YRWUW,8.2405106,47.6162515,3405703516.0,Waldshut Gewerbepark West
+Sennewitz,YLSEN,11.9381314,51.5362278,2407504.0,Sennewitz
+Wörgl,XAWL,12.0637633,47.4872718,1016862.0,Wörgl
+Kamp-Lintfort,YEMOS,6.547923,51.5017981,58619.0,Kamp-Lintfort
+Kamp-Lintfort Kattenstr.,YEMOK,6.5588694,51.4969233,23480115.0,Kattenstraße
+Moers-Repelen,YKMOR,6.600662,51.4886787,10068596.0,Repelen
+Moers-Eick,YKMOEI,6.6318672,51.4820313,10068574.0,Eick
+Niederwetter,YFNW,8.7473657,50.8914043,14300276.0,Niederwetter
+Todenhausen,YFTH,8.7045769,50.9247277,14300281.0,Todenhausen
+Pohlheim Hausen,FEKB,8.7383819,50.5459056,13763801.0,Hausen
+Bad Kreuznach-Planig,SPG,7.911885,49.8624328,1630395075.0,Planig
+Niederhausen,SNH,7.7816759,49.8024019,1244038.0,Niederhausen
+SHBG,SHBG,,,,
+Hersbruck Ost,NHR O,11.406679,49.511565,74700995.0,Hirtenbühl Ost
+Maberzell Bbf,FMAB,,,,
+Wallenrod Bbf,FWAD,,,,
+Worms West,YFWORW,8.3544173,49.6347299,7172070963.0,"Worms, Hauptbahnhof West"
+Aalen-Erlau,YTAE,10.1106769,48.8293609,443112044.0,Aalen-Erlau
+Ulm Messe,YTUM,9.9905468,48.4291955,158050962.0,Fey Messe & Objektdesign
+Neumarkt-Kallham,XANK,13.7248515,48.2714962,2638017475.0,Neumarkt-Kallham
+Wels Hbf,XAWE,14.0265101,48.1659478,29056915.0,Wels Hauptbahnhof
+Gera-Liebschwitz,UGLW,12.0884531,50.8303468,956746803.0,Liebschwitz
+Bad Saarow Süd,BBSS,14.0709724,52.2708901,1127084098.0,Bad Saarow-Pieskow
+Ratheim,KRAH,6.1873388,51.0675531,27644809.0,Ratheim
+Doveren,KDOV,6.2481383,51.0491053,72852552.0,Doveren
+Simbach (Gr),MXS,,,,
+Braunau am Inn,XABR,13.039506,48.253136,86330.0,Braunau am Inn
+Ried im Innkreis,XARI,13.48839,48.2085868,415780.0,Ried im Innkreis
+Biberach Nord Hp,YTBIN,,,,
+Ummendorf,TUF,9.830392,48.0626649,2801324.0,Ummendorf
+Kirchlinteln,HKLI,9.3782295,52.9255206,1182705.0,Kirchlinteln
+Jedinngen,HVISÜ,,,,
+KA-Rheinbrücke,RKRH,8.3032981,49.0365418,88060787.0,Rheinbrücke
+Straubing Hafen,YNSTHF,12.6621491,48.8915324,18687754.0,Straubing Hafen
+Altenwalde,AAWE,8.6660852,53.8207459,280073365.0,Altenwalde
+Spieka,ASPI,8.5767936,53.7503978,313584696.0,Spieka
+Lauterbourg,XFLTG,8.1767166,48.9751103,1153513.0,Lauterbourg
+Pfennigbach,YPFE,15.9335406,47.7947694,2083511832.0,Pfennigbach
+Calw-Heumaden,TCWH,8.7639642,48.7119369,251126292.0,Heumaden
+Althengstett,TAH,8.7964545,48.7232378,933498.0,Althengstett
+Ostelsheim,TOS,8.8469262,48.726664,933496.0,Ostelsheim
+Stuttgart Mittnachtstraße,TMNS,9.1944935,48.7958263,6242866775.0,Stuttgart Mittnachtstraße
+Leiferde Ost,HLEO,10.5274535,52.2209199,704396678.0,Trakehnenstraße-Ost
+Mainschaff Nord,YFMASN,,,,
+Aschaffenburg Ost,YNAHO,9.1698465,49.9911863,114202907.0,Aschaffenburg-Ost
+Mittergars Hp,MMIG,,,,
+Wissembourg,XFWBG,7.9445109,49.0365935,1144006.0,Wissembourg
+Lünen-Alstedde,YEAS,7.4900841,51.6285541,21727823.0,Alstedde
+Dülmen West,YEDULW,,,,
+Lohr Stadt Anst,NLOS,,,,
+Gunzenhausen-Unterwurmbach,NGUG,10.7298068,49.1062453,301322243.0,Unterwurmbach
+Cronheim,MCRO,10.6638396,49.0957698,662799892.0,Cronheim
+Unterschwaningen,MUSG,10.6194832,49.0808371,534396.0,Unterschwaningen
+Auhausen Anst,MAUH,,,,
+Oettingen Anst,MOET,,,,
+Dürrenzimm. Anst,MDZ,,,,
+MNLG,MNLG,,,,
+Bbg-Friedensh Hp,LBGF,,,,
+Abst-Ebing Meßstetter Str,TAEM,,,,
+Frommern West,TFRW,,,,
+Endingen Ost,TENO,,,,
+Balingen Mitte,TBGM,8.8589232,48.2768464,30909159.0,Balingen-Mitte
+Balingen Nord,TBAN,8.8606701,48.2835686,96705122.0,Balingen-Nord
+Bisingen Steinhofen,TBST,8.9075425,48.3144223,329433047.0,Steinhofen
+Wessingen,TWES,8.938339,48.3285012,283748142.0,Wessingen
+Hechingen Süd,THSU,8.9497162,48.3354942,229874237.0,Hechingen-Süd
+Hechingen Stetten,THCS,8.9744779,48.3388067,15543900.0,Stetten
+Dußlingen Ost,TDUO,,,,
+Tübingen Steinlachwasen,TTSW,9.0666325,48.4872138,27230778.0,Steinlachwasen
+Tübingen Mühlbachäcker Ost,TTMO,,,,
+De Eschmarke Hp,XNDE,,,,
+Glanerbrug Hp,XNGB,,,,
+Wilburgstetten  Anst,MWBN,,,,
+Dinkelsbühl Anst,MDKB,,,,
+Feuchtwangen    Anst,MFWG,,,,
+Dorfgütingen Deichmann,MADG,10.3133436,49.2096339,39106739.0,Deichmannstraße
+Cossen,DCO,12.7748139,50.970547,110222788.0,Cossen
+Münster-Preußenstadion 2000/2265,YEMSTS,,,,
+Bf Geist Abzw,EGST,,,,
+Hörne Bbf,HHRN,,,,
+XFKM,XFKM,,,,
+Brm-Hucht,HBHU,,,,
+Ústí n.L.západ,XTUZ,14.029944,50.6630566,5527136611.0,Vendys & V Ústí n. L.
+Praha hl.n.,XTP,14.4360939,50.0829628,3134751791.0,Praha hlavní nádraží
+Hoppenwalde Hp,WHP,,,,
+Malchow (Meckl),WMAL,,,,
+Bft Salzb Mülln-Altstadt,XAML,,,,
+Bft Salzburg    Aiglhof,XAAI,,,,
+Bft Salzb TaxhamEuropark,XATX,,,,
+Bft Salzburg    Liefering,XASLF,,,,
+Bad Reichenhall Nord,YMBRLN,12.8899926,47.7409697,218176454.0,Umspannwerk Bad Reichenhall Nord
+Bad Reichenhall Mitte,YMBRLM,,,,
+Leck,ALK,9.4120248,45.9005485,45639.0,Lecco
+Schafflund,ASFD,9.1834465,54.7592821,1156027.0,Schafflund
+Wallsbüll,AWAL,9.2386689,54.7754859,1156035.0,Wallsbüll
+Unaften,YAUT,9.2898845,54.7749957,1731473336.0,Unaften
+Handwitt,AHWI,,,,
+Flensburg Weiche,AFW,9.3980354,54.7582655,8255705741.0,Flensburg Weiche
+Neuhausen (Filder),YTNHF,9.2704965,48.6846764,25400834.0,Filderstraße
+Sielmingen,YTSIM,9.2388785,48.6736489,18187603.0,Sielmingen
+Schwarzenacker,SSC,7.3156284,49.2838441,29512461.0,Schwarzenacker
+Homburg-Beeden,SHOB,7.3085832,49.3099335,6588242.0,Beeden
+Stendal FH Hp,LSFH,,,,
+Zgorzelec,XPZG,14.991018,51.1563185,409676.0,Görlitz
+Verden-Dauelsen,YHVD,9.2348337,52.9474084,8027648.0,Dauelsen
+Arbergen,YHARB,8.917544,53.04178,1128464.0,Arbergen
+Bremen-Burg-Grambke,YHBBG,8.714337,53.1376157,25743301.0,Bremen-Burg-Grambke
+Forchheim Nord,YNFON,11.0639988,49.7334967,12424781147.0,Forchheim Nord
+Bamberg Süd,YNBAS,10.956925,49.8658851,331484247.0,Bamberg-Süd
+Bremen-Farge Ost,HBFO,,,,
+Bln-Köpenick,BKP,13.545138,52.4369626,11593038694.0,Home Instead
+Biederitz Nord,YLBZN,,,,
+Toender,XDTDR,,,,
+Hannover Braunschweiger Platz,HBP,9.7617451,52.370655,31880077.0,Braunschweiger Platz
+Stern (Bh),WSBU,16.7280343,44.9713163,192637292.0,Гертруде Штерн
+Nykoebing F,XDNK,11.8709918,54.7646137,26559259.0,Nykøbing Falster
+Marßel,YHMRL,8.726225,53.1727811,4982439754.0,Marßel
+Bremen Föhrenstr,YHBFS,8.8776045,53.0638376,222508770.0,Föhrenstraße
+Bremen Steubenstraße,YHBSTS,8.8645097,53.0714764,255673441.0,Steubenstraße
+Dietzenbach Süd,YFDZSU,8.7911395,50.0050802,297027717.0,Bauhof Stadt Dietzenbach
+Aarhus,XDAR,10.2134046,56.1496278,26559213.0,Aarhus
+Cheb-Skalka Hp,XTCS,,,,
+Pomezí nad Ohří Hp,XTPI,,,,
+Skanderborg,XDSG,9.9317878,56.0351868,26559266.0,Skanderborg
+Horsens,XDHR,9.8444774,55.8611696,1368129781.0,Horsens
+Vejle,XDVJ,9.5329419,55.707931,26559198.0,Vejle
+Fredericia,XDF,9.7562169,55.565268,26559058.0,Fredericia
+Kolding,XDKO,9.47905,55.4894999,26559170.0,Kolding
+Lunderskov,XDLU,9.3002816,55.4836316,26559161.0,Lunderskov
+Vamdrup,XDVA,9.2889565,55.4284473,9212228100.0,Vamdrup
+Vojens,XDV,9.3082416,55.2464268,9463131170.0,Vojens
+Roedekro,XDRD,,,,
+Tinglev,XDTI,9.2482003,54.9316288,7532792443.0,Tinglev
+Padborg,XDPA,9.3606529,54.8295003,26559204.0,Padborg
+Abzw. Frankfurt-Bonames,YFBON,,,,
+Leipzig-Radefeld GVZ,YLLR,,,,
+Hmb. Claudiusstraße,YACL,,,,
+Hmb. Bovestraße,YABOV,,,,
+Hmb. Holstenhofweg,YAHH,,,,
+Hmb. Am Pulverhof,YAPH,,,,
+Ahrensburg West,YAAHW,10.219403,53.6646389,6233764950.0,Ahrensburg West
+Springe-Deisterpforte,HSPD,9.5280376,52.1997954,2808642965.0,Deisterpforte
+Abzw Himmelsthür,HHTA,9.8858061,52.159825,3005710763.0,Himmelsthür (Abzw)
+Sbk 343,T343G,46.2923185,38.0403948,1151930488.0,مرکز معاینه فنی سبک و سنگین شماره 5 تبریز
+Ahlen Hp,EAHLH,,,,
+Sbk 35,A035A,32.2136659,48.3400066,486861362.0,Мар’ївськкий СБК
+Sbk 44,A44EL,9.7924432,48.8013274,2474163820.0,SBK
+Heilbronn Rathaus,TH  M,9.2185668,49.1424749,3154660722.0,Rathaus
+Abzw. Wallau,FWS2,,,,
+Karlsruhe Hubstraße,RKDUH,8.4723453,49.0046923,3924780.0,Hubstraße
+Tungendorf,YATUF,9.9977977,54.0965642,10130940.0,Tungendorf
+Germers Mitte Hp,RGEH,,,,
+Hemmingstedt,AHE,9.08263,54.1506435,412906.0,Hemmingstedt
+Minden Gbf,HM  G,8.9491315,52.2975317,4121916822.0,Minden (Westf) Gbf
+Bischofswiesen-Winkl,YMBWW,12.9498032,47.6674736,255188550.0,Winkl
+Mannheim-Neuostheim,YRMN,8.5049695,49.4788199,3152017153.0,Mannheim-Neuostheim
+Haffkrug (neu),AHAFH,10.7493646,54.0494534,26280320.0,Neu Wiesental
+Scharbeutz (neu),ASAZH,10.7493646,54.0494534,26280320.0,Neu Wiesental
+Ratekau,ARAT,10.7301577,53.9523876,382445.0,Ratekau
+Oldenburg Umfahrung,AOLU,,,,
+Großenbrode Bbf,AGROB,,,,
+Rimbach Schulzentrum,YRRIMS,8.7540934,49.6234095,12379496339.0,Rimbach Schulzentrum
+Bruxelles-Central,XBBL,4.3569867,50.8454639,3266203405.0,Bruxelles-Central - Brussel-Centraal
+Leuven,XBLE,4.7011675,50.879202,196311.0,Leuven
+XBAL,XBAL,99.5337151,17.3242345,109578592.0,อุบาลี 1
+Berstadt-Wohnbach,FBW,8.8463647,50.4225164,199531596.0,Biogasanlage Wölfersheim-Berstadt
+Inheiden,FIN,8.8957649,50.4591699,13780331.0,Inheiden
+Altenbruch,AALT,8.7739938,53.8240388,256747086.0,Altenbruch
+Stade-Hahle,ASTH,9.4338261,53.5975946,711617343.0,Hahle
+Innsbruck Hbf,XAI,11.4010207,47.2632966,337863237.0,Innsbruck Hauptbahnhof
+Fortezza / Franzensfeste,XIFF,11.6101475,46.7888038,966133691.0,Fortezza - Franzensfeste
+Bressanone / Brixen,XIBX,11.6475868,46.7034126,41777303.0,Bressanone - Brixen
+Bolzano / Bozen,XIBZ,11.2302129,46.6559455,47046.0,Bolzano - Bozen
+Trento,XITR,11.1297425,46.1029536,45756.0,Provincia di Trento
+Verona Porta Nuova,XIVP,10.9823706,45.429182,3738591149.0,Verona Porta Nuova
+Bologna Centrale,XIBC,11.3433651,44.5061271,3819925257.0,Bologna Centrale
+Jenbach,XAJB,11.7717443,47.3915387,83101.0,Jenbach
+Fl Wilhm.Awanst,AFWI,,,,
+Zürich HB,XSZH,8.5393635,47.3781008,1236383343.0,Zürich Hauptbahnhof
+Plzeň hl.n.,XTPZ,13.3882551,49.743329,30077682.0,Plzeň hlavní nádraží
+St. Margrethen,XSMG,9.6410249,47.4510277,1683943.0,St. Margrethen
+St. Gallen,XSG,9.3762397,47.425618,1683941.0,St. Gallen
+Winterthur,XSW,8.7291498,47.4991723,1682243.0,Winterthur
+Amsterdam C,XNAC,4.9328384,52.3977461,280783543.0,C
+Utrecht C,XNU,5.0943308,52.0732936,6615330513.0,Kanaleneiland
+Abzw. Plieningen,TSPL,,,,
+Bebra-Blankenheim,FBLA,9.7781238,50.9355182,2852216741.0,Bebra-Blankenheim
+Schiphol,XNSP,4.7621975,52.3080392,1883613.0,Schiphol
+XNHI,XNHI,,,,
+XNAM,XNAM,134.9227648,34.7504414,900533.0,稲美町
+XNAE,XNAE,,,,
+XNDV,XNDV,,,,
+XNAO,XNAO,,,,
+Sulzdorf,TSUD,10.9343212,50.298257,304183723.0,Sulzdorf
+Üst Jesteburg,AJF,,,,
+Lichtenberg (Ofr.),YNLI,11.6884638,50.3928056,11144003976.0,Lichtenberg (Ofr)
+Hölle,YNHOL,11.5219736,50.0142193,1247311534.0,Hölle
+Chemmnitz Friedrichstr,DC F,,,,
+Stollberg Grüner Winkel,DSTOW,12.7692303,50.7035615,97363920.0,Grüner Winkel
+Stollberg Gewerbegebiet,DSTOG,12.7598172,50.7064298,180236152.0,"Gewerbegebiet ""Am Stollberger Tor"""
+Stollberg Kaufland,DSTOK,12.7575633,50.7069661,371806896.0,Kaufland
+Stollberg Wohngebeit,DSTOO,,,,
+Oelsnitz Bahnhofstraße,DOEB,12.6980553,50.7270939,175325014.0,Oelsnitz Bahnhofstraße
+Aue E-Stadion Hp,DAUS,,,,
+Lößnitz u Bf Hp,DLNU,,,,
+Lößnitz ob Bf Hp,DLN,,,,
+Zwönitz Hst,DZI,,,,
+Niederzwönitz Hp,DNZW,,,,
+Dorfchemnitz Hp,DDCH,,,,
+Thalheim (Erzg),DTAL,12.8621709,50.6964043,332612489.0,HSV Thalheim Erzg.
+Meinersdorf Hp,DMS,,,,
+Burkhardts Mi Hp,DBUM,,,,
+Burkhardtsdorf,DBUF,12.9167,50.7333,536008.0,Burkhardtsdorf
+Kemtau Hp,DKAU,,,,
+Dittersdorf Hp,DDF,,,,
+Einsiedel,DED,17.437091,47.8766438,1491439.0,Dunaremete
+Einsiedel Gym Hp,DEDH,,,,
+Ch-Erfenschl Hp,DCE,,,,
+Chem-Reichenh Hp,DCRE,,,,
+Warszawa Wschodnia,XPWW,21.0523678,52.2515889,33210583.0,Warszawa Wschodnia
+Warszawa Centralna,XPWC,21.00316,52.2288207,9814916146.0,Warszawa Centralna
+Warszawa Zachodnia,XPWZ,20.9651719,52.2201572,3390821831.0,Warszawa Zachodnia
+Kutno,XPKT,19.3570182,52.2317559,2929612.0,Kutno
+Konin,XPKN,18.2521112,52.2301933,2132412.0,Konin
+Poznan Gl,XPPG,,,,
+Zbaszynek,XPZA,15.8138946,52.2436262,2881291.0,Zbąszynek
+Swiebodzin,XPSWB,15.5324973,52.2498357,2881292.0,Świebodzin
+Rzepin,XPR,14.8382902,52.34432,3008692.0,Rzepin
+Eindhoven C,XNEI,5.4787489,51.4438624,48837440.0,C
+Helmond,XNHM,5.6670321,51.4736023,299983.0,Helmond
+T427P,T427P,,,,
+Bft Ziegenberg,FSUEZ,,,,

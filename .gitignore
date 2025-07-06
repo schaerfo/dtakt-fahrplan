@@ -2,6 +2,7 @@
 .python
 input/*
 !input/.gitkeep
+!input/station_location_osm.csv
 intermediate/*
 !intermediate/.gitkeep
 out/*
