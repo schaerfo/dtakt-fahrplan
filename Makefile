@@ -16,17 +16,12 @@ $(intermediate_dir)/dtakt-gtfs.db: $(intermediate_dir)/dtakt-station-location-os
 	cp $< $@
 	sqlite3 $@ < gtfs_views.sql
 
-$(intermediate_dir)/dtakt-station-location-osm.db: $(intermediate_dir)/dtakt-station-location.db $(intermediate_dir)/station-location-osm.json merge_station_location.py .python
+$(intermediate_dir)/dtakt-station-location-osm.db: $(intermediate_dir)/dtakt-station-location.db $(input_dir)/station_location_osm.csv merge_station_location.py .python
 	cp $< $@
-	poetry run python merge_station_location.py $@ $(intermediate_dir)/station-location-osm.json
+	poetry run python merge_station_location.py $@ $(input_dir)/station_location_osm.csv
 
-$(intermediate_dir)/station-location-osm.json: $(intermediate_dir)/overpass-query.txt
-	curl -X POST -H "Content-Type: text/plain" --data @$< -o $@ https://overpass-api.de/api/interpreter
-	# Incomplete results due to timeout have a "remark" item in the JSON root object
-	test `jq '. | has("remark")' $@` != "true" || (rm $@; false)
-
-$(intermediate_dir)/overpass-query.txt: $(intermediate_dir)/dtakt-station-location.db generate_overpass_query.py .python
-	poetry run python generate_overpass_query.py $< > $@
+$(input_dir)/station_location_osm.csv: $(intermediate_dir)/dtakt-station-location.db missing_station_location.py .python
+	poetry run python missing_station_location.py $< $@
 
 $(intermediate_dir)/dtakt-station-location.db: $(intermediate_dir)/dtakt.db $(input_dir)/station_location.csv passenger_train_view.sql station_location.py .python
 	cp $< $@
