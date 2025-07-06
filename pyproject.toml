@@ -5,3 +5,4 @@ package-mode = false
 python = "^3.12"
 sqlalchemy = "^2.0.32"
 pandas = "^2.2.3"
+requests = "^2.32.4"
