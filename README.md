@@ -54,6 +54,16 @@ make
 
 The resulting file will be placed in the `output` directory.
 
+#### Station Locations from OSM
+Motis requires all stations to have a geographic position (latitude and longitude). They are fetched from a document
+originally published by Deutsche Bahn. However, that does not contain all stations. The remainder is queried from
+OpenStreetMap. Since the Nominatim API used for that requires results of bulk queries to be cached, the resulting data
+is checked into the repository at `input/station_location_osm.csv`. To update it, run
+```shell
+make -f station_osm.mk
+```
+and remember to adhere to the Nominatim usage policy for bulk queries.
+
 ### Running
 Acquire a version of Motis from [2] and follow instructions from there.
 The Dockerfile of this repository may serve as inspiration.
