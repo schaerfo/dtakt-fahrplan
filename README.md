@@ -59,12 +59,12 @@ Acquire a version of Motis from [2] and follow instructions from there.
 The Dockerfile of this repository may serve as inspiration.
 
 ## License
-Since the file `motis/empty.osm.pbf` is an excerpt from OpenStreetMap, a different license applies to this file than
+Since the files `motis/empty.osm.pbf` and `input/station_location_osm.csv` contain data from OpenStreetMap, a different license applies to them than
 the rest of the project.
 
 **Note:** Other licences may apply to artifacs that are downloaded or created in the build process.
 
-### motis/empty.osm.pbf
+### motis/empty.osm.pbf, input/station_location_osm.csv
 [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright)
 
 ### Everything Else
