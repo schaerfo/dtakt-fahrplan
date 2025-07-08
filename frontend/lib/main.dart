@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 
 import 'generated/l10n/app_localizations.dart';
 import 'models/search_parameters.dart';
+import 'models/theme_toggle.dart';
 import 'models/types.dart';
 import 'widgets/info_buttons.dart';
 import 'widgets/result_display.dart';
@@ -37,6 +38,7 @@ void main() {
             create: (_) => ProductNotifier({...Product.values})),
         ChangeNotifierProvider(
             create: (_) => TimeNotifier(TimeOfDay(hour: 8, minute: 0))),
+        ChangeNotifierProvider(create: (_) => ThemeToggle()),
       ],
       child: const MainApp(),
     ),
@@ -50,22 +52,24 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = TextTheme(
+      titleMedium: TextStyle(
+        fontWeight: FontWeight.bold,
+      ),
+      displayMedium: TextStyle(
+        fontFamily: "Comfortaa",
+        fontWeight: FontWeight.w600,
+      ),
+    );
+    final themeToggle = Provider.of<ThemeToggle>(context);
     return MaterialApp(
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      themeMode: ThemeMode.light,
+      themeMode: themeToggle.mode,
       theme: ThemeData(
         fontFamily: "Roboto",
         colorSchemeSeed: _seedColor,
-        textTheme: TextTheme(
-          titleMedium: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-          displayMedium: TextStyle(
-            fontFamily: "Comfortaa",
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+        textTheme: textTheme,
         dividerTheme: DividerThemeData(
           space: 0,
         ),
@@ -73,8 +77,14 @@ class MainApp extends StatelessWidget {
           'Noto Sans',
         ],
       ),
+      // ThemeData.copyWith(brightness: ...) does not seem to be working
+      // See also https://github.com/flutter/flutter/issues/165343
       darkTheme: ThemeData(
         colorSchemeSeed: _seedColor,
+        textTheme: textTheme,
+        dividerTheme: DividerThemeData(
+          space: 0,
+        ),
         brightness: Brightness.dark,
       ),
       onGenerateTitle: (context) => AppLocalizations.of(context)!.title,
