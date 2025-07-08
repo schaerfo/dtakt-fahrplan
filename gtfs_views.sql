@@ -47,14 +47,13 @@ CREATE VIEW "gtfs_trips" AS
     select
       stop1.train_part_id,
       station_id,
-      name_db as trip_headsign
+      iif(name_db is null, name, name_db) as trip_headsign
     from (
       select
         train_part_id,
         max(sequence) as sequence
       from stop
       join passenger_station using (station_id)
-      where name_db is not null
       group by train_part_id
     ) as stop1
     join stop using (train_part_id, sequence)
@@ -65,11 +64,10 @@ CREATE VIEW "gtfs_trips" AS
 CREATE VIEW "gtfs_stops" AS
   select
     station_id as stop_id,
-    name_db as stop_name,
+    iif(name_db is null, name, name_db) as stop_name,
     Breite as stop_lat,
     Laenge as stop_lon
   from passenger_station
-  where Laenge is not null
 ;
 
 CREATE VIEW "gtfs_stop_times" AS
@@ -84,7 +82,5 @@ CREATE VIEW "gtfs_stop_times" AS
   join station_with_location using (station_id)
   where
       arrival_time is not null
-    and
-      Laenge is not null
 ;
 COMMIT;
