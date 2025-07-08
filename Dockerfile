@@ -32,7 +32,7 @@ station_location.py \
 ./
 RUN mkdir intermediate out && make
 
-FROM ghcr.io/cirruslabs/flutter AS ui
+FROM ghcr.io/cirruslabs/flutter:stable AS ui
 WORKDIR /frontend
 COPY frontend/pubspec.lock frontend/pubspec.yaml ./
 RUN dart pub get
