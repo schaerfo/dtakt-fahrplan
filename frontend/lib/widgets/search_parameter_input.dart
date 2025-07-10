@@ -131,6 +131,10 @@ class _TimeInput extends StatelessWidget {
         icon: Icon(Icons.access_time),
         label:
             Text(MaterialLocalizations.of(context).formatTimeOfDay(time.value)),
+        style: ButtonStyle(
+          foregroundColor: WidgetStateProperty.resolveWith(
+              (state) => Theme.of(context).colorScheme.onSurface),
+        ),
       ),
     );
   }
