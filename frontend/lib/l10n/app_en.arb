@@ -1,7 +1,7 @@
 {
   "about": "About this page",
   "aboutContent1": "On this site you can search for train journeys between any stations. This is based on the timetable of the Deutschlandtakt (more precisely the 3rd expert draft of 2020). Thus you can easily see how your personal rail journeys will change as a result of the Deutschlandtakt.",
-  "aboutContent2": "Please note that the timetable data is not yet fully taken into account. In particular, stations that are being newly opened or reopened as part of the Deutschlandtakt and stations abroad are missing. Changeover times at stations are also not taken into account due to missing data.",
+  "aboutContent2": "Please note that the timetable data is not yet fully taken into account. In particular, changeover times at stations are not taken into account due to missing data.",
   "aboutRouting1": "Routing is performed using ",
   "aboutRouting2": ".",
   "all": "All",
