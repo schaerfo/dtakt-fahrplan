@@ -86,6 +86,9 @@ class MainApp extends StatelessWidget {
           space: 0,
         ),
         brightness: Brightness.dark,
+        fontFamilyFallback: const [
+          'Noto Sans',
+        ],
       ),
       onGenerateTitle: (context) => AppLocalizations.of(context)!.title,
       home: Scaffold(
