@@ -71,6 +71,30 @@ class MotisClient {
     return result;
   }
 
+  Future<Leg> fetchLeg(Leg incompleteLeg) async {
+    final uri = Uri(
+      scheme: 'https',
+      host: Environment.motisHost,
+      path: 'api/v2/trip',
+      queryParameters: {
+        'tripId': incompleteLeg.id,
+      },
+    );
+    final response = await _client.get(uri);
+    if (response.statusCode != 200) {
+      print('Error: HTTP status ${response.statusCode}');
+      return Leg([],
+          id: incompleteLeg.id,
+          lineName: incompleteLeg.lineName,
+          product: incompleteLeg.product);
+    }
+    final parsed =
+        jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
+    final journey = _convertJourney(parsed);
+    final result = journey.legs.first;
+    return result;
+  }
+
   Journey _convertJourney(Map<String, dynamic> journey) {
     return Journey((journey['legs'] as List)
         .cast<Map<String, dynamic>>()

@@ -4,6 +4,7 @@
 import 'package:dtakt_fahrplan_frontend/util/product_color.dart';
 import 'package:flutter/material.dart';
 
+import '../backend/motis_client.dart';
 import '../generated/l10n/app_localizations.dart';
 import '../models/journey.dart';
 import '../models/types.dart';
@@ -61,12 +62,18 @@ enum _Position { single, start, middle, end }
 class _LegDetails extends StatefulWidget {
   final Leg leg;
   final _Position pos;
+  final bool _isTripDisplay;
 
   const _LegDetails(
     this.leg, {
     required _Position position,
     super.key,
-  }) : pos = position;
+  })  : pos = position,
+        _isTripDisplay = false;
+
+  const _LegDetails.tripDisplay(this.leg)
+      : pos = _Position.single,
+        _isTripDisplay = true;
 
   @override
   State<_LegDetails> createState() => _LegDetailsState();
@@ -109,55 +116,63 @@ class _LegDetailsState extends State<_LegDetails> {
             Row(
               children: [
                 SizedBox(width: 10.0),
-                Text(durationStr),
-                SizedBox(width: 10.0),
-                ProductBadge(widget.leg),
-                if (widget.leg.headsign != null) ...[
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5.0),
+                  child: Text(durationStr),
+                ),
+                if (!widget._isTripDisplay) ...[
                   SizedBox(width: 10.0),
-                  Text(
-                      '${AppLocalizations.of(context)!.to} ${widget.leg.headsign}'),
+                  ProductBadge.button(widget.leg, onPressed: () {
+                    _showEntireLeg(context);
+                  }),
+                  if (widget.leg.headsign != null) ...[
+                    SizedBox(width: 10.0),
+                    Text(
+                        '${AppLocalizations.of(context)!.to} ${widget.leg.headsign}'),
+                  ],
                 ],
               ],
             ),
           ],
         ),
-        TableRow(
-          children: [
-            TableCell(
-              verticalAlignment: TableCellVerticalAlignment.fill,
-              child: CustomPaint(
-                painter:
-                    _ContinuousPainter(context, product: widget.leg.product),
+        if (!widget._isTripDisplay)
+          TableRow(
+            children: [
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.fill,
+                child: CustomPaint(
+                  painter:
+                      _ContinuousPainter(context, product: widget.leg.product),
+                ),
               ),
-            ),
-            Row(
-              children: [
-                nonStop
-                    ? Padding(
-                        padding: const EdgeInsets.only(left: 12.0),
-                        child: Text(
-                          AppLocalizations.of(context)!.nonStop,
-                          style: TextStyle(fontStyle: FontStyle.italic),
+              Row(
+                children: [
+                  nonStop
+                      ? Padding(
+                          padding: const EdgeInsets.only(left: 12.0),
+                          child: Text(
+                            AppLocalizations.of(context)!.nonStop,
+                            style: TextStyle(fontStyle: FontStyle.italic),
+                          ),
+                        )
+                      : TextButton.icon(
+                          onPressed: () {
+                            setState(() {
+                              _showIntermediateStops = !_showIntermediateStops;
+                            });
+                          },
+                          label: Text(AppLocalizations.of(context)!
+                              .nIntermediateStops(intermediateStopCount)),
+                          icon: Icon(_showIntermediateStops
+                              ? Icons.expand_less
+                              : Icons.expand_more),
+                          iconAlignment: IconAlignment.end,
                         ),
-                      )
-                    : TextButton.icon(
-                        onPressed: () {
-                          setState(() {
-                            _showIntermediateStops = !_showIntermediateStops;
-                          });
-                        },
-                        label: Text(AppLocalizations.of(context)!
-                            .nIntermediateStops(intermediateStopCount)),
-                        icon: Icon(_showIntermediateStops
-                            ? Icons.expand_less
-                            : Icons.expand_more),
-                        iconAlignment: IconAlignment.end,
-                      ),
-              ],
-            ),
-          ],
-        ),
-        if (_showIntermediateStops)
+                ],
+              ),
+            ],
+          ),
+        if (_showIntermediateStops || widget._isTripDisplay)
           for (final currStop
               in widget.leg.stops.take(widget.leg.stops.length - 1).skip(1))
             TableRow(
@@ -238,6 +253,62 @@ class _LegDetailsState extends State<_LegDetails> {
           ],
         ),
       ],
+    );
+  }
+
+  void _showEntireLeg(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text(widget.leg.lineName),
+        content: TripDetailsDialog(leg: widget.leg),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text(MaterialLocalizations.of(context).closeButtonLabel),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TripDetailsDialog extends StatefulWidget {
+  const TripDetailsDialog({
+    super.key,
+    required this.leg,
+  });
+
+  final Leg leg;
+
+  @override
+  State<TripDetailsDialog> createState() => _TripDetailsDialogState();
+}
+
+class _TripDetailsDialogState extends State<TripDetailsDialog> {
+  late Future<Leg> _result;
+  final _client = MotisClient();
+
+  @override
+  Widget build(BuildContext context) {
+    _result = _client.fetchLeg(widget.leg);
+    return FutureBuilder(
+      future: _result,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return SingleChildScrollView(
+              child: _LegDetails.tripDisplay(snapshot.data!));
+        }
+        if (snapshot.hasError) {
+          return Text('Could not retrieve trip');
+        }
+        return const Center(
+          heightFactor: 1,
+          child: CircularProgressIndicator(),
+        );
+      },
     );
   }
 }
