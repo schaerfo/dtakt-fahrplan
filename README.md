@@ -58,6 +58,14 @@ The resulting file will be placed in the `output` directory.
 Acquire a version of Motis from [2] and follow instructions from there.
 The Dockerfile of this repository may serve as inspiration.
 
+## API Access
+The backend is a simple Motis instance. Therefore, the [API documentation of Motis](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/motis-project/motis/refs/heads/master/openapi.yaml) applies.
+Please note that some features may not be available yet, as we are not necessarily using the latest version of Motis.
+You can find the currently used version by looking at the `server` HTTP header.
+
+If you use this service, please set relevant HTTP headers (e.g. `User-Agent` or `Origin`) appropriately
+and provide a link to this project.
+
 ## License
 Since the file `motis/empty.osm.pbf` is an excerpt from OpenStreetMap, a different license applies to this file than
 the rest of the project.
