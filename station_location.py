@@ -1,39 +1,40 @@
 # Copyright 2025 Christian Schärf
 # SPDX-License-Identifier: MIT
-
-import pandas as pd
+import itertools
+import json
 import sqlite3
 import sys
+
+import pandas as pd
 
 STATION_LOCATION_SQL = \
 '''
 CREATE TABLE "station_location" (
-  "DS100" TEXT NOT NULL,
-  "EVA_NR" TEXT,
-  "IFOPT" TEXT,
+  "RL100" TEXT NOT NULL,
   "name_db" TEXT,
-  "Verkehr" TEXT,
   "Laenge" REAL,
   "Breite" REAL,
-  "Betreiber_Name" TEXT,
-  "Betreiber_Nr" TEXT,
-  "Status" TEXT,
-  PRIMARY KEY ("DS100")
+  PRIMARY KEY ("RL100")
 )
 '''
 
 
 def main():
-    location_df = pd.read_csv(
-        sys.argv[2],
-        sep=';',
-        decimal=',',
-        dtype={"EVA_NR": str, "Betreiber_Nr": str},
-    )
-    location_df.loc[:, 'DS100'] = location_df['DS100'].str.split(',')
-    location_df = location_df.explode('DS100')
+    with open(sys.argv[2]) as f:
+        stop_places = json.load(f)
 
-    location_df.rename(columns={"NAME": "name_db"}, inplace=True)
+    locations = []
+    for station in filter(lambda item: 'rl100' in item['keys'], stop_places):
+        keys = station['keys']
+        for ril100 in itertools.chain([keys['rl100']], keys.get('alternativeRl100', [])):
+            locations.append(dict(
+                RL100=ril100,
+                name_db=station['names']['de']['nameLong'],
+                Breite=station['location']['lat'],
+                Laenge=station['location']['lon'],
+            ))
+    location_df = pd.DataFrame(locations)
+    location_df.drop_duplicates(subset=['RL100'], inplace=True)
 
     with sqlite3.connect(sys.argv[1]) as conn:
         conn.execute(STATION_LOCATION_SQL)

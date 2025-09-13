@@ -28,7 +28,7 @@ def main():
 
     # Generate and insert random locations
     locations = [(station[0], *generate_random_location()) for station in stations]
-    cursor.executemany("INSERT INTO station_location (DS100, Laenge, Breite) VALUES (?, ?, ?)",
+    cursor.executemany("INSERT INTO station_location (RL100, Laenge, Breite) VALUES (?, ?, ?)",
                        locations)
     conn.commit()
     conn.close()

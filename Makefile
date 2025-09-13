@@ -20,9 +20,9 @@ $(intermediate_dir)/dtakt-station-location-missing.db: $(intermediate_dir)/dtakt
 	cp $< $@
 	poetry run python missing_station_location.py $@
 
-$(intermediate_dir)/dtakt-station-location.db: $(intermediate_dir)/dtakt.db $(input_dir)/station_location.csv passenger_train_view.sql station_location.py .python
+$(intermediate_dir)/dtakt-station-location.db: $(intermediate_dir)/dtakt.db $(input_dir)/station_location.json passenger_train_view.sql station_location.py .python
 	cp $< $@
-	poetry run python station_location.py $@ $(input_dir)/station_location.csv
+	poetry run python station_location.py $@ $(input_dir)/station_location.json
 	sqlite3 $@ < passenger_train_view.sql
 
 $(intermediate_dir)/dtakt.db: $(intermediate_dir)/dtakt-schedule-patched.railml db_ingest.py .python
