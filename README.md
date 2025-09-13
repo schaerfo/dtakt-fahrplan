@@ -24,7 +24,7 @@ This is still work-in-progress, see the issues tab for details.
 ### Requirements
 **Note:** Building the initial database requires approximately 10 GB of RAM.
 
-For building the timetable the following software is required:
+For building the timetable, the following software is required:
 
 * CUrl
 * dos2unix
@@ -70,7 +70,7 @@ and provide a link to this project.
 Since the file `motis/empty.osm.pbf` is an excerpt from OpenStreetMap, a different license applies to this file than
 the rest of the project.
 
-**Note:** Other licences may apply to artifacs that are downloaded or created in the build process.
+**Note:** Other licenses may apply to artifacts that are downloaded or created in the build process.
 
 ### motis/empty.osm.pbf
 [© OpenStreetMap contributors](https://www.openstreetmap.org/copyright)
@@ -81,7 +81,7 @@ MIT License
 Copyright 2025 Christian Schärf
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
-associated documentation files (the " Software"), to deal in the Software without restriction,
+associated documentation files (the "Software"), to deal in the Software without restriction,
 including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
 sell copies of the Software, and to permit persons to whom the Software is furnished to do so,
 subject to the following conditions:
