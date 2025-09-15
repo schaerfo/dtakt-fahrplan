@@ -1,14 +1,11 @@
 server:
   port: 8080
   web_folder: ui_flutter
-osm: empty.osm.pbf
 timetable:
   datasets:
     dtakt:
       path: dtakt-gtfs.zip
       default_bikes_allowed: false
-tiles:
-  profile: tiles-profiles/full.lua
 street_routing: false
 geocoding: true
 osr_footpath: false
