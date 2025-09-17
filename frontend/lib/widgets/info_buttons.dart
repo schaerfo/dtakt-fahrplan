@@ -281,20 +281,6 @@ class InfoButtons extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(height: 10),
-          Text(
-            AppLocalizations.of(context)!.osmStationData,
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          TextButton(
-            onPressed: () {
-              launchUrl(Uri.parse("https://www.openstreetmap.org/copyright"));
-            },
-            style: TextButton.styleFrom(
-              padding: EdgeInsets.zero,
-            ),
-            child: Text(AppLocalizations.of(context)!.osmContributors),
-          )
         ],
       ),
     );
