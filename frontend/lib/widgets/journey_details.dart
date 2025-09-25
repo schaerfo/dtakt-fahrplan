@@ -9,6 +9,7 @@ import '../generated/l10n/app_localizations.dart';
 import '../models/journey.dart';
 import '../models/types.dart';
 import '../util/format_duration.dart';
+import 'info_buttons.dart';
 import 'product_badge.dart';
 
 class JourneyDetails extends StatelessWidget {
@@ -125,6 +126,12 @@ class _LegDetailsState extends State<_LegDetails> {
                   ProductBadge.button(widget.leg, onPressed: () {
                     _showEntireLeg(context);
                   }),
+                  IconButton(
+                    onPressed: () {
+                      InfoButtons.showTrainCategories(context);
+                    },
+                    icon: Icon(Icons.question_mark),
+                  ),
                   if (widget.leg.headsign != null) ...[
                     SizedBox(width: 10.0),
                     Text(

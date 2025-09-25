@@ -40,7 +40,7 @@ class InfoButtons extends StatelessWidget {
         Text("•"),
         TextButton(
           onPressed: () {
-            _showTrainCategories(context);
+            showTrainCategories(context);
           },
           child: Text(AppLocalizations.of(context)!.trainCategories),
         ),
@@ -139,7 +139,7 @@ class InfoButtons extends StatelessWidget {
     );
   }
 
-  void _showTrainCategories(BuildContext context) {
+  static void showTrainCategories(BuildContext context) {
     _showDialog(
       context: context,
       titleText: AppLocalizations.of(context)!.trainCategories,
@@ -321,7 +321,7 @@ class InfoButtons extends StatelessWidget {
     );
   }
 
-  void _showDialog({
+  static void _showDialog({
     required BuildContext context,
     required String titleText,
     required Widget content,
