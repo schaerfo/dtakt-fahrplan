@@ -30,9 +30,46 @@
   <link rel="icon" type="image/png" href="favicon-dark.png" media="(prefers-color-scheme: dark)"/>
 
   <title>Deutschlandtakt Fahrplanauskunft</title>
+
+  <style>
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      align-items: center;
+      background-color: #fbf8ff;
+      justify-content: center;
+    }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid #bac3ff;
+      border-top-color: #515b92;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (prefers-color-scheme: dark) {
+      .loading-overlay {
+        background-color: #121318;
+      }
+      .spinner {
+        border-color: #515b92;
+        border-top-color: #bac3ff;
+      }
+    }
+  </style>
 </head>
 <body>
   <script src="flutter_bootstrap.js" async></script>
   <p>Diese Website benötigt JavaScript.</p>
+  <div class="loading-overlay" id="flutter-loading-overlay">
+    <div class="spinner" role="status" aria-label="Lädt…"></div>
+  </div>
+  <script>
+    (function (){
+      document.getElementById('flutter-loading-overlay').style.display = 'flex';
+    })();
+  </script>
 </body>
 </html>
